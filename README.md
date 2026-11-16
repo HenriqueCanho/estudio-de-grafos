@@ -20,6 +20,7 @@ Os tópicos estudados e os exercícios concluídos são salvos no `localStorage`
 
 - `index.html` e `estilos.css` definem a navegação e a interface responsiva.
 - `conteudo.js` guarda o sumário, os enunciados, as figuras e as referências por página.
+- `exemplos.js` guarda os cálculos comentados e as referências dos exemplos resolvidos. Os diagramas de `figuras/diagramas/` podem ser recriados com `python3 scripts/gerar_diagramas.py` usando Pillow.
 - `tutor.js` valida cada decisão e prepara as pistas. Para acrescentar uma atividade, cadastre-a em `exercicios` e associe seu identificador a um tutor com `iniciar`, `pergunta` e `conferir`.
 - `app.js` conecta as telas, os tutores e o progresso.
 - `fontes/` e `figuras/` contêm os originais e as imagens extraídas dos PDFs. A numeração das referências começa pela capa do arquivo.

@@ -200,10 +200,21 @@ progress::-moz-progress-bar { background: var(--primary); border-radius: 99px; }
 .nesta-aula h2 { margin-bottom: .25rem; }
 .slide { border: 1px solid var(--line); border-radius: .65rem; width: 100%; }
 .legenda, figcaption { color: var(--sub); font-size: .8rem; margin-top: .43rem; }
-.leitura .legenda { margin-bottom: 1.3rem; }
 .raciocinio { padding-left: 1.35rem; color: var(--sub); margin: 0 0 1rem; }
 .raciocinio li { padding-left: .3rem; margin-bottom: .55rem; }
 .raciocinio li::marker { color: var(--primary); font-weight: 700; }
+.exemplo-resolvido { margin-block: 1.45rem; border-block: 1px solid var(--line); padding-block: 1.3rem; }
+.exemplo-resolvido h2 { color: var(--primary-dark); margin-bottom: .32rem; font-size: .89rem; }
+.exemplo-resolvido h3 { font-size: clamp(1.18rem, 2.1vw, 1.6rem); line-height: 1.22; letter-spacing: -.025em; }
+.diagrama-exemplo { margin-top: .9rem; }
+.diagrama-exemplo img { width: 100%; border: 1px solid var(--line); border-radius: .75rem; background: #f7f9ff; }
+.diagrama-exemplo .fonte-link { margin: 0; font-size: inherit; }
+.etapas-calculo { display: grid; gap: .65rem; margin: 1rem 0 0; padding-left: 1.65rem; }
+.etapas-calculo li { padding: .65rem .75rem; border: 1px solid var(--line); border-radius: .62rem; }
+.etapas-calculo li::marker { font-weight: 700; color: var(--primary-dark); }
+.etapas-calculo h4 { margin: 0 0 .16rem; font-size: .96rem; }
+.etapas-calculo p { font-size: .91rem; color: var(--sub); }
+.etapas-calculo .conta { margin-top: .48rem; padding: .42rem .55rem; border-radius: .42rem; background: var(--indigo-bg); color: var(--primary-dark); font: 650 .87rem/1.5 ui-monospace, monospace; overflow-wrap: anywhere; }
 .fonte-link { display: inline-flex; align-items: center; gap: .32rem; width: fit-content; font-size: .86rem; font-weight: 650; margin: .38rem .9rem .22rem 0; }
 .rodape { margin-top: 1.15rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .aviso { color: var(--sub); font-size: .84rem; margin-top: .55rem; }

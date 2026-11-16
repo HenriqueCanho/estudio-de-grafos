@@ -99,13 +99,33 @@ function inicio() {
 }
 
 function sumario() {
-  return cabecalho('Teoria', 'Escolha um tópico para estudar e consulte o exemplo no material original.') +
+  return cabecalho('Teoria', 'Escolha um tópico para ver o raciocínio, o diagrama e as contas passo a passo.') +
     '<div class="sumario">' + aulas.map(aula => `<section class="painel bloco-aula">
       <div class="bloco-titulo"><span class="aula-icone ${aula.cor}" aria-hidden="true">${aula.simbolo}</span>
         <div><span class="aula-num">Aula ${aula.id}${aula.id === '12' ? ' · Extra' : ''}</span><h2>${html(aula.titulo)}</h2></div></div>
       <ul class="lista-topicos">${aula.topicos.map(t => `<li><a href="${linkTeoria(aula.id, t.id)}"><span>${html(t.titulo)}</span>
         <span class="estado">${progresso.topicos.includes(t.id) ? '✓ Estudado' : '→'}</span></a></li>`).join('')}</ul>
     </section>`).join('') + '</div>';
+}
+
+function mostrarExemplo(aula, topico) {
+  const exemplo = exemplosResolvidos[topico.id];
+  const paginas = exemplo.paginas || exemplo.pagina;
+  return `<section class="exemplo-resolvido" aria-labelledby="titulo-exemplo">
+    <h2 id="titulo-exemplo">Exemplo resolvido</h2>
+    <h3>${html(exemplo.titulo)}</h3>
+    <figure class="diagrama-exemplo">
+      <img src="figuras/diagramas/${topico.id}.webp" alt="${html(exemplo.alt)}">
+      <figcaption>Redesenho do exemplo da ${arquivoPDF(aula.id, exemplo.pagina, 'Aula ' + aula.id + ' · p. ' + paginas)}</figcaption>
+    </figure>
+    <ol class="etapas-calculo">
+      ${exemplo.etapas.map(([titulo, explicacao, conta]) => `<li>
+        <h4>${html(titulo)}</h4>
+        <p>${html(explicacao)}</p>
+        <p class="conta">${html(conta)}</p>
+      </li>`).join('')}
+    </ol>
+  </section>`;
 }
 
 function lerTopico(aula, topico) {
@@ -116,10 +136,14 @@ function lerTopico(aula, topico) {
   ${cabecalho(topico.titulo, aula.titulo)}
   <div class="leitura-grid">
     <article class="painel leitura">
-      <img class="slide" src="figuras/${topico.figura}.webp" alt="${html(topico.alt)}">
-      <p class="legenda">${html(topico.legenda)}</p>
       <h2>Como raciocinar</h2>
       <ol class="raciocinio">${topico.pontos.map(ponto => '<li>' + html(ponto) + '</li>').join('')}</ol>
+      ${mostrarExemplo(aula, topico)}
+      <h2>Slide original</h2>
+      <figure>
+        <img class="slide" src="figuras/${topico.figura}.webp" alt="${html(topico.alt)}">
+        <figcaption>${html(topico.legenda)}</figcaption>
+      </figure>
       ${arquivoPDF(aula.id, topico.pagina, 'Slides da Aula ' + aula.id + ' · p. ' + topico.paginas)}
       <div class="acoes rodape">
         <button type="button" class="botao ${estudado ? 'secundario' : 'primario'}" data-estudar="${topico.id}" ${estudado ? 'disabled' : ''}>${estudado ? 'Estudado' : 'Marcar como estudado'}</button>
