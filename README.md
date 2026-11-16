@@ -14,13 +14,15 @@ Acesse [127.0.0.1:8765](http://127.0.0.1:8765/). O app usa HTML, CSS e JavaScrip
 
 ## Progresso
 
-Os tópicos estudados e os exercícios concluídos são salvos no `localStorage`. Cada perfil de navegador mantém seu próprio histórico para o endereço que acessou. Abra o mesmo endereço no mesmo perfil para retomar o estudo. A versão baixada, o servidor local e o site publicado têm históricos próprios. Os passos de uma tentativa em andamento duram até recarregar a página.
+Os tópicos estudados, os slides revisados, os exercícios resolvidos e os laboratórios concluídos são salvos no `localStorage`. Cada perfil de navegador mantém seu próprio histórico para o endereço que acessou. Abra o mesmo endereço no mesmo perfil para retomar o estudo. A versão baixada, o servidor local e o site publicado têm históricos próprios. Os passos de uma tentativa em andamento duram até recarregar a página.
 
 ## Estrutura
 
 - `index.html` e `estilos.css` definem a navegação e a interface responsiva.
 - `conteudo.js` guarda o sumário, os enunciados, as figuras e as referências por página.
 - `exemplos.js` guarda os cálculos comentados e as referências dos exemplos resolvidos. Os diagramas de `figuras/diagramas/` podem ser recriados com `python3 scripts/gerar_diagramas.py` usando Pillow.
+- `trilha-hamilton.js` reúne as oito páginas originais da Aula 05, de 20 a 27, com revisão individual e perguntas.
+- `laboratorios.js` permite experimentar ciclos, coloração, Huffman, fluxo residual e o Método Húngaro com dados dos slides.
 - `tutor.js` valida cada decisão e prepara as pistas. Para acrescentar uma atividade, cadastre-a em `exercicios` e associe seu identificador a um tutor com `iniciar`, `pergunta` e `conferir`.
 - `app.js` conecta as telas, os tutores e o progresso.
 - `fontes/` e `figuras/` contêm os originais e as imagens extraídas dos PDFs. A numeração das referências começa pela capa do arquivo.

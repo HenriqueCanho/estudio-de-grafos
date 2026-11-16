@@ -3,24 +3,27 @@ const todosTopicos = aulas.flatMap(aula => aula.topicos);
 const indiceAulas = new Map(aulas.map(aula => [aula.id, aula]));
 const chaveProgresso = 'estudio-de-grafos.v1';
 const tentativas = new Map();
+const catalogosProgresso = {
+  topicos: todosTopicos, exercicios, slides: slidesHamilton, laboratorios: catalogoLaboratorios
+};
 let persistenciaDisponivel = true;
 
 function carregarProgresso() {
+  let dados = {};
   try {
-    const dados = JSON.parse(localStorage.getItem(chaveProgresso)) || {};
-    const lista = (ids, catalogo) => Array.isArray(ids)
-      ? [...new Set(ids.filter(id => catalogo.some(item => item.id === id)))] : [];
-    return { topicos: lista(dados.topicos, todosTopicos), exercicios: lista(dados.exercicios, exercicios) };
-  } catch {
-    return { topicos: [], exercicios: [] };
-  }
+    dados = JSON.parse(localStorage.getItem(chaveProgresso)) || {};
+  } catch { /* Um histórico ilegível é tratado como vazio. */ }
+  return Object.fromEntries(Object.entries(catalogosProgresso).map(([campo, catalogo]) => {
+    const ids = Array.isArray(dados[campo]) ? dados[campo] : [];
+    return [campo, [...new Set(ids.filter(id => catalogo.some(item => item.id === id)))]];
+  }));
 }
 
 let progresso = carregarProgresso();
 
 function registrar(tipo, id) {
   const salvo = carregarProgresso();
-  for (const campo of ['topicos', 'exercicios']) {
+  for (const campo of Object.keys(catalogosProgresso)) {
     progresso[campo] = [...new Set([...salvo[campo], ...progresso[campo]])];
   }
   if (!progresso[tipo].includes(id)) progresso[tipo].push(id);
@@ -67,13 +70,14 @@ function inicio() {
   const proximo = primeira?.topicos.find(t => !progresso.topicos.includes(t.id));
   const link = proximo ? linkTeoria(primeira.id, proximo.id) : '#teoria';
   const acao = estudados === 0 ? 'Começar revisão' : proximo ? 'Continuar revisão' : 'Rever teoria';
+  const slidePendente = slidesHamilton.find(slide => !progresso.slides.includes(slide.id));
   return `<section class="hero" aria-labelledby="titulo-inicio">
     <div class="hero-texto">
       <p class="sobrelinha">Preparação para a prova</p>
       <h1 id="titulo-inicio">Sua revisão de grafos</h1>
       <p>Revise os slides do professor e resolva questões da lista, passo a passo.</p>
-      <div class="acoes"><a class="botao botao-branco" href="${link}">${acao} <span aria-hidden="true">→</span></a>
-      <a class="botao hero-secundario" href="#pratica">Ir para prática</a></div>
+      <div class="acoes"><a class="botao botao-branco" href="${linkSlideHamilton(slidePendente?.id)}">Slides 20 a 27</a>
+      <a class="botao hero-secundario" href="${link}">${acao} <span aria-hidden="true">→</span></a></div>
     </div>
     <div class="grafo-hero" aria-hidden="true">
       <span class="aresta lado topo"></span><span class="aresta lado base"></span><span class="aresta lado esq"></span><span class="aresta lado dir"></span>
@@ -90,6 +94,10 @@ function inicio() {
         <p><strong>${estudados}</strong> / ${todosTopicos.length}</p>${medidor(estudados, todosTopicos.length, 'Tópicos estudados')}</article>
       <article class="painel numero-card"><div><span class="aula-icone teal" aria-hidden="true">✓</span><h3>Exercícios resolvidos</h3></div>
         <p><strong>${resolvidos}</strong> / ${exercicios.length}</p>${medidor(resolvidos, exercicios.length, 'Exercícios resolvidos')}</article>
+      <article class="painel numero-card"><div><span class="aula-icone orange" aria-hidden="true">▤</span><h3>Slides 20–27</h3></div>
+        <p><strong>${progresso.slides.length}</strong> / ${slidesHamilton.length}</p>${medidor(progresso.slides.length, slidesHamilton.length, 'Slides prioritários revisados')}</article>
+      <article class="painel numero-card"><div><span class="aula-icone violet" aria-hidden="true">⌘</span><h3>Laboratórios concluídos</h3></div>
+        <p><strong>${progresso.laboratorios.length}</strong> / ${catalogoLaboratorios.length}</p>${medidor(progresso.laboratorios.length, catalogoLaboratorios.length, 'Laboratórios concluídos')}</article>
     </div>
   </section>
   <section aria-labelledby="titulo-aulas" class="secao">
@@ -105,6 +113,7 @@ function sumario() {
         <div><span class="aula-num">Aula ${aula.id}${aula.id === '12' ? ' · Extra' : ''}</span><h2>${html(aula.titulo)}</h2></div></div>
       <ul class="lista-topicos">${aula.topicos.map(t => `<li><a href="${linkTeoria(aula.id, t.id)}"><span>${html(t.titulo)}</span>
         <span class="estado">${progresso.topicos.includes(t.id) ? '✓ Estudado' : '→'}</span></a></li>`).join('')}</ul>
+      ${aula.id === '05' ? `<a class="botao primario acesso-trilha" href="${linkSlideHamilton()}">Revisar slides 20 a 27 →</a>` : ''}
     </section>`).join('') + '</div>';
 }
 
@@ -132,6 +141,7 @@ function lerTopico(aula, topico) {
   const estudado = progresso.topicos.includes(topico.id);
   const lista = aula.topicos;
   const proximo = lista[lista.indexOf(topico) + 1];
+  const laboratorio = catalogoLaboratorios.find(lab => lab.aula === aula.id);
   return `<div class="trilha"><a href="#teoria">Teoria</a><span>/</span><span>Aula ${aula.id}${aula.id === '12' ? ' · Extra' : ''}</span></div>
   ${cabecalho(topico.titulo, aula.titulo)}
   <div class="leitura-grid">
@@ -154,7 +164,10 @@ function lerTopico(aula, topico) {
     </article>
     <aside class="painel nesta-aula"><h2>Nesta aula</h2><ul class="lista-topicos">
       ${lista.map(t => `<li><a href="${linkTeoria(aula.id, t.id)}" ${t.id === topico.id ? 'aria-current="page"' : ''}><span>${html(t.titulo)}</span>${progresso.topicos.includes(t.id) ? '<span aria-label="Estudado" class="estado">✓</span>' : ''}</a></li>`).join('')}
-    </ul></aside>
+    </ul><div class="atalhos-leitura">
+      ${aula.id === '05' ? `<a class="fonte-link" href="${linkSlideHamilton()}">Revisar slides 20 a 27 →</a>` : ''}
+      <a class="fonte-link" href="${linkLaboratorio(laboratorio.id)}">Abrir laboratório da aula →</a>
+    </div></aside>
   </div>`;
 }
 
@@ -232,13 +245,15 @@ function material() {
 }
 
 function mostrarPagina() {
-  const [secao, id, topicoId] = location.hash.slice(1).split('/');
+  const [secao, id, topicoId, slideId] = location.hash.slice(1).split('/');
   const aula = indiceAulas.get(id);
   const topico = aula?.topicos.find(item => item.id === topicoId);
   const exercicio = exercicios.find(item => item.id === id);
   const paginas = {
-    inicio, teoria: () => topico ? lerTopico(aula, topico) : sumario(),
-    pratica: () => exercicio ? praticar(exercicio) : listaExercicios(), fontes: material
+    inicio, teoria: () => id === '05' && topicoId === 'slides' ? paginaTrilhaHamilton(slideId)
+      : topico ? lerTopico(aula, topico) : sumario(),
+    pratica: () => exercicio ? praticar(exercicio) : listaExercicios(),
+    laboratorios: () => paginaLaboratorio(id), fontes: material
   };
   const pagina = Object.hasOwn(paginas, secao) ? secao : 'inicio';
 
@@ -261,6 +276,10 @@ function atualizarEtapa(id) {
 principal.addEventListener('click', evento => {
   const botao = evento.target.closest('button');
   if (!botao) return;
+  if (botao.dataset.labAcao) {
+    operarLaboratorio(botao);
+    return;
+  }
   if (botao.dataset.estudar) {
     registrar('topicos', botao.dataset.estudar);
     botao.textContent = 'Estudado';
@@ -278,6 +297,11 @@ principal.addEventListener('click', evento => {
 });
 
 principal.addEventListener('submit', evento => {
+  if (evento.target.dataset.quizSlide) {
+    evento.preventDefault();
+    conferirSlide(evento.target);
+    return;
+  }
   const id = evento.target.dataset.resolver;
   if (!id) return;
   evento.preventDefault();
