@@ -165,7 +165,7 @@ main:focus, #passo-titulo:focus { outline: none; }
 .secao-topo a:hover, .fonte-link:hover, .trilha a:hover { text-decoration: underline; }
 .progresso-grid, .aulas-grid, .sumario, .leitura-grid, .pratica-grid { display: grid; gap: .9rem; }
 .sumario { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.progresso-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.progresso-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .aulas-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .painel, .aula-card { background: var(--paper); border: 1px solid var(--line); border-radius: 1rem; }
 .numero-card, .aula-card, .bloco-aula, .exercicio-card { padding: 1rem 1.12rem; }
@@ -305,6 +305,36 @@ button.no-lab:hover, .no-lab.no-atual { box-shadow: 0 0 0 .22rem #a4aef080; }
 .matriz-lab button { min-width: 2.6rem; min-height: 2.6rem; background: white; border: 1px solid var(--line); color: var(--ink); border-radius: .55rem; }
 .matriz-lab button:hover:not([aria-pressed="true"]) { background: var(--indigo-bg); }
 
+.listas-oficiais-nav, .questoes-oficiais-grid, .questao-oficial-grid { display: grid; gap: .85rem; }
+.listas-oficiais-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.listas-oficiais-nav a[aria-current] { background: var(--indigo-bg); border-color: #a4aef0; }
+.questoes-oficiais-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.questao-card { display: flex; align-items: center; gap: .7rem; padding: .85rem .95rem; color: var(--ink); min-width: 0; }
+.questao-card:hover { border-color: #a4aef0; box-shadow: 0 4px 15px #2838840d; }
+.questao-card h3 { font-size: .96rem; line-height: 1.25; }
+.questao-card .aula-icone { font-size: .9rem; font-weight: 750; }
+.questao-oficial-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: start; }
+.enunciado-oficial > p { white-space: pre-line; overflow-wrap: anywhere; }
+.recorte-questao { margin-top: 1rem; }
+.recorte-questao > a { display: block; border: 1px solid var(--line); border-radius: .62rem; overflow: hidden; background: white; }
+.recorte-questao img { display: block; width: 100%; height: auto; }
+.recorte-questao figcaption .fonte-link { margin-top: 0; }
+.nota-fonte { margin-top: .9rem; padding: .7rem .78rem; border: 1px solid #f2d4b0; border-radius: .6rem; background: #fff6eb; }
+.nota-fonte h3, .checagens-questao h3 { font-size: .96rem; margin-bottom: .24rem; }
+.nota-fonte p, .checagens-questao > p, .conferencia-questao ol { color: var(--sub); font-size: .91rem; }
+.campo-rascunho, .checagens-questao, .conferencia-questao { margin-top: 1rem; }
+.campo-rascunho textarea, .checagem-questao input { font: inherit; color: var(--ink); background: white; border: 1px solid #adb9d3; border-radius: .57rem; padding: .55rem .6rem; width: 100%; min-width: 0; }
+.campo-rascunho textarea { resize: vertical; min-height: 6rem; }
+.checagem-questao { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: .34rem .55rem; margin-top: .7rem; }
+.checagem-questao .resposta-checagem { grid-column: 1 / -1; }
+.resposta-checagem .feedback { margin: 0; }
+.conferencia-questao ol { margin: .4rem 0 0; padding-left: 1.35rem; }
+.conferencia-questao li { margin-block: .45rem; }
+.aula-card.lista-oficial-card h3 { margin-top: .4rem; }
+
+@media (max-width: 1180px) {
+  .progresso-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 @media (max-width: 1040px) {
   .layout { grid-template-columns: 12.5rem minmax(0, 1fr); }
   .aulas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -320,7 +350,8 @@ button.no-lab:hover, .no-lab.no-atual { box-shadow: 0 0 0 .22rem #a4aef080; }
   .nav-principal a span { font-size: .95rem; width: 1rem; }
   .atalhos { display: none; }
   main { padding-top: 1.2rem; }
-  .leitura-grid, .pratica-grid, .trilha-grid, .laboratorio-grid { grid-template-columns: minmax(0, 1fr); }
+  .leitura-grid, .pratica-grid, .trilha-grid, .laboratorio-grid, .questao-oficial-grid { grid-template-columns: minmax(0, 1fr); }
+  .listas-oficiais-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 535px) {
   main { padding-inline: .9rem; }
@@ -330,6 +361,7 @@ button.no-lab:hover, .no-lab.no-atual { box-shadow: 0 0 0 .22rem #a4aef080; }
   .hero { display: block; border-radius: 1.05rem; min-height: auto; padding: 1.25rem; }
   .grafo-hero { display: none; }
   .aulas-grid, .sumario { grid-template-columns: 1fr; }
+  .questoes-oficiais-grid { grid-template-columns: minmax(0, 1fr); }
   .numero-card, .aula-card { padding: .8rem; }
   .numero-card > div { gap: .36rem; }
   .numero-card h3 { font-size: .78rem; line-height: 1.2; }

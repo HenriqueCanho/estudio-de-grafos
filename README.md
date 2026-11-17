@@ -1,6 +1,6 @@
 # Estúdio de Grafos
 
-Protótipo local para revisar Teoria dos Grafos. Ele reúne 16 tópicos das aulas 05, 06, 07, 08 e 12 e cinco atividades guiadas das quatro listas oficiais. Os PDFs originais e os recortes das figuras acompanham o projeto.
+Webapp para revisar Teoria dos Grafos. Ele reúne as aulas 05, 06, 07, 08 e 12, as 44 questões das quatro listas oficiais e cinco atividades guiadas passo a passo. Os PDFs originais e os recortes das figuras acompanham o projeto.
 
 ## Abrir
 
@@ -14,12 +14,14 @@ Acesse [127.0.0.1:8765](http://127.0.0.1:8765/). O app usa HTML, CSS e JavaScrip
 
 ## Progresso
 
-Os tópicos estudados, os slides revisados, os exercícios resolvidos e os laboratórios concluídos são salvos no `localStorage`. Cada perfil de navegador mantém seu próprio histórico para o endereço que acessou. Abra o mesmo endereço no mesmo perfil para retomar o estudo. A versão baixada, o servidor local e o site publicado têm históricos próprios. Os passos de uma tentativa em andamento duram até recarregar a página.
+Os tópicos estudados, os slides e questões revisados, os rascunhos das listas, os exercícios resolvidos e os laboratórios concluídos são salvos no `localStorage`. Cada perfil de navegador mantém seu próprio histórico para o endereço que acessou. Abra o mesmo endereço no mesmo perfil para retomar o estudo. A versão baixada, o servidor local e o site publicado têm históricos próprios. Os passos de uma tentativa guiada em andamento duram até recarregar a página.
 
 ## Estrutura
 
 - `index.html` e `estilos.css` definem a navegação e a interface responsiva.
 - `conteudo.js` guarda o sumário, os enunciados, as figuras e as referências por página.
+- `revisao.js` reúne os tópicos complementares e remete às páginas que fundamentam cada exemplo.
+- `questoes-05.js` a `questoes-08.js` descrevem as questões numeradas, suas pistas, recortes, checagens e observações de leitura. `pratica-oficial.js` exibe as listas e mantém os rascunhos.
 - `exemplos.js` guarda os cálculos comentados e as referências dos exemplos resolvidos. Os diagramas de `figuras/diagramas/` podem ser recriados com `python3 scripts/gerar_diagramas.py` usando Pillow.
 - `trilha-hamilton.js` reúne as oito páginas originais da Aula 05, de 20 a 27, com revisão individual e perguntas.
 - `laboratorios.js` permite experimentar ciclos, coloração, Huffman, fluxo residual e o Método Húngaro com dados dos slides.
@@ -27,4 +29,4 @@ Os tópicos estudados, os slides revisados, os exercícios resolvidos e os labor
 - `app.js` conecta as telas, os tutores e o progresso.
 - `fontes/` e `figuras/` contêm os originais e as imagens extraídas dos PDFs. A numeração das referências começa pela capa do arquivo.
 
-O feedback vem de regras dos slides e dos dados das questões. A questão 5 da Aula 05 cobre o primeiro grafo e suas quatro partidas. A questão 2 da Aula 06 cobre o item (b). Os demais itens podem ser consultados nas listas.
+O feedback vem de regras dos slides e dos dados das questões. Na prática guiada, a questão 5 da Aula 05 cobre o primeiro grafo e suas quatro partidas. A questão 2 da Aula 06 cobre o item (b). As páginas individuais das questões exibem todos os grafos e subitens originais.

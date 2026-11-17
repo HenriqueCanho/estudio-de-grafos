@@ -4,7 +4,7 @@ const indiceAulas = new Map(aulas.map(aula => [aula.id, aula]));
 const chaveProgresso = 'estudio-de-grafos.v1';
 const tentativas = new Map();
 const catalogosProgresso = {
-  topicos: todosTopicos, exercicios, slides: slidesHamilton, laboratorios: catalogoLaboratorios
+  topicos: todosTopicos, exercicios, slides: slidesHamilton, laboratorios: catalogoLaboratorios, questoes: questoesOficiais
 };
 let persistenciaDisponivel = true;
 
@@ -77,7 +77,8 @@ function inicio() {
       <h1 id="titulo-inicio">Sua revisão de grafos</h1>
       <p>Revise os slides do professor e resolva questões da lista, passo a passo.</p>
       <div class="acoes"><a class="botao botao-branco" href="${linkSlideHamilton(slidePendente?.id)}">Slides 20 a 27</a>
-      <a class="botao hero-secundario" href="${link}">${acao} <span aria-hidden="true">→</span></a></div>
+      <a class="botao hero-secundario" href="${link}">${acao} <span aria-hidden="true">→</span></a>
+      <a class="botao hero-secundario" href="#pratica">Todas as listas</a></div>
     </div>
     <div class="grafo-hero" aria-hidden="true">
       <span class="aresta lado topo"></span><span class="aresta lado base"></span><span class="aresta lado esq"></span><span class="aresta lado dir"></span>
@@ -94,6 +95,8 @@ function inicio() {
         <p><strong>${estudados}</strong> / ${todosTopicos.length}</p>${medidor(estudados, todosTopicos.length, 'Tópicos estudados')}</article>
       <article class="painel numero-card"><div><span class="aula-icone teal" aria-hidden="true">✓</span><h3>Exercícios resolvidos</h3></div>
         <p><strong>${resolvidos}</strong> / ${exercicios.length}</p>${medidor(resolvidos, exercicios.length, 'Exercícios resolvidos')}</article>
+      <article class="painel numero-card"><div><span class="aula-icone slate" aria-hidden="true">✎</span><h3>Questões revisadas</h3></div>
+        <p><strong>${progresso.questoes.length}</strong> / ${questoesOficiais.length}</p>${medidor(progresso.questoes.length, questoesOficiais.length, 'Questões revisadas')}</article>
       <article class="painel numero-card"><div><span class="aula-icone orange" aria-hidden="true">▤</span><h3>Slides 20–27</h3></div>
         <p><strong>${progresso.slides.length}</strong> / ${slidesHamilton.length}</p>${medidor(progresso.slides.length, slidesHamilton.length, 'Slides prioritários revisados')}</article>
       <article class="painel numero-card"><div><span class="aula-icone violet" aria-hidden="true">⌘</span><h3>Laboratórios concluídos</h3></div>
@@ -114,19 +117,21 @@ function sumario() {
       <ul class="lista-topicos">${aula.topicos.map(t => `<li><a href="${linkTeoria(aula.id, t.id)}"><span>${html(t.titulo)}</span>
         <span class="estado">${progresso.topicos.includes(t.id) ? '✓ Estudado' : '→'}</span></a></li>`).join('')}</ul>
       ${aula.id === '05' ? `<a class="botao primario acesso-trilha" href="${linkSlideHamilton()}">Revisar slides 20 a 27 →</a>` : ''}
+      ${Object.hasOwn(listasOficiais, aula.id) ? `<a class="fonte-link acesso-trilha" href="${linkListaOficial(aula.id)}">Praticar lista da Aula ${aula.id} →</a>` : ''}
     </section>`).join('') + '</div>';
 }
 
 function mostrarExemplo(aula, topico) {
-  const exemplo = exemplosResolvidos[topico.id];
+  const exemplo = topico.exemplo || exemplosResolvidos[topico.id];
   const paginas = exemplo.paginas || exemplo.pagina;
+  const fonte = arquivoPDF(aula.id, exemplo.pagina, 'Aula ' + aula.id + ' · p. ' + paginas);
   return `<section class="exemplo-resolvido" aria-labelledby="titulo-exemplo">
     <h2 id="titulo-exemplo">Exemplo resolvido</h2>
     <h3>${html(exemplo.titulo)}</h3>
-    <figure class="diagrama-exemplo">
+    ${exemplo.alt ? `<figure class="diagrama-exemplo">
       <img src="figuras/diagramas/${topico.id}.webp" alt="${html(exemplo.alt)}">
-      <figcaption>Redesenho do exemplo da ${arquivoPDF(aula.id, exemplo.pagina, 'Aula ' + aula.id + ' · p. ' + paginas)}</figcaption>
-    </figure>
+      <figcaption>Redesenho do exemplo da ${fonte}</figcaption>
+    </figure>` : `<p class="legenda">Fonte do exemplo · ${fonte}</p>`}
     <ol class="etapas-calculo">
       ${exemplo.etapas.map(([titulo, explicacao, conta]) => `<li>
         <h4>${html(titulo)}</h4>
@@ -166,22 +171,10 @@ function lerTopico(aula, topico) {
       ${lista.map(t => `<li><a href="${linkTeoria(aula.id, t.id)}" ${t.id === topico.id ? 'aria-current="page"' : ''}><span>${html(t.titulo)}</span>${progresso.topicos.includes(t.id) ? '<span aria-label="Estudado" class="estado">✓</span>' : ''}</a></li>`).join('')}
     </ul><div class="atalhos-leitura">
       ${aula.id === '05' ? `<a class="fonte-link" href="${linkSlideHamilton()}">Revisar slides 20 a 27 →</a>` : ''}
+      ${Object.hasOwn(listasOficiais, aula.id) ? `<a class="fonte-link" href="${linkListaOficial(aula.id)}">Ver todos os exercícios da aula →</a>` : ''}
       <a class="fonte-link" href="${linkLaboratorio(laboratorio.id)}">Abrir laboratório da aula →</a>
     </div></aside>
   </div>`;
-}
-
-function listaExercicios() {
-  return cabecalho('Prática guiada', 'Resolva questões das listas oficiais e receba feedback a cada etapa.') +
-    '<div class="lista-exercicios">' + exercicios.map(exercicio => {
-      const aula = indiceAulas.get(exercicio.aula);
-      const resolvido = progresso.exercicios.includes(exercicio.id);
-      return `<a class="painel exercicio-card" href="${linkPratica(exercicio.id)}">
-        <span class="aula-icone ${aula.cor}" aria-hidden="true">${aula.simbolo}</span>
-        <div><span class="aula-num">Aula ${aula.id} · Questão ${html(exercicio.numero)}</span><h2>${html(exercicio.titulo)}</h2></div>
-        <span class="estado">${resolvido ? '✓ Resolvido' : '→'}</span>
-      </a>`;
-    }).join('') + '</div>';
 }
 
 function campoHTML(campo) {
@@ -223,6 +216,8 @@ function painelPratica(exercicio, tentativa) {
 }
 
 function praticar(exercicio) {
+  const idOficial = Object.keys(guiasOficiais).find(id => guiasOficiais[id][0] === exercicio.id);
+  const questao = indiceQuestoes.get(idOficial);
   return `<div class="trilha"><a href="#pratica">Prática</a><span>/</span><span>Aula ${exercicio.aula} · Questão ${html(exercicio.numero)}</span></div>
     ${cabecalho(exercicio.titulo, progresso.exercicios.includes(exercicio.id) ? '✓ Exercício já resolvido' : 'Exercício da lista oficial')}
     <div class="pratica-grid">
@@ -230,6 +225,7 @@ function praticar(exercicio) {
         ${exercicio.figura ? `<figure class="figura-questao"><img src="figuras/${exercicio.figura}.webp" alt="${html(exercicio.alt)}"><figcaption>Figura da lista oficial</figcaption></figure>` : ''}
         ${arquivoPDF(exercicio.aula, exercicio.pagina, 'Lista da Aula ' + exercicio.aula + ' · p. ' + exercicio.pagina, true)}
         <a class="fonte-link" href="${linkTeoria(exercicio.aula, exercicio.topico)}">Consultar teoria <span aria-hidden="true">→</span></a>
+        ${questao ? `<a class="fonte-link" href="${linkListaOficial(questao.aula, questao.numero)}">Ver a questão completa →</a>` : ''}
       </section>
       ${painelPratica(exercicio, tentativas.get(exercicio.id))}
     </div>`;
@@ -240,7 +236,7 @@ function material() {
     '<div class="sumario">' + aulas.map(aula => `<section class="painel bloco-aula">
       <div class="bloco-titulo"><span class="aula-icone ${aula.cor}" aria-hidden="true">${aula.simbolo}</span>
       <div><span class="aula-num">Aula ${aula.id}${aula.id === '12' ? ' · Extra' : ''}</span><h2>${html(aula.titulo)}</h2></div></div>
-      ${arquivoPDF(aula.id, null, 'Slides da aula')}${aula.id === '12' ? '<p class="legenda">Os exercícios do material extra estão nos slides.</p>' : arquivoPDF(aula.id, null, 'Lista de exercícios', true)}
+      ${arquivoPDF(aula.id, null, 'Slides da aula')}${aula.id === '12' ? '<p class="legenda">Os exercícios do material extra estão nos slides.</p>' : `<a class="fonte-link" href="${linkListaOficial(aula.id)}">Lista no site →</a>${arquivoPDF(aula.id, null, 'PDF da lista', true)}`}
       </section>`).join('') + '</div>';
 }
 
@@ -249,10 +245,11 @@ function mostrarPagina() {
   const aula = indiceAulas.get(id);
   const topico = aula?.topicos.find(item => item.id === topicoId);
   const exercicio = exercicios.find(item => item.id === id);
+  const questao = id === 'lista' ? indiceQuestoes.get(topicoId + '/' + slideId) : null;
   const paginas = {
     inicio, teoria: () => id === '05' && topicoId === 'slides' ? paginaTrilhaHamilton(slideId)
       : topico ? lerTopico(aula, topico) : sumario(),
-    pratica: () => exercicio ? praticar(exercicio) : listaExercicios(),
+    pratica: () => exercicio ? praticar(exercicio) : questao ? paginaQuestaoOficial(questao) : paginaListasOficiais(topicoId),
     laboratorios: () => paginaLaboratorio(id), fontes: material
   };
   const pagina = Object.hasOwn(paginas, secao) ? secao : 'inicio';
@@ -276,6 +273,10 @@ function atualizarEtapa(id) {
 principal.addEventListener('click', evento => {
   const botao = evento.target.closest('button');
   if (!botao) return;
+  if (botao.dataset.revisarQuestao) {
+    concluirRevisaoOficial(botao);
+    return;
+  }
   if (botao.dataset.labAcao) {
     operarLaboratorio(botao);
     return;
@@ -297,6 +298,11 @@ principal.addEventListener('click', evento => {
 });
 
 principal.addEventListener('submit', evento => {
+  if (evento.target.dataset.checagem !== undefined) {
+    evento.preventDefault();
+    conferirResultadoOficial(evento.target);
+    return;
+  }
   if (evento.target.dataset.quizSlide) {
     evento.preventDefault();
     conferirSlide(evento.target);
@@ -315,6 +321,10 @@ principal.addEventListener('submit', evento => {
   tentativa.passo++;
   if (resultado.concluido) registrar('exercicios', id);
   atualizarEtapa(id);
+});
+
+principal.addEventListener('input', evento => {
+  if (evento.target.dataset.rascunho) salvarRascunho(evento.target);
 });
 
 document.querySelector('.pular').addEventListener('click', evento => {

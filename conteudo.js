@@ -11,6 +11,7 @@ const aulas = [
         pontos: [
           'Num caminho hamiltoniano, percorremos cada vértice exatamente uma vez. Num ciclo hamiltoniano, o percurso também volta ao vértice de partida.',
           'Em G₁, acompanhe as setas de v₁ a v₂, v₃, v₄ e v₅. A aresta de v₅ a v₁ fecha o ciclo. Basta encontrar um ciclo assim para confirmar que o grafo é hamiltoniano.',
+          'Com n vértices, um caminho hamiltoniano aberto tem n − 1 arestas. Um ciclo hamiltoniano tem n, pois inclui a volta. Em K₂ há caminho aberto. Em Kₙ simples com n > 2 há ciclo.',
           'Em Kₙ, com n ≥ 3, há (n − 1)!/2 ciclos quando contamos todas as possibilidades sem exigir arestas disjuntas. O slide 21 trata do caso em que os ciclos precisam usar conjuntos de arestas disjuntos.'
         ],
         treino: 'circuito'
@@ -180,7 +181,8 @@ const aulas = [
         alt: 'O mesmo grafo com um casamento maximal de duas arestas e um casamento máximo de três.',
         pontos: [
           'Um casamento é um conjunto de arestas que não compartilham vértices. É perfeito se todos os vértices pertencem a alguma das arestas escolhidas.',
-          'Uma cadeia M-aumentante alterna arestas fora e dentro do casamento e liga dois vértices livres. Ao trocar quais arestas da cadeia pertencem ao casamento, ganhamos uma aresta.'
+          'Uma cadeia M-aumentante alterna arestas fora e dentro do casamento e liga dois vértices livres. Ao trocar quais arestas da cadeia pertencem ao casamento, ganhamos uma aresta. Pelo teorema de Berge apresentado na aula, um casamento só é máximo quando já não existe cadeia aumentante.',
+          'Um vértice saturado é ponta de uma aresta escolhida. Um casamento máximo pode deixar vértices livres, como na estrela do slide 69. No grafo bipartido do slide 71, as arestas ligam lados distintos. Na convenção daquela página, um casamento de X em Y satura todos os vértices de Y.'
         ]
       },
       {
