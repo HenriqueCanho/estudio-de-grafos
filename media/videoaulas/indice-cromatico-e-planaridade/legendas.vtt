@@ -1,0 +1,109 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:04.204
+Cada pessoa é um vértice, e cada tarefa em dupla
+é uma aresta.
+
+00:00:04.334 --> 00:00:11.151
+Tarefas que compartilham uma pessoa precisam
+acontecer em horários diferentes, cada uma com
+sua cor.
+
+00:00:11.281 --> 00:00:17.052
+A participa de quatro tarefas, então são
+necessários pelo menos quatro horários.
+
+00:00:17.662 --> 00:00:23.604
+No primeiro horário, as duplas A B, C E e D F
+cobrem seis pessoas diferentes.
+
+00:00:23.734 --> 00:00:30.619
+A mesma verificação nos outros horários confirma
+que nenhuma pessoa recebe duas tarefas
+simultâneas.
+
+00:00:30.749 --> 00:00:35.417
+A escala cobre todas as tarefas e atinge o
+mínimo de quatro horários.
+
+00:00:36.027 --> 00:00:41.914
+As arestas incidentes num vértice de grau máximo
+exigem uma cor diferente para cada uma.
+
+00:00:42.044 --> 00:00:47.684
+Para grafos simples, o índice cromático está
+entre o grau máximo e esse grau mais um.
+
+00:00:47.814 --> 00:00:52.828
+Em grafos bipartidos, o próprio grau máximo já
+dá o índice cromático.
+
+00:00:53.438 --> 00:00:58.266
+No triângulo, cada vértice tem grau dois e o
+limite inferior vale dois.
+
+00:00:58.396 --> 00:01:03.435
+É possível colorir as três arestas desse
+triângulo usando apenas duas cores?
+
+00:01:07.565 --> 00:01:13.359
+Cada aresta toca as outras duas em algum
+vértice, então nenhuma cor pode se repetir.
+
+00:01:13.489 --> 00:01:18.503
+O triângulo precisa de três cores nas arestas e
+atinge o limite superior.
+
+00:01:19.113 --> 00:01:25.160
+O grafo completo de quatro vértices aparece com
+duas diagonais cruzadas neste desenho.
+
+00:01:25.290 --> 00:01:30.292
+Para decidir se é planar, procure outro desenho
+com as mesmas seis arestas.
+
+00:01:30.422 --> 00:01:35.900
+Os quatro vértices continuam sendo apenas os
+pontos marcados nos cantos do desenho.
+
+00:01:36.510 --> 00:01:41.000
+Mova D para dentro do triângulo e ligue esse
+vértice às três pontas.
+
+00:01:41.130 --> 00:01:46.539
+O desenho fica sem cruzamentos, com três faces
+internas e uma face externa.
+
+00:01:46.669 --> 00:01:52.564
+Na fórmula de Euler, quatro vértices menos seis
+arestas mais quatro faces dá dois.
+
+00:01:53.174 --> 00:01:59.036
+Um grafo simples planar tem até três vezes o
+número de vértices menos seis arestas.
+
+00:01:59.166 --> 00:02:04.847
+Com cinco vértices, o limite é nove, mas o grafo
+completo tem dez arestas.
+
+00:02:04.977 --> 00:02:10.966
+Logo, o grafo completo de cinco vértices é
+impossível de desenhar sem cruzamentos.
+
+00:02:11.096 --> 00:02:17.941
+Quando a contagem respeita o limite, procure
+ainda um desenho sem cruzamentos para concluir
+planaridade.
+
+00:02:18.551 --> 00:02:24.052
+O teorema das quatro cores garante até quatro
+cores nos vértices de um grafo planar.
+
+00:02:24.182 --> 00:02:31.401
+No grafo completo de quatro vértices, todos são
+adjacentes, então as quatro cores são
+necessárias.
+
+00:02:31.531 --> 00:02:36.823
+No exercício do mapa, conecte as regiões que
+dividem um trecho de fronteira.

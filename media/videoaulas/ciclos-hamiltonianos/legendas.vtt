@@ -1,0 +1,117 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.582
+Num circuito hamiltoniano, percorremos cada
+vértice uma vez e voltamos à partida.
+
+00:00:05.712 --> 00:00:10.784
+Um circuito euleriano percorre cada aresta uma
+vez e também fecha na partida.
+
+00:00:10.914 --> 00:00:16.104
+Saia de a, passe por bê, pê, cê, dê, pê e feche
+na partida.
+
+00:00:16.234 --> 00:00:21.367
+Repare que pê aparece duas vezes, mesmo usando
+cada aresta uma única vez.
+
+00:00:21.977 --> 00:00:27.605
+No grafo completo, uma sequência de três ou mais
+vértices distintos sempre fecha.
+
+00:00:27.735 --> 00:00:32.470
+Escolha o vértice um como partida e ordene todos
+os demais vértices.
+
+00:00:32.600 --> 00:00:37.791
+Assim, cada circuito aparece em dois percursos,
+um para cada sentido.
+
+00:00:37.921 --> 00:00:42.206
+A inversão muda a ordem da visita e preserva as
+mesmas arestas.
+
+00:00:42.816 --> 00:00:48.073
+No completo de quatro vértices, sobram três
+posições depois da partida.
+
+00:00:48.202 --> 00:00:52.495
+Três vezes dois vezes um dá seis ordens para
+essas posições.
+
+00:00:52.625 --> 00:00:57.095
+Dividindo por dois, obtemos os três ciclos
+distintos da tabela.
+
+00:00:57.225 --> 00:01:02.611
+Os dois primeiros compartilham as ligações entre
+dois e três, e entre um e quatro.
+
+00:01:03.221 --> 00:01:08.141
+Para ene vértices, permute os ene menos um
+vértices depois da partida.
+
+00:01:08.271 --> 00:01:12.460
+O total é o fatorial de ene menos um, dividido
+por dois.
+
+00:01:12.590 --> 00:01:17.731
+No completo de cinco vértices, quatro fatorial
+dividido por dois dá doze.
+
+00:01:18.341 --> 00:01:24.819
+Ciclos disjuntos em arestas passam pelos mesmos
+vértices usando sempre ligações diferentes.
+
+00:01:24.949 --> 00:01:30.474
+Em cada vértice, um ciclo consome duas das ene
+menos uma arestas incidentes.
+
+00:01:30.604 --> 00:01:36.199
+O teorema dos completos garante que podemos
+atingir o limite inteiro dessa divisão.
+
+00:01:36.329 --> 00:01:41.554
+Divida por dois, usando ene menos um na ordem
+ímpar ou ene menos dois na par.
+
+00:01:42.163 --> 00:01:46.248
+O ciclo destacado usa as cinco arestas do
+contorno do grafo.
+
+00:01:46.378 --> 00:01:51.894
+Você consegue fechar outro ciclo usando apenas
+as ligações que ficaram livres?
+
+00:01:56.024 --> 00:02:01.005
+Siga de um para três, cinco, dois, quatro, e
+volte para um.
+
+00:02:01.135 --> 00:02:05.618
+Cada uma dessas cinco arestas é diferente das
+cinco arestas do contorno.
+
+00:02:05.748 --> 00:02:09.647
+Os dois ciclos juntos usam todas as dez arestas
+do grafo.
+
+00:02:09.777 --> 00:02:14.700
+A contagem disjunta é dois, e a contagem total
+continua sendo doze.
+
+00:02:15.310 --> 00:02:20.660
+No completo de quatro vértices, cada vértice tem
+três arestas incidentes.
+
+00:02:20.790 --> 00:02:26.212
+Depois de um circuito, sobra apenas uma ligação
+livre junto a cada vértice.
+
+00:02:26.342 --> 00:02:31.077
+Um segundo ciclo precisaria de duas ligações
+livres em todos eles.
+
+00:02:31.207 --> 00:02:36.467
+Ao ler um exercício, confira se ele pede o total
+ou a maior coleção disjunta.

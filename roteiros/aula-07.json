@@ -1,0 +1,1516 @@
+[
+  {
+    "id": "huffman-construcao",
+    "titulo": "Huffman: da contagem aos códigos",
+    "descricao": "Conte os símbolos de “bom esse bombom”, acompanhe as cinco junções e codifique um trecho com a árvore pronta.",
+    "aula": "07",
+    "paginas": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "topicos": [
+      "huffman",
+      "prefixos"
+    ],
+    "questoes": [
+      1,
+      3,
+      6,
+      10
+    ],
+    "cenas": [
+      {
+        "titulo": "Uma folha por símbolo",
+        "fala": [
+          "Vamos construir um código de Huffman para a frase bom esse bombom.",
+          "A frase tem quinze caracteres, contando os dois espaços entre as palavras.",
+          "Comece com seis folhas e use a frequência de cada símbolo como peso."
+        ],
+        "notas": [
+          "Texto: bom esse bombom",
+          "6 símbolos distintos em 15 ocorrências",
+          "␣ representa o espaço"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Símbolo",
+            "Frequência"
+          ],
+          "linhas": [
+            [
+              "e",
+              "2"
+            ],
+            [
+              "s",
+              "2"
+            ],
+            [
+              "␣",
+              "2"
+            ],
+            [
+              "b",
+              "3"
+            ],
+            [
+              "o",
+              "3"
+            ],
+            [
+              "m",
+              "3"
+            ]
+          ],
+          "destaque": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Primeira junção",
+        "fala": [
+          "Retire duas raízes de menor peso e crie um pai cuja frequência seja a soma.",
+          "Nesta execução, juntamos as letras E e S, ambas com peso dois.",
+          "A nova raiz pesa quatro e volta para a fila em ordem crescente.",
+          "O espaço também pesa dois e poderia participar dessa primeira junção."
+        ],
+        "notas": [
+          "Junção 1: e (2) + s (2) = 4",
+          "Retire dois mínimos e reinsira a soma"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "4",
+              "e"
+            ],
+            [
+              "4",
+              "s"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Antecipe a próxima junção",
+        "fala": [
+          "A fila atual começa pelo espaço e tem três letras de peso três.",
+          "Quais pesos você retiraria agora, depois que o nó quatro voltou para a fila?"
+        ],
+        "notas": [
+          "Escolha duas raízes da fila atual",
+          "Em caso de empate, qualquer mínimo serve"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Raiz na fila",
+            "Peso"
+          ],
+          "linhas": [
+            [
+              "␣",
+              "2"
+            ],
+            [
+              "b",
+              "3"
+            ],
+            [
+              "o",
+              "3"
+            ],
+            [
+              "m",
+              "3"
+            ],
+            [
+              "nó 4",
+              "4"
+            ]
+          ],
+          "destaque": []
+        }
+      },
+      {
+        "titulo": "Forme os nós cinco e seis",
+        "fala": [
+          "O espaço pesa dois e a letra B pesa três, então o pai pesa cinco.",
+          "Depois dessa junção, as letras O e M são as duas raízes mais leves.",
+          "Juntas, elas formam o nó seis e deixam apenas três raízes na fila."
+        ],
+        "notas": [
+          "Junção 2: ␣ (2) + b (3) = 5",
+          "Junção 3: o (3) + m (3) = 6",
+          "Fila após as junções: 4, 5, 6"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "5",
+              "␣"
+            ],
+            [
+              "5",
+              "b"
+            ],
+            [
+              "6",
+              "o"
+            ],
+            [
+              "6",
+              "m"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Junte as árvores mais leves",
+        "fala": [
+          "Quatro e cinco são os menores pesos, então suas árvores ganham um pai de peso nove.",
+          "Os descendentes de cada árvore mantêm as ligações que já tinham.",
+          "Agora as duas raízes disponíveis têm os pesos seis e nove."
+        ],
+        "notas": [
+          "Junção 4: 4 + 5 = 9",
+          "Fila após a junção: 6, 9"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "9": [
+              0.71,
+              0.36
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ],
+            [
+              "9",
+              "4",
+              "0"
+            ],
+            [
+              "9",
+              "5",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "9",
+              "4"
+            ],
+            [
+              "9",
+              "5"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Encontre a raiz final",
+        "fala": [
+          "Junte seis e nove para obter a raiz de peso quinze.",
+          "O peso da raiz bate com o comprimento do texto original.",
+          "Para ler os códigos, marque zero à esquerda e um à direita."
+        ],
+        "notas": [
+          "Junção 5: 6 + 9 = 15",
+          "Uma raiz na fila encerra a construção",
+          "0 à esquerda · 1 à direita"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "9": [
+              0.71,
+              0.36
+            ],
+            "15": [
+              0.5,
+              0.13
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ],
+            [
+              "9",
+              "4",
+              "0"
+            ],
+            [
+              "9",
+              "5",
+              "1"
+            ],
+            [
+              "15",
+              "6",
+              "0"
+            ],
+            [
+              "15",
+              "9",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "15",
+              "6"
+            ],
+            [
+              "15",
+              "9"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Leia um código da árvore",
+        "fala": [
+          "Para chegar ao espaço, vá à direita duas vezes e depois à esquerda.",
+          "Os três ramos percorridos dão o código um, um, zero.",
+          "Cada código termina numa folha, então nenhum deles começa o código de outra folha."
+        ],
+        "notas": [
+          "Raiz → 9 → 5 → ␣",
+          "Código de ␣ = 110",
+          "Cada símbolo aparece apenas em uma folha"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "9": [
+              0.71,
+              0.36
+            ],
+            "15": [
+              0.5,
+              0.13
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ],
+            [
+              "9",
+              "4",
+              "0"
+            ],
+            [
+              "9",
+              "5",
+              "1"
+            ],
+            [
+              "15",
+              "6",
+              "0"
+            ],
+            [
+              "15",
+              "9",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "15",
+              "9"
+            ],
+            [
+              "9",
+              "5"
+            ],
+            [
+              "5",
+              "␣"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Codifique a palavra bom",
+        "fala": [
+          "Troque cada letra pelo seu código, obedecendo à ordem da palavra bom.",
+          "A letra B usa três bits, enquanto O e M usam dois cada.",
+          "Junte os três trechos em sequência para produzir a palavra codificada em sete bits."
+        ],
+        "notas": [
+          "b → 111 · o → 00 · m → 01",
+          "111 | 00 | 01 → 1110001"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Letra",
+            "Código",
+            "Comprimento"
+          ],
+          "linhas": [
+            [
+              "b",
+              "111",
+              "3"
+            ],
+            [
+              "o",
+              "00",
+              "2"
+            ],
+            [
+              "m",
+              "01",
+              "2"
+            ],
+            [
+              "Total",
+              "1110001",
+              "7"
+            ]
+          ],
+          "destaque": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "huffman-leitura-e-custo",
+    "titulo": "Huffman: leitura, custo e implementação",
+    "descricao": "Decodifique um trecho, calcule os bits do texto e recupere um código pelo vetor de pais.",
+    "aula": "07",
+    "paginas": [
+      23,
+      24,
+      26,
+      27,
+      28,
+      29,
+      30,
+      37,
+      38
+    ],
+    "topicos": [
+      "prefixos",
+      "custo-huffman",
+      "implementacao-huffman"
+    ],
+    "questoes": [
+      2,
+      4,
+      7,
+      9,
+      11
+    ],
+    "cenas": [
+      {
+        "titulo": "Um bit por ramo",
+        "fala": [
+          "Para decodificar uma mensagem, comece na raiz da mesma árvore usada para codificar.",
+          "Leia um bit por vez e siga o ramo com esse rótulo.",
+          "Ao chegar numa folha, emita o símbolo e volte para a raiz."
+        ],
+        "notas": [
+          "0 escolhe a esquerda · 1 escolhe a direita",
+          "Chegou à folha? Emita e volte à raiz",
+          "Mensagem: 101100011101010001"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "9": [
+              0.71,
+              0.36
+            ],
+            "15": [
+              0.5,
+              0.13
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ],
+            [
+              "9",
+              "4",
+              "0"
+            ],
+            [
+              "9",
+              "5",
+              "1"
+            ],
+            [
+              "15",
+              "6",
+              "0"
+            ],
+            [
+              "15",
+              "9",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "15",
+              "9"
+            ],
+            [
+              "9",
+              "4"
+            ],
+            [
+              "4",
+              "s"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Leia o primeiro grupo",
+        "fala": [
+          "Um, zero, um nos leva à folha que guarda a letra S.",
+          "A partir da raiz, um, zero, zero forma a letra E.",
+          "Em seguida, zero e um formam a letra M e completam o trecho sem."
+        ],
+        "notas": [
+          "101 | 100 | 01 → sem",
+          "Restam os bits 1101010001"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Bits consumidos",
+            "Símbolo",
+            "Saída até aqui"
+          ],
+          "linhas": [
+            [
+              "101",
+              "s",
+              "s"
+            ],
+            [
+              "100",
+              "e",
+              "se"
+            ],
+            [
+              "01",
+              "m",
+              "sem"
+            ]
+          ],
+          "destaque": [
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Antecipe o próximo símbolo",
+        "fala": [
+          "Você acabou de emitir a letra M e está novamente na raiz.",
+          "Que símbolo aparece ao seguir os próximos bits um, um e zero?"
+        ],
+        "notas": [
+          "Saída atual: sem",
+          "Leia a partir do começo de 1101010001"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "9": [
+              0.71,
+              0.36
+            ],
+            "15": [
+              0.5,
+              0.13
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ],
+            [
+              "9",
+              "4",
+              "0"
+            ],
+            [
+              "9",
+              "5",
+              "1"
+            ],
+            [
+              "15",
+              "6",
+              "0"
+            ],
+            [
+              "15",
+              "9",
+              "1"
+            ]
+          ],
+          "destaque": [],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "O espaço também é uma folha",
+        "fala": [
+          "Dois ramos à direita e um à esquerda levam à folha do espaço.",
+          "Depois do espaço, as próximas folhas são as letras S, O e M.",
+          "A mensagem decodificada é sem som, e todos os dezoito bits foram consumidos."
+        ],
+        "notas": [
+          "110 | 101 | 00 | 01 → ␣som",
+          "Mensagem completa: sem som"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Bits consumidos",
+            "Símbolo",
+            "Saída até aqui"
+          ],
+          "linhas": [
+            [
+              "110",
+              "␣",
+              "sem␣"
+            ],
+            [
+              "101",
+              "s",
+              "sem s"
+            ],
+            [
+              "00",
+              "o",
+              "sem so"
+            ],
+            [
+              "01",
+              "m",
+              "sem som"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Some as contribuições das folhas",
+        "fala": [
+          "De volta ao texto bom esse bombom, a letra O ocorre três vezes.",
+          "Seu código tem dois bits, então ela contribui com seis bits para o total.",
+          "Multiplique a frequência pelo comprimento para cada símbolo e some todos os produtos.",
+          "O total fica em trinta e nove bits, ou dois vírgula seis por caractere."
+        ],
+        "notas": [
+          "Bits = soma de frequência × comprimento",
+          "39 ÷ 15 = 2,6 bits por caractere"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Símbolo",
+            "Frequência",
+            "Bits do código",
+            "Contribuição"
+          ],
+          "linhas": [
+            [
+              "o",
+              "3",
+              "2",
+              "6"
+            ],
+            [
+              "m",
+              "3",
+              "2",
+              "6"
+            ],
+            [
+              "e",
+              "2",
+              "3",
+              "6"
+            ],
+            [
+              "s",
+              "2",
+              "3",
+              "6"
+            ],
+            [
+              "␣",
+              "2",
+              "3",
+              "6"
+            ],
+            [
+              "b",
+              "3",
+              "3",
+              "9"
+            ],
+            [
+              "Total",
+              "15",
+              "—",
+              "39"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              3
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Identifique a referência do ganho",
+        "fala": [
+          "Para seis símbolos distintos, dois bits seriam insuficientes e três bits oferecem oito combinações.",
+          "Quinze caracteres com três bits custam quarenta e cinco bits, contra cento e vinte em ASCII.",
+          "Divida a economia de bits pelo total de referência para calcular a redução proporcional.",
+          "A redução é cerca de treze vírgula três por cento frente ao melhor código fixo."
+        ],
+        "notas": [
+          "Fixo: 1 − 39 ÷ 45 ≈ 13,3%",
+          "ASCII: 1 − 39 ÷ 120 = 67,5%",
+          "A conta inclui apenas os bits do texto"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Codificação",
+            "Total de bits",
+            "Economia de Huffman"
+          ],
+          "linhas": [
+            [
+              "Huffman",
+              "39",
+              "—"
+            ],
+            [
+              "Fixo de 3 bits",
+              "45",
+              "6 bits"
+            ],
+            [
+              "ASCII de 8 bits",
+              "120",
+              "81 bits"
+            ]
+          ],
+          "destaque": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Guarde cada nó em um vetor",
+        "fala": [
+          "Seis folhas exigem cinco junções, e cada junção cria um nó interno.",
+          "São onze posições no vetor, incluindo a raiz criada na última junção.",
+          "Cada posição guarda peso, símbolo quando houver, índice do pai e lado do ramo."
+        ],
+        "notas": [
+          "N folhas + (N − 1) junções = 2N − 1 nós",
+          "Fila de prioridade guarda as raízes da floresta",
+          "Nó guarda pai, lado, símbolo e frequência"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Índice",
+            "Nó",
+            "Pai",
+            "Lado"
+          ],
+          "linhas": [
+            [
+              "1",
+              "s (2)",
+              "6",
+              "direito"
+            ],
+            [
+              "6",
+              "4",
+              "9",
+              "esquerdo"
+            ],
+            [
+              "9",
+              "9",
+              "10",
+              "direito"
+            ],
+            [
+              "10",
+              "15",
+              "—",
+              "raiz"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Reconstrua o código de baixo para cima",
+        "fala": [
+          "Subindo da letra S, anote um no ramo direito e depois anteponha zero.",
+          "A última subida vem da direita, então anteponha mais um e obtenha o código.",
+          "A subida visita os ramos em ordem inversa à leitura feita pelo decodificador."
+        ],
+        "notas": [
+          "Subida: 1 → 6 → 9 → 10",
+          "Anteponha cada bit: 1 → 01 → 101"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Subida",
+            "Lado do filho",
+            "Código até agora"
+          ],
+          "linhas": [
+            [
+              "1 → 6",
+              "direito",
+              "1"
+            ],
+            [
+              "6 → 9",
+              "esquerdo",
+              "01"
+            ],
+            [
+              "9 → 10",
+              "direito",
+              "101"
+            ]
+          ],
+          "destaque": [
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Separe a fila da árvore",
+        "fala": [
+          "A fila de prioridade guarda raízes disponíveis, enquanto o vetor conserva os nós criados.",
+          "Com um heap, remover ou inserir uma raiz leva tempo logarítmico no número de símbolos.",
+          "As junções dão tempo total proporcional ao número de símbolos vezes seu logaritmo.",
+          "Quatro mais cinco mais seis mais nove mais quinze dão trinta e nove bits."
+        ],
+        "notas": [
+          "Construção com heap: O(N log N)",
+          "Pesos internos: 4 + 5 + 6 + 9 + 15 = 39"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "4": [
+              0.55,
+              0.61
+            ],
+            "5": [
+              0.83,
+              0.61
+            ],
+            "6": [
+              0.23,
+              0.36
+            ],
+            "9": [
+              0.71,
+              0.36
+            ],
+            "15": [
+              0.5,
+              0.13
+            ],
+            "o": [
+              0.12,
+              0.61
+            ],
+            "m": [
+              0.33,
+              0.61
+            ],
+            "e": [
+              0.48,
+              0.85
+            ],
+            "s": [
+              0.62,
+              0.85
+            ],
+            "␣": [
+              0.76,
+              0.85
+            ],
+            "b": [
+              0.9,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "4",
+              "e",
+              "0"
+            ],
+            [
+              "4",
+              "s",
+              "1"
+            ],
+            [
+              "5",
+              "␣",
+              "0"
+            ],
+            [
+              "5",
+              "b",
+              "1"
+            ],
+            [
+              "6",
+              "o",
+              "0"
+            ],
+            [
+              "6",
+              "m",
+              "1"
+            ],
+            [
+              "9",
+              "4",
+              "0"
+            ],
+            [
+              "9",
+              "5",
+              "1"
+            ],
+            [
+              "15",
+              "6",
+              "0"
+            ],
+            [
+              "15",
+              "9",
+              "1"
+            ]
+          ],
+          "destaque": [
+            [
+              "15",
+              "6"
+            ],
+            [
+              "15",
+              "9"
+            ],
+            [
+              "9",
+              "4"
+            ],
+            [
+              "9",
+              "5"
+            ]
+          ],
+          "cores": {
+            "o": 1,
+            "m": 1,
+            "e": 1,
+            "s": 1,
+            "␣": 1,
+            "b": 1
+          },
+          "orientado": false
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,94 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.164
+Nos slides, as duas buscas começam em D, o
+vértice de maior grau.
+
+00:00:05.294 --> 00:00:11.274
+A sequência da lista de adjacência decide qual
+vizinho visitar primeiro em cada busca.
+
+00:00:11.404 --> 00:00:16.476
+Em cada visita, atribua a menor cor livre entre
+os vizinhos já coloridos.
+
+00:00:17.086 --> 00:00:23.748
+Em profundidade, percorremos o primeiro ramo
+disponível até precisar voltar ao vértice
+anterior.
+
+00:00:23.878 --> 00:00:28.116
+A busca sai de D, passa por B, depois por A, F e
+E.
+
+00:00:28.246 --> 00:00:33.051
+E precisa da terceira cor, pois D e F já usam
+cores diferentes.
+
+00:00:33.661 --> 00:00:38.396
+O próximo vizinho disponível de E é C, que ainda
+está sem cor.
+
+00:00:38.526 --> 00:00:42.422
+Qual é a menor cor livre olhando apenas para os
+vizinhos de C?
+
+00:00:46.552 --> 00:00:51.336
+C encontra as três primeiras cores em D, B e E e
+escolhe a quarta.
+
+00:00:51.466 --> 00:00:56.587
+A página sessenta e dois chama esse resultado de
+número cromático no desenho.
+
+00:00:56.717 --> 00:01:02.104
+Essa execução certifica apenas que quatro cores
+bastam para colorir o grafo.
+
+00:01:02.714 --> 00:01:08.413
+Em largura, colocamos primeiro na fila todos os
+vizinhos que D acaba de descobrir.
+
+00:01:08.543 --> 00:01:14.308
+Quando processamos B, acrescentamos A ao fim da
+fila, atrás de C, E e F.
+
+00:01:14.438 --> 00:01:19.501
+Assim, C é colorido antes de E e encontra apenas
+duas cores bloqueadas.
+
+00:01:20.111 --> 00:01:24.535
+C recebe a terceira cor, e então E pode
+reutilizar a segunda.
+
+00:01:24.665 --> 00:01:29.483
+D e E bloqueiam as duas primeiras cores em F,
+que recebe a terceira.
+
+00:01:29.613 --> 00:01:33.759
+A vê a segunda e a terceira cores, então
+reutiliza a primeira.
+
+00:01:34.369 --> 00:01:39.684
+Os vértices B, C e D formam um triângulo e
+exigem três cores distintas.
+
+00:01:39.814 --> 00:01:44.784
+A busca em largura já mostrou como usar três
+cores em todos os vértices.
+
+00:01:44.914 --> 00:01:51.211
+Com os dois limites iguais, o número cromático é
+três, como na página sessenta e sete.
+
+00:01:51.821 --> 00:01:56.892
+No item B da questão dois, o vértice cinco é
+ligado aos quatro cantos.
+
+00:01:57.022 --> 00:02:02.036
+Os vértices um, dois e cinco formam um triângulo
+que exige três cores.
+
+00:02:02.166 --> 00:02:06.346
+Dê uma cor ao centro e alterne as outras duas
+nos cantos do quadrado.

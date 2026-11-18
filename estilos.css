@@ -332,6 +332,48 @@ button.no-lab:hover, .no-lab.no-atual { box-shadow: 0 0 0 .22rem #a4aef080; }
 .conferencia-questao li { margin-block: .45rem; }
 .aula-card.lista-oficial-card h3 { margin-top: .4rem; }
 
+.painel-video-progresso { padding: .9rem 1rem; max-width: 32rem; }
+.painel-video-progresso progress { margin-top: .48rem; }
+.videoaulas-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
+.cartao-videoaula { display: block; overflow: hidden; color: var(--ink); }
+.cartao-videoaula:hover { border-color: #a4aef0; box-shadow: 0 4px 15px #2838840d; }
+.capa-videoaula { position: relative; aspect-ratio: 16 / 9; background: #101a31; }
+.capa-videoaula img { display: block; width: 100%; height: auto; }
+.video-icone, .duracao-videoaula {
+  position: absolute; color: white; background: #101a31ea; border: 1px solid #667797;
+  padding: .22rem .48rem; border-radius: .4rem; font-weight: 700;
+}
+.video-icone { bottom: .5rem; left: .55rem; font-size: .9rem; }
+.duracao-videoaula { bottom: .5rem; right: .55rem; font-size: .8rem; }
+.texto-videoaula { padding: .82rem .95rem; }
+.texto-videoaula h3 { font-size: 1rem; line-height: 1.25; }
+.texto-videoaula p { margin-top: .35rem; color: var(--sub); font-size: .88rem; }
+.texto-videoaula small { display: block; margin-top: .4rem; }
+.layout-videoaula { display: grid; grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr); align-items: start; gap: .9rem; }
+.player-videoaula { display: block; width: 100%; aspect-ratio: 16 / 9; background: #101a31; border-radius: .85rem; }
+.player-videoaula::cue { color: white; background-color: #091327e8; font-size: 1rem; }
+.status-videoaula { margin-top: .4rem; color: var(--teal-ink); font-size: .87rem; }
+.painel-capitulos, .videoaula-referencias { padding: .85rem 1rem; }
+.painel-capitulos h2, .videoaula-referencias h2 { font-size: 1.08rem; margin-bottom: .42rem; }
+.painel-capitulos ol { display: grid; margin: 0; padding: 0; list-style: none; gap: .15rem; }
+.capitulo-video {
+  display: grid; grid-template-columns: 3.1rem minmax(0, 1fr); gap: .36rem; width: 100%;
+  text-align: left; line-height: 1.35; padding: .52rem .48rem; border: 0; border-radius: .55rem;
+  background: transparent; color: var(--ink); font: inherit; font-size: .86rem; cursor: pointer;
+}
+.capitulo-video span:first-child { color: var(--primary-dark); font-weight: 700; font-variant-numeric: tabular-nums; }
+.capitulo-video:hover, .capitulo-video[aria-current] { background: var(--indigo-bg); }
+.videoaula-referencias { margin-top: 1rem; }
+.videoaula-referencias ul { padding-left: 1.2rem; margin: .5rem 0 .7rem; }
+.videoaula-referencias li { margin: .24rem 0; }
+.videoaula-paginas { color: var(--sub); }
+.videoaula-paginas .fonte-link { margin-left: .35rem; }
+.transcricao-videoaula { padding-top: .6rem; margin-top: .6rem; border-top: 1px solid var(--line); }
+.transcricao-videoaula summary { cursor: pointer; color: var(--primary-dark); font-weight: 700; }
+.transcricao-videoaula section { margin-top: .7rem; }
+.transcricao-videoaula h3 { font-size: .95rem; margin-bottom: .18rem; }
+.transcricao-videoaula p { color: var(--sub); max-width: 79ch; }
+
 @media (max-width: 1180px) {
   .progresso-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -352,16 +394,19 @@ button.no-lab:hover, .no-lab.no-atual { box-shadow: 0 0 0 .22rem #a4aef080; }
   main { padding-top: 1.2rem; }
   .leitura-grid, .pratica-grid, .trilha-grid, .laboratorio-grid, .questao-oficial-grid { grid-template-columns: minmax(0, 1fr); }
   .listas-oficiais-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .videoaulas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .layout-videoaula { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 535px) {
   main { padding-inline: .9rem; }
-  .nav-principal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .nav-principal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .nav-principal a { justify-content: center; font-size: clamp(.65rem, 2.1vw, .78rem); padding-inline: .1rem; text-align: center; }
   .nav-principal a span { display: none; }
   .hero { display: block; border-radius: 1.05rem; min-height: auto; padding: 1.25rem; }
   .grafo-hero { display: none; }
   .aulas-grid, .sumario { grid-template-columns: 1fr; }
   .questoes-oficiais-grid { grid-template-columns: minmax(0, 1fr); }
+  .videoaulas-grid { grid-template-columns: minmax(0, 1fr); }
   .numero-card, .aula-card { padding: .8rem; }
   .numero-card > div { gap: .36rem; }
   .numero-card h3 { font-size: .78rem; line-height: 1.2; }

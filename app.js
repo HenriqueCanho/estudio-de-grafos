@@ -4,7 +4,8 @@ const indiceAulas = new Map(aulas.map(aula => [aula.id, aula]));
 const chaveProgresso = 'estudio-de-grafos.v1';
 const tentativas = new Map();
 const catalogosProgresso = {
-  topicos: todosTopicos, exercicios, slides: slidesHamilton, laboratorios: catalogoLaboratorios, questoes: questoesOficiais
+  topicos: todosTopicos, exercicios, slides: slidesHamilton, laboratorios: catalogoLaboratorios,
+  questoes: questoesOficiais, videoaulas
 };
 let persistenciaDisponivel = true;
 
@@ -104,7 +105,9 @@ function inicio() {
     </div>
   </section>
   <section aria-labelledby="titulo-aulas" class="secao">
-    <div class="secao-topo"><h2 id="titulo-aulas">Aulas</h2><a href="#teoria">Ver sumário <span aria-hidden="true">→</span></a></div>
+    <div class="secao-topo"><h2 id="titulo-aulas">Aulas</h2>
+      <div class="acoes"><a href="#videoaulas">Ver videoaulas <span aria-hidden="true">→</span></a>
+      <a href="#teoria">Ver sumário <span aria-hidden="true">→</span></a></div></div>
     <div class="aulas-grid">${aulas.map(cartaoAula).join('')}</div>
   </section>`;
 }
@@ -147,6 +150,7 @@ function lerTopico(aula, topico) {
   const lista = aula.topicos;
   const proximo = lista[lista.indexOf(topico) + 1];
   const laboratorio = catalogoLaboratorios.find(lab => lab.aula === aula.id);
+  const video = videoaulas.find(item => item.aula === aula.id && item.topicos.includes(topico.id));
   return `<div class="trilha"><a href="#teoria">Teoria</a><span>/</span><span>Aula ${aula.id}${aula.id === '12' ? ' · Extra' : ''}</span></div>
   ${cabecalho(topico.titulo, aula.titulo)}
   <div class="leitura-grid">
@@ -171,6 +175,7 @@ function lerTopico(aula, topico) {
       ${lista.map(t => `<li><a href="${linkTeoria(aula.id, t.id)}" ${t.id === topico.id ? 'aria-current="page"' : ''}><span>${html(t.titulo)}</span>${progresso.topicos.includes(t.id) ? '<span aria-label="Estudado" class="estado">✓</span>' : ''}</a></li>`).join('')}
     </ul><div class="atalhos-leitura">
       ${aula.id === '05' ? `<a class="fonte-link" href="${linkSlideHamilton()}">Revisar slides 20 a 27 →</a>` : ''}
+      ${video ? `<a class="fonte-link" href="${linkVideoaula(video.id)}">Assistir à videoaula →</a>` : ''}
       ${Object.hasOwn(listasOficiais, aula.id) ? `<a class="fonte-link" href="${linkListaOficial(aula.id)}">Ver todos os exercícios da aula →</a>` : ''}
       <a class="fonte-link" href="${linkLaboratorio(laboratorio.id)}">Abrir laboratório da aula →</a>
     </div></aside>
@@ -241,6 +246,7 @@ function material() {
 }
 
 function mostrarPagina() {
+  salvarPosicaoVideo(principal.querySelector('[data-videoaula]'));
   const [secao, id, topicoId, slideId] = location.hash.slice(1).split('/');
   const aula = indiceAulas.get(id);
   const topico = aula?.topicos.find(item => item.id === topicoId);
@@ -250,7 +256,7 @@ function mostrarPagina() {
     inicio, teoria: () => id === '05' && topicoId === 'slides' ? paginaTrilhaHamilton(slideId)
       : topico ? lerTopico(aula, topico) : sumario(),
     pratica: () => exercicio ? praticar(exercicio) : questao ? paginaQuestaoOficial(questao) : paginaListasOficiais(topicoId),
-    laboratorios: () => paginaLaboratorio(id), fontes: material
+    laboratorios: () => paginaLaboratorio(id), videoaulas: () => paginaVideoaula(id), fontes: material
   };
   const pagina = Object.hasOwn(paginas, secao) ? secao : 'inicio';
 
@@ -261,6 +267,7 @@ function mostrarPagina() {
   document.querySelector('#atalhos').innerHTML = '<p>Aulas</p>' + aulas.map(item => `<a href="${linkTeoria(item.id, item.topicos[0].id)}">
     <span class="atalho-num ${item.cor}">${item.id}</span><span>${html(item.titulo)}</span></a>`).join('');
   principal.innerHTML = paginas[pagina]();
+  montarPlayerVideoaula();
 }
 
 function atualizarEtapa(id) {
@@ -339,8 +346,9 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('storage', evento => {
   if (evento.key === chaveProgresso) {
     progresso = carregarProgresso();
-    if (!location.hash.startsWith('#pratica/')) mostrarPagina();
+    if (!/^#(pratica|videoaulas)\//.test(location.hash)) mostrarPagina();
   }
 });
+window.addEventListener('pagehide', () => salvarPosicaoVideo(principal.querySelector('[data-videoaula]')));
 
 mostrarPagina();

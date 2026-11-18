@@ -1,0 +1,2585 @@
+[
+  {
+    "id": "coloracao-sequencial-welch",
+    "titulo": "Coloração sequencial e Welch–Powell",
+    "descricao": "Compare as duas ordens de coloração no grafo de dez vértices e verifique o desempate da aula.",
+    "aula": "06",
+    "paginas": [
+      49,
+      50,
+      51,
+      54,
+      55,
+      56
+    ],
+    "topicos": [
+      "cores",
+      "heuristicas-cores"
+    ],
+    "questoes": [
+      2,
+      4,
+      10
+    ],
+    "cenas": [
+      {
+        "titulo": "Uma cor por vértice",
+        "fala": [
+          "Uma coloração própria dá cores diferentes aos dois extremos de cada aresta.",
+          "No método sequencial, a lista estabelece a ordem em que vamos colorir.",
+          "Para cada vértice, use a menor cor ausente entre seus vizinhos já coloridos."
+        ],
+        "notas": [
+          "Coloração própria · extremos de cada aresta em cores distintas",
+          "Sequencial · lista fixa e menor cor livre"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "2",
+              "3"
+            ]
+          ],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "As três primeiras escolhas",
+        "fala": [
+          "Comece pelo vértice um, que recebe a primeira cor porque seus vizinhos ainda estão livres.",
+          "O dois toca o um e precisa usar a segunda cor.",
+          "O três toca os dois anteriores e recebe, então, a terceira cor."
+        ],
+        "notas": [
+          "Ordem do exemplo · de 1 a 9, depois 0",
+          "Ao chegar em 3 · vizinhos 1 e 2 bloqueiam duas cores"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [
+            [
+              "1",
+              "3"
+            ],
+            [
+              "2",
+              "3"
+            ]
+          ],
+          "cores": {
+            "1": 1,
+            "2": 2,
+            "3": 3
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "A quarta cor aparece no nove",
+        "fala": [
+          "Quando chega a vez do nove, seus vizinhos já usam três cores diferentes.",
+          "Os vértices quatro, dois e três bloqueiam, respectivamente, as cores um, dois e três.",
+          "Por isso nove recebe a quarta cor, enquanto zero pode reutilizar a segunda."
+        ],
+        "notas": [
+          "Em 9 · 4 bloqueia C1, 2 bloqueia C2 e 3 bloqueia C3",
+          "Total da ordem sequencial · 4 cores"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "4",
+              "9"
+            ]
+          ],
+          "cores": {
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "4": 1,
+            "5": 2,
+            "6": 2,
+            "7": 1,
+            "8": 3,
+            "9": 4,
+            "0": 2
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "O grau decide a primeira prioridade",
+        "fala": [
+          "A regra da página cinquenta e quatro prioriza os vértices sem cor de maior grau.",
+          "Em caso de empate, conte as cores distintas entre os vizinhos já coloridos.",
+          "Recalcule essa contagem após cada escolha, porque as cores disponíveis podem mudar."
+        ],
+        "notas": [
+          "Página 54 · grau total primeiro, grau de coloração depois",
+          "Grau de coloração · total de cores distintas na vizinhança"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Grau",
+            "Vértices"
+          ],
+          "linhas": [
+            [
+              "5",
+              "1, 3, 9"
+            ],
+            [
+              "4",
+              "2, 5"
+            ],
+            [
+              "3",
+              "4, 6, 7, 8, 0"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "O começo de Welch–Powell",
+        "fala": [
+          "Começamos por um, três e nove, os três vértices de grau cinco.",
+          "O nove reutiliza a primeira cor, pois só o três já está colorido entre seus vizinhos.",
+          "O dois vê as duas primeiras cores e usa a terceira.",
+          "O cinco vê a primeira cor em seus vizinhos coloridos e usa a segunda."
+        ],
+        "notas": [
+          "Ordem até aqui · 1 → 3 → 9 → 2 → 5",
+          "Cores correspondentes · C1, C2, C1, C3, C2"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "9"
+            ]
+          ],
+          "cores": {
+            "1": 1,
+            "3": 2,
+            "9": 1,
+            "2": 3,
+            "5": 2
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Quem avança entre quatro e seis?",
+        "fala": [
+          "Quatro e seis têm o mesmo grau, com três vizinhos cada um.",
+          "Qual dos dois tem mais cores distintas entre os vizinhos já coloridos?"
+        ],
+        "notas": [
+          "Candidatos 4 e 6 · ambos de grau 3",
+          "Conte cores diferentes nos vizinhos que já têm cor"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [
+            [
+              "4",
+              "9"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "6",
+              "9"
+            ]
+          ],
+          "cores": {
+            "1": 1,
+            "3": 2,
+            "9": 1,
+            "2": 3,
+            "5": 2
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Seis tem duas cores bloqueadas",
+        "fala": [
+          "O quatro vê apenas a primeira cor, que já pertence ao nove.",
+          "O seis vê duas cores, mesmo tendo três vizinhos com cor atribuída.",
+          "Sete e oito também veem duas cores, e o laboratório escolhe seis pela ordem original."
+        ],
+        "notas": [
+          "Vizinhos de 6 · 1 e 9 na C1, 3 na C2",
+          "O laboratório desempata 6, 7 e 8 pela ordem da página 55"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Candidato",
+            "Cores bloqueadas"
+          ],
+          "linhas": [
+            [
+              "4",
+              "C1"
+            ],
+            [
+              "6",
+              "C1, C2"
+            ],
+            [
+              "7",
+              "C2, C3"
+            ],
+            [
+              "8",
+              "C1, C2"
+            ],
+            [
+              "0",
+              "C2"
+            ]
+          ],
+          "destaque": [
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "A sequência registrada nos slides",
+        "fala": [
+          "A execução da página cinquenta e seis registra quatro antes de seis.",
+          "A lista escrita termina no dez, que aparece como zero no desenho.",
+          "A sequência registrada e o desempate da página cinquenta e quatro produzem a mesma coloração."
+        ],
+        "notas": [
+          "Página 56 · 1, 3, 9, 2, 5, 4, 6, 7, 8, 0",
+          "Regra da página 54 no laboratório · 1, 3, 9, 2, 5, 6, 7, 8, 4, 0"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [],
+          "cores": {
+            "1": 1,
+            "3": 2,
+            "9": 1,
+            "2": 3,
+            "5": 2,
+            "4": 2,
+            "6": 3,
+            "7": 1,
+            "8": 3,
+            "0": 3
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Por que três cores bastam e são necessárias",
+        "fala": [
+          "Os vértices um, dois e três formam um triângulo e exigem cores diferentes.",
+          "A coloração de Welch–Powell mostra como usar só essas três cores no grafo inteiro.",
+          "Na questão dois, combine a simulação do algoritmo com uma justificativa do mínimo."
+        ],
+        "notas": [
+          "Limite inferior · triângulo 1, 2, 3 exige três cores",
+          "Limite superior · a coloração de três cores cobre o grafo"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.22,
+              0.23
+            ],
+            "2": [
+              0.53,
+              0.15
+            ],
+            "3": [
+              0.83,
+              0.34
+            ],
+            "4": [
+              0.12,
+              0.49
+            ],
+            "5": [
+              0.36,
+              0.49
+            ],
+            "6": [
+              0.57,
+              0.47
+            ],
+            "7": [
+              0.76,
+              0.65
+            ],
+            "8": [
+              0.25,
+              0.85
+            ],
+            "9": [
+              0.48,
+              0.85
+            ],
+            "0": [
+              0.85,
+              0.85
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "1",
+              "6"
+            ],
+            [
+              "1",
+              "8"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "2",
+              "9"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "3",
+              "0"
+            ],
+            [
+              "4",
+              "0"
+            ],
+            [
+              "4",
+              "8"
+            ],
+            [
+              "4",
+              "9"
+            ],
+            [
+              "5",
+              "7"
+            ],
+            [
+              "5",
+              "8"
+            ],
+            [
+              "5",
+              "9"
+            ],
+            [
+              "6",
+              "9"
+            ],
+            [
+              "7",
+              "0"
+            ]
+          ],
+          "destaque": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "2",
+              "3"
+            ]
+          ],
+          "cores": {
+            "1": 1,
+            "3": 2,
+            "9": 1,
+            "2": 3,
+            "5": 2,
+            "4": 2,
+            "6": 3,
+            "7": 1,
+            "8": 3,
+            "0": 3
+          },
+          "orientado": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "coloracao-com-buscas",
+    "titulo": "Coloração em largura e profundidade",
+    "descricao": "Siga as duas buscas dos slides e prove o número cromático com limites inferior e superior.",
+    "aula": "06",
+    "paginas": [
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67
+    ],
+    "topicos": [
+      "cores",
+      "heuristicas-cores"
+    ],
+    "questoes": [
+      2,
+      4
+    ],
+    "cenas": [
+      {
+        "titulo": "Escolha a raiz e a ordem dos vizinhos",
+        "fala": [
+          "Nos slides, as duas buscas começam em D, o vértice de maior grau.",
+          "A sequência da lista de adjacência decide qual vizinho visitar primeiro em cada busca.",
+          "Em cada visita, atribua a menor cor livre entre os vizinhos já coloridos."
+        ],
+        "notas": [
+          "Raiz D · grau 4",
+          "Ordem dos vizinhos de D · B, C, E, F"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.13
+            ],
+            "B": [
+              0.19,
+              0.34
+            ],
+            "C": [
+              0.19,
+              0.66
+            ],
+            "D": [
+              0.5,
+              0.87
+            ],
+            "E": [
+              0.81,
+              0.66
+            ],
+            "F": [
+              0.81,
+              0.34
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "destaque": [
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ]
+          ],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Profundidade segue um ramo",
+        "fala": [
+          "Em profundidade, percorremos o primeiro ramo disponível até precisar voltar ao vértice anterior.",
+          "A busca sai de D, passa por B, depois por A, F e E.",
+          "E precisa da terceira cor, pois D e F já usam cores diferentes."
+        ],
+        "notas": [
+          "Ordem parcial da busca · D → B → A → F → E",
+          "D e A recebem C1, B e F recebem C2, E recebe C3"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.13
+            ],
+            "B": [
+              0.19,
+              0.34
+            ],
+            "C": [
+              0.19,
+              0.66
+            ],
+            "D": [
+              0.5,
+              0.87
+            ],
+            "E": [
+              0.81,
+              0.66
+            ],
+            "F": [
+              0.81,
+              0.34
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "destaque": [
+            [
+              "B",
+              "D"
+            ],
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "cores": {
+            "D": 1,
+            "B": 2,
+            "A": 1,
+            "F": 2,
+            "E": 3
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Que cor sobra para C?",
+        "fala": [
+          "O próximo vizinho disponível de E é C, que ainda está sem cor.",
+          "Qual é a menor cor livre olhando apenas para os vizinhos de C?"
+        ],
+        "notas": [
+          "Próximo na lista de E · C",
+          "Vizinhos de C · B, D e E"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.13
+            ],
+            "B": [
+              0.19,
+              0.34
+            ],
+            "C": [
+              0.19,
+              0.66
+            ],
+            "D": [
+              0.5,
+              0.87
+            ],
+            "E": [
+              0.81,
+              0.66
+            ],
+            "F": [
+              0.81,
+              0.34
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "destaque": [
+            [
+              "B",
+              "C"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ]
+          ],
+          "cores": {
+            "D": 1,
+            "B": 2,
+            "A": 1,
+            "F": 2,
+            "E": 3
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "A quarta cor nesta execução",
+        "fala": [
+          "C encontra as três primeiras cores em D, B e E e escolhe a quarta.",
+          "A página sessenta e dois chama esse resultado de número cromático no desenho.",
+          "Essa execução certifica apenas que quatro cores bastam para colorir o grafo."
+        ],
+        "notas": [
+          "Em C · D bloqueia C1, B bloqueia C2, E bloqueia C3",
+          "Página 62 · quatro cores na execução em profundidade"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.13
+            ],
+            "B": [
+              0.19,
+              0.34
+            ],
+            "C": [
+              0.19,
+              0.66
+            ],
+            "D": [
+              0.5,
+              0.87
+            ],
+            "E": [
+              0.81,
+              0.66
+            ],
+            "F": [
+              0.81,
+              0.34
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "destaque": [
+            [
+              "B",
+              "C"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ]
+          ],
+          "cores": {
+            "D": 1,
+            "B": 2,
+            "A": 1,
+            "F": 2,
+            "E": 3,
+            "C": 4
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Largura usa uma fila",
+        "fala": [
+          "Em largura, colocamos primeiro na fila todos os vizinhos que D acaba de descobrir.",
+          "Quando processamos B, acrescentamos A ao fim da fila, atrás de C, E e F.",
+          "Assim, C é colorido antes de E e encontra apenas duas cores bloqueadas."
+        ],
+        "notas": [
+          "D coloca B, C, E e F na fila",
+          "B descobre A, que vai ao fim da fila"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Vértice processado",
+            "Fila após processar"
+          ],
+          "linhas": [
+            [
+              "Início",
+              "D"
+            ],
+            [
+              "D",
+              "B, C, E, F"
+            ],
+            [
+              "B",
+              "C, E, F, A"
+            ]
+          ],
+          "destaque": [
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Largura termina com três cores",
+        "fala": [
+          "C recebe a terceira cor, e então E pode reutilizar a segunda.",
+          "D e E bloqueiam as duas primeiras cores em F, que recebe a terceira.",
+          "A vê a segunda e a terceira cores, então reutiliza a primeira."
+        ],
+        "notas": [
+          "Ordem completa · D → B → C → E → F → A",
+          "C1 · D, A | C2 · B, E | C3 · C, F"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.13
+            ],
+            "B": [
+              0.19,
+              0.34
+            ],
+            "C": [
+              0.19,
+              0.66
+            ],
+            "D": [
+              0.5,
+              0.87
+            ],
+            "E": [
+              0.81,
+              0.66
+            ],
+            "F": [
+              0.81,
+              0.34
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "destaque": [
+            [
+              "B",
+              "C"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ]
+          ],
+          "cores": {
+            "D": 1,
+            "B": 2,
+            "C": 3,
+            "E": 2,
+            "F": 3,
+            "A": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "O triângulo certifica o mínimo",
+        "fala": [
+          "Os vértices B, C e D formam um triângulo e exigem três cores distintas.",
+          "A busca em largura já mostrou como usar três cores em todos os vértices.",
+          "Com os dois limites iguais, o número cromático é três, como na página sessenta e sete."
+        ],
+        "notas": [
+          "B, C, D são dois a dois adjacentes · χ(G) ≥ 3",
+          "A coloração em largura prova χ(G) ≤ 3"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.13
+            ],
+            "B": [
+              0.19,
+              0.34
+            ],
+            "C": [
+              0.19,
+              0.66
+            ],
+            "D": [
+              0.5,
+              0.87
+            ],
+            "E": [
+              0.81,
+              0.66
+            ],
+            "F": [
+              0.81,
+              0.34
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "destaque": [
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ]
+          ],
+          "cores": {
+            "D": 1,
+            "B": 2,
+            "C": 3,
+            "E": 2,
+            "F": 3,
+            "A": 1
+          },
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Aplique a prova ao centro e aos cantos",
+        "fala": [
+          "No item B da questão dois, o vértice cinco é ligado aos quatro cantos.",
+          "Os vértices um, dois e cinco formam um triângulo que exige três cores.",
+          "Dê uma cor ao centro e alterne as outras duas nos cantos do quadrado."
+        ],
+        "notas": [
+          "Lista 06 · exercício 2(b)",
+          "Triângulo 1, 2, 5 e coloração do contorno"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.23,
+              0.22
+            ],
+            "2": [
+              0.23,
+              0.78
+            ],
+            "3": [
+              0.77,
+              0.78
+            ],
+            "4": [
+              0.77,
+              0.22
+            ],
+            "5": [
+              0.5,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "3",
+              "4"
+            ],
+            [
+              "1",
+              "4"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "2",
+              "5"
+            ],
+            [
+              "3",
+              "5"
+            ],
+            [
+              "4",
+              "5"
+            ]
+          ],
+          "destaque": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "1",
+              "5"
+            ],
+            [
+              "2",
+              "5"
+            ]
+          ],
+          "cores": {
+            "1": 2,
+            "2": 3,
+            "3": 2,
+            "4": 3,
+            "5": 1
+          },
+          "orientado": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "indice-cromatico-e-planaridade",
+    "titulo": "Índice cromático e planaridade",
+    "descricao": "Organize tarefas em duplas, conte as faces de um desenho plano e aplique o limite de arestas.",
+    "aula": "06",
+    "paginas": [
+      32,
+      68,
+      69,
+      70,
+      72,
+      75,
+      77,
+      80,
+      83,
+      85
+    ],
+    "topicos": [
+      "planaridade"
+    ],
+    "questoes": [
+      2,
+      7
+    ],
+    "cenas": [
+      {
+        "titulo": "Uma cor por tarefa em dupla",
+        "fala": [
+          "Cada pessoa é um vértice, e cada tarefa em dupla é uma aresta.",
+          "Tarefas que compartilham uma pessoa precisam acontecer em horários diferentes, cada uma com sua cor.",
+          "A participa de quatro tarefas, então são necessários pelo menos quatro horários."
+        ],
+        "notas": [
+          "Vértices · pessoas | Arestas · tarefas em dupla",
+          "Arestas da mesma cor formam um acoplamento"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.29,
+              0.14
+            ],
+            "B": [
+              0.74,
+              0.19
+            ],
+            "C": [
+              0.87,
+              0.63
+            ],
+            "D": [
+              0.52,
+              0.87
+            ],
+            "E": [
+              0.2,
+              0.76
+            ],
+            "F": [
+              0.11,
+              0.46
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "E",
+              "F"
+            ],
+            [
+              "A",
+              "F"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "A",
+              "E"
+            ],
+            [
+              "C",
+              "D"
+            ]
+          ],
+          "destaque": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "A",
+              "E"
+            ],
+            [
+              "A",
+              "F"
+            ]
+          ],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Uma escala com quatro horários",
+        "fala": [
+          "No primeiro horário, as duplas A B, C E e D F cobrem seis pessoas diferentes.",
+          "A mesma verificação nos outros horários confirma que nenhuma pessoa recebe duas tarefas simultâneas.",
+          "A escala cobre todas as tarefas e atinge o mínimo de quatro horários."
+        ],
+        "notas": [
+          "Escala da página 72 · 11 tarefas",
+          "Limite inferior e escala viável · χ′(G) = 4"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Horário",
+            "Duplas"
+          ],
+          "linhas": [
+            [
+              "1",
+              "AB, CE, DF"
+            ],
+            [
+              "2",
+              "AC, BD, EF"
+            ],
+            [
+              "3",
+              "AF, BC, DE"
+            ],
+            [
+              "4",
+              "AE, CD"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Limites pelo grau máximo",
+        "fala": [
+          "As arestas incidentes num vértice de grau máximo exigem uma cor diferente para cada uma.",
+          "Para grafos simples, o índice cromático está entre o grau máximo e esse grau mais um.",
+          "Em grafos bipartidos, o próprio grau máximo já dá o índice cromático."
+        ],
+        "notas": [
+          "Δ · grau máximo",
+          "χ′(G) · menor número de cores nas arestas"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Tipo de grafo",
+            "Índice cromático"
+          ],
+          "linhas": [
+            [
+              "Simples",
+              "Δ ≤ χ′(G) ≤ Δ + 1"
+            ],
+            [
+              "Bipartido",
+              "χ′(G) = Δ"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Duas cores bastam no triângulo?",
+        "fala": [
+          "No triângulo, cada vértice tem grau dois e o limite inferior vale dois.",
+          "É possível colorir as três arestas desse triângulo usando apenas duas cores?"
+        ],
+        "notas": [
+          "Grau máximo do triângulo · 2",
+          "Experimente alternar duas cores nas arestas"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.17
+            ],
+            "B": [
+              0.24,
+              0.8
+            ],
+            "C": [
+              0.76,
+              0.8
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "B",
+              "C"
+            ]
+          ],
+          "destaque": [],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Cada par de arestas se encontra",
+        "fala": [
+          "Cada aresta toca as outras duas em algum vértice, então nenhuma cor pode se repetir.",
+          "O triângulo precisa de três cores nas arestas e atinge o limite superior."
+        ],
+        "notas": [
+          "AB, AC e BC têm cores distintas",
+          "Triângulo · Δ = 2 e χ′(G) = 3"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.17
+            ],
+            "B": [
+              0.24,
+              0.8
+            ],
+            "C": [
+              0.76,
+              0.8
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B",
+              "C1"
+            ],
+            [
+              "A",
+              "C",
+              "C2"
+            ],
+            [
+              "B",
+              "C",
+              "C3"
+            ]
+          ],
+          "destaque": [],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "O cruzamento do desenho pode desaparecer",
+        "fala": [
+          "O grafo completo de quatro vértices aparece com duas diagonais cruzadas neste desenho.",
+          "Para decidir se é planar, procure outro desenho com as mesmas seis arestas.",
+          "Os quatro vértices continuam sendo apenas os pontos marcados nos cantos do desenho."
+        ],
+        "notas": [
+          "K₄ · 4 vértices e 6 arestas",
+          "As duas diagonais se cruzam neste desenho"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.23,
+              0.22
+            ],
+            "B": [
+              0.77,
+              0.22
+            ],
+            "C": [
+              0.77,
+              0.78
+            ],
+            "D": [
+              0.23,
+              0.78
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "A",
+              "D"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ]
+          ],
+          "destaque": [
+            [
+              "A",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ]
+          ],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Um desenho planar com quatro faces",
+        "fala": [
+          "Mova D para dentro do triângulo e ligue esse vértice às três pontas.",
+          "O desenho fica sem cruzamentos, com três faces internas e uma face externa.",
+          "Na fórmula de Euler, quatro vértices menos seis arestas mais quatro faces dá dois."
+        ],
+        "notas": [
+          "K₄ planar · 3 faces internas e 1 face externa",
+          "Euler, em desenho planar conexo · 4 − 6 + 4 = 2"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.11
+            ],
+            "B": [
+              0.19,
+              0.85
+            ],
+            "C": [
+              0.81,
+              0.85
+            ],
+            "D": [
+              0.5,
+              0.58
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "A",
+              "D"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ]
+          ],
+          "destaque": [
+            [
+              "A",
+              "D"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ]
+          ],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Dez arestas ultrapassam o limite",
+        "fala": [
+          "Um grafo simples planar tem até três vezes o número de vértices menos seis arestas.",
+          "Com cinco vértices, o limite é nove, mas o grafo completo tem dez arestas.",
+          "Logo, o grafo completo de cinco vértices é impossível de desenhar sem cruzamentos.",
+          "Quando a contagem respeita o limite, procure ainda um desenho sem cruzamentos para concluir planaridade."
+        ],
+        "notas": [
+          "Grafo simples planar com n ≥ 3 · m ≤ 3n − 6",
+          "K₅ · 10 arestas, acima do limite de 9 para n = 5"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.11
+            ],
+            "B": [
+              0.82,
+              0.37
+            ],
+            "C": [
+              0.7,
+              0.85
+            ],
+            "D": [
+              0.3,
+              0.85
+            ],
+            "E": [
+              0.18,
+              0.37
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "A",
+              "D"
+            ],
+            [
+              "A",
+              "E"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "B",
+              "E"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ]
+          ],
+          "destaque": [],
+          "cores": {},
+          "orientado": false
+        }
+      },
+      {
+        "titulo": "Quatro cores nos vértices planares",
+        "fala": [
+          "O teorema das quatro cores garante até quatro cores nos vértices de um grafo planar.",
+          "No grafo completo de quatro vértices, todos são adjacentes, então as quatro cores são necessárias.",
+          "No exercício do mapa, conecte as regiões que dividem um trecho de fronteira."
+        ],
+        "notas": [
+          "Teorema das quatro cores · χ(G) ≤ 4 para grafos planares",
+          "Exercício 7 · ligue regiões com fronteira em comum"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "A": [
+              0.5,
+              0.11
+            ],
+            "B": [
+              0.19,
+              0.85
+            ],
+            "C": [
+              0.81,
+              0.85
+            ],
+            "D": [
+              0.5,
+              0.58
+            ]
+          },
+          "arestas": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "A",
+              "D"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ]
+          ],
+          "destaque": [],
+          "cores": {
+            "A": 1,
+            "B": 2,
+            "C": 3,
+            "D": 4
+          },
+          "orientado": false
+        }
+      }
+    ]
+  }
+]

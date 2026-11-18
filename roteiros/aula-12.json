@@ -1,0 +1,1422 @@
+[
+  {
+    "id": "conjuntos-e-casamento",
+    "titulo": "Conjuntos, cliques e casamento",
+    "descricao": "Compare independência, adjacência e cobertura. Depois aumente um casamento alternando arestas.",
+    "aula": "12",
+    "paginas": [
+      7,
+      8,
+      16,
+      36,
+      44,
+      52,
+      54,
+      60,
+      63,
+      65,
+      67
+    ],
+    "topicos": [
+      "independentes",
+      "cliques",
+      "dominantes",
+      "casamento",
+      "heuristicas-conjuntos"
+    ],
+    "questoes": [],
+    "cenas": [
+      {
+        "titulo": "Independente maximal e máximo",
+        "fala": [
+          "Um conjunto é independente quando não existe aresta entre nenhum par de vértices escolhidos.",
+          "Aqui, os vértices A e D formam um conjunto maximal com apenas dois elementos.",
+          "Para verificar isso, confira que cada vértice de fora é vizinho de A ou de D."
+        ],
+        "notas": [
+          "{a, d} é independente",
+          "Cada vértice de fora está em conflito",
+          "Maximal · não cabe incluir outro"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "a": [
+              0.26,
+              0.17
+            ],
+            "b": [
+              0.72,
+              0.17
+            ],
+            "c": [
+              0.9,
+              0.5
+            ],
+            "d": [
+              0.72,
+              0.83
+            ],
+            "e": [
+              0.26,
+              0.83
+            ],
+            "g": [
+              0.08,
+              0.5
+            ],
+            "f": [
+              0.5,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "d",
+              "e"
+            ],
+            [
+              "e",
+              "g"
+            ],
+            [
+              "g",
+              "a"
+            ],
+            [
+              "f",
+              "a"
+            ],
+            [
+              "f",
+              "b"
+            ],
+            [
+              "f",
+              "c"
+            ],
+            [
+              "f",
+              "d"
+            ],
+            [
+              "f",
+              "e"
+            ],
+            [
+              "f",
+              "g"
+            ]
+          ],
+          "cores": {
+            "a": 1,
+            "d": 1
+          },
+          "destaque": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "a",
+              "g"
+            ],
+            [
+              "a",
+              "f"
+            ],
+            [
+              "d",
+              "c"
+            ],
+            [
+              "d",
+              "e"
+            ],
+            [
+              "d",
+              "f"
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Por que três é o máximo?",
+        "fala": [
+          "O conjunto A, C e E também é independente e já tem três vértices.",
+          "Se você incluir o centro F, todos os outros vértices ficam bloqueados de uma vez.",
+          "Se excluir F, pode escolher no máximo uma ponta de cada aresta destacada na borda.",
+          "São três arestas que cobrem a borda toda, então três é o tamanho máximo."
+        ],
+        "notas": [
+          "Borda particionada em {a,b}, {c,d}, {e,g}",
+          "No máximo um vértice por par",
+          "{a, c, e} atinge α(G) = 3"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "a": [
+              0.26,
+              0.17
+            ],
+            "b": [
+              0.72,
+              0.17
+            ],
+            "c": [
+              0.9,
+              0.5
+            ],
+            "d": [
+              0.72,
+              0.83
+            ],
+            "e": [
+              0.26,
+              0.83
+            ],
+            "g": [
+              0.08,
+              0.5
+            ],
+            "f": [
+              0.5,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "d",
+              "e"
+            ],
+            [
+              "e",
+              "g"
+            ],
+            [
+              "g",
+              "a"
+            ],
+            [
+              "f",
+              "a"
+            ],
+            [
+              "f",
+              "b"
+            ],
+            [
+              "f",
+              "c"
+            ],
+            [
+              "f",
+              "d"
+            ],
+            [
+              "f",
+              "e"
+            ],
+            [
+              "f",
+              "g"
+            ]
+          ],
+          "cores": {
+            "a": 1,
+            "c": 1,
+            "e": 1
+          },
+          "destaque": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "e",
+              "g"
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Escolha gulosa e complemento",
+        "fala": [
+          "A heurística para conjunto independente prefere grau baixo para bloquear poucos vértices a cada escolha.",
+          "Inclua um candidato e retire do grafo restante esse candidato e todos os seus vizinhos.",
+          "No complemento, cada par sem aresta passa a ter aresta. Assim, um independente vira clique."
+        ],
+        "notas": [
+          "Escolha um vértice de menor grau",
+          "Apague o escolhido e os vizinhos",
+          "Independente em G ⇒ clique no complemento"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "a": [
+              0.26,
+              0.17
+            ],
+            "b": [
+              0.72,
+              0.17
+            ],
+            "c": [
+              0.9,
+              0.5
+            ],
+            "d": [
+              0.72,
+              0.83
+            ],
+            "e": [
+              0.26,
+              0.83
+            ],
+            "g": [
+              0.08,
+              0.5
+            ],
+            "f": [
+              0.5,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "d",
+              "e"
+            ],
+            [
+              "e",
+              "g"
+            ],
+            [
+              "g",
+              "a"
+            ],
+            [
+              "f",
+              "a"
+            ],
+            [
+              "f",
+              "b"
+            ],
+            [
+              "f",
+              "c"
+            ],
+            [
+              "f",
+              "d"
+            ],
+            [
+              "f",
+              "e"
+            ],
+            [
+              "f",
+              "g"
+            ]
+          ],
+          "cores": {
+            "a": 1,
+            "b": 3,
+            "g": 3,
+            "f": 3
+          },
+          "destaque": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "a",
+              "g"
+            ],
+            [
+              "a",
+              "f"
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Reconheça uma clique",
+        "fala": [
+          "Numa clique com quatro vértices, cada par distinto tem uma aresta dentro do grupo.",
+          "No desenho, dois, três, seis e sete formam um subgrafo completo com seis arestas.",
+          "A heurística da aula começa com um vértice de grau alto e filtra seus vizinhos.",
+          "Confira todas as duplas antes de chamar o grupo de clique."
+        ],
+        "notas": [
+          "Clique · todos os pares são adjacentes",
+          "{2, 3, 6, 7} tem 4 × 3 ÷ 2 = 6 arestas",
+          "Guloso · comece por grau alto e filtre"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "8": [
+              0.08,
+              0.17
+            ],
+            "1": [
+              0.5,
+              0.12
+            ],
+            "2": [
+              0.14,
+              0.5
+            ],
+            "3": [
+              0.49,
+              0.51
+            ],
+            "4": [
+              0.89,
+              0.5
+            ],
+            "7": [
+              0.14,
+              0.85
+            ],
+            "6": [
+              0.5,
+              0.87
+            ],
+            "5": [
+              0.89,
+              0.86
+            ]
+          },
+          "arestas": [
+            [
+              "8",
+              "1"
+            ],
+            [
+              "8",
+              "2"
+            ],
+            [
+              "8",
+              "3"
+            ],
+            [
+              "1",
+              "3"
+            ],
+            [
+              "1",
+              "4"
+            ],
+            [
+              "3",
+              "4"
+            ],
+            [
+              "3",
+              "5"
+            ],
+            [
+              "4",
+              "5"
+            ],
+            [
+              "4",
+              "6"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "6"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "7"
+            ],
+            [
+              "6",
+              "7"
+            ]
+          ],
+          "cores": {
+            "2": 1,
+            "3": 1,
+            "6": 1,
+            "7": 1
+          },
+          "destaque": [
+            [
+              "2",
+              "3"
+            ],
+            [
+              "2",
+              "6"
+            ],
+            [
+              "2",
+              "7"
+            ],
+            [
+              "3",
+              "6"
+            ],
+            [
+              "3",
+              "7"
+            ],
+            [
+              "6",
+              "7"
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Preveja quem domina o grafo",
+        "fala": [
+          "Um conjunto dominante cobre cada vértice escolhido e também os vizinhos diretos dos escolhidos.",
+          "Observe a figura e tente apontar um único vértice cuja escolha cubra todos os outros."
+        ],
+        "notas": [
+          "Qual vértice chega a toda a borda?",
+          "Conte o próprio escolhido como coberto"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "a": [
+              0.26,
+              0.17
+            ],
+            "b": [
+              0.72,
+              0.17
+            ],
+            "c": [
+              0.9,
+              0.5
+            ],
+            "d": [
+              0.72,
+              0.83
+            ],
+            "e": [
+              0.26,
+              0.83
+            ],
+            "g": [
+              0.08,
+              0.5
+            ],
+            "f": [
+              0.5,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "d",
+              "e"
+            ],
+            [
+              "e",
+              "g"
+            ],
+            [
+              "g",
+              "a"
+            ],
+            [
+              "f",
+              "a"
+            ],
+            [
+              "f",
+              "b"
+            ],
+            [
+              "f",
+              "c"
+            ],
+            [
+              "f",
+              "d"
+            ],
+            [
+              "f",
+              "e"
+            ],
+            [
+              "f",
+              "g"
+            ]
+          ],
+          "cores": {},
+          "destaque": []
+        },
+        "pausa": 4
+      },
+      {
+        "titulo": "Certifique a dominação mínima",
+        "fala": [
+          "O centro F é adjacente aos seis vértices da borda. Com ele, todos estão cobertos.",
+          "O conjunto vazio não cobre nenhum vértice, então o número de dominação é um.",
+          "Por outro lado, um independente maximal é dominante porque já bloqueia todo vértice de fora.",
+          "O exemplo da página sessenta mostra que a estratégia de maior grau pode exceder o mínimo."
+        ],
+        "notas": [
+          "{f} cobre 1 + 6 = 7 vértices",
+          "γ(G) = 1",
+          "Independente maximal ⇒ dominante"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "a": [
+              0.26,
+              0.17
+            ],
+            "b": [
+              0.72,
+              0.17
+            ],
+            "c": [
+              0.9,
+              0.5
+            ],
+            "d": [
+              0.72,
+              0.83
+            ],
+            "e": [
+              0.26,
+              0.83
+            ],
+            "g": [
+              0.08,
+              0.5
+            ],
+            "f": [
+              0.5,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "d",
+              "e"
+            ],
+            [
+              "e",
+              "g"
+            ],
+            [
+              "g",
+              "a"
+            ],
+            [
+              "f",
+              "a"
+            ],
+            [
+              "f",
+              "b"
+            ],
+            [
+              "f",
+              "c"
+            ],
+            [
+              "f",
+              "d"
+            ],
+            [
+              "f",
+              "e"
+            ],
+            [
+              "f",
+              "g"
+            ]
+          ],
+          "cores": {
+            "f": 1
+          },
+          "destaque": [
+            [
+              "f",
+              "a"
+            ],
+            [
+              "f",
+              "b"
+            ],
+            [
+              "f",
+              "c"
+            ],
+            [
+              "f",
+              "d"
+            ],
+            [
+              "f",
+              "e"
+            ],
+            [
+              "f",
+              "g"
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Um casamento ocupa duas pontas",
+        "fala": [
+          "No casamento, escolha arestas que ocupam pares disjuntos de vértices. Cada ponta fica saturada.",
+          "As duas arestas destacadas ocupam quatro vértices. Os vértices três e seis estão livres.",
+          "Como três e seis não têm ligação, você não consegue acrescentar uma aresta diretamente.",
+          "Esse casamento é maximal. Para saber se é máximo, procure uma cadeia aumentante."
+        ],
+        "notas": [
+          "M = {1–2, 4–5}",
+          "3 e 6 estão livres",
+          "Maximal · nenhuma aresta cabe diretamente"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.28,
+              0.13
+            ],
+            "2": [
+              0.71,
+              0.13
+            ],
+            "3": [
+              0.91,
+              0.5
+            ],
+            "4": [
+              0.71,
+              0.87
+            ],
+            "5": [
+              0.28,
+              0.87
+            ],
+            "6": [
+              0.08,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "3",
+              "4"
+            ],
+            [
+              "4",
+              "5"
+            ],
+            [
+              "5",
+              "6"
+            ],
+            [
+              "6",
+              "1"
+            ],
+            [
+              "1",
+              "4"
+            ],
+            [
+              "2",
+              "5"
+            ]
+          ],
+          "cores": {
+            "3": 3,
+            "6": 3
+          },
+          "destaque": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "4",
+              "5"
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Alterne para aumentar o casamento",
+        "fala": [
+          "Siga seis, um, dois, três. A primeira e a última aresta estão fora do casamento.",
+          "A aresta entre um e dois está dentro. Faça a troca ao longo desse caminho.",
+          "Entram duas arestas e sai uma. Agora há três arestas e todos os vértices ficam saturados.",
+          "A inexistência de cadeia aumentante caracteriza o casamento máximo pelo teorema de Berge."
+        ],
+        "notas": [
+          "Cadeia livre–ocupada–livre · 6–1–2–3",
+          "M novo = {6–1, 2–3, 4–5}",
+          "3 arestas · casamento perfeito"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "1": [
+              0.28,
+              0.13
+            ],
+            "2": [
+              0.71,
+              0.13
+            ],
+            "3": [
+              0.91,
+              0.5
+            ],
+            "4": [
+              0.71,
+              0.87
+            ],
+            "5": [
+              0.28,
+              0.87
+            ],
+            "6": [
+              0.08,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "3",
+              "4"
+            ],
+            [
+              "4",
+              "5"
+            ],
+            [
+              "5",
+              "6"
+            ],
+            [
+              "6",
+              "1"
+            ],
+            [
+              "1",
+              "4"
+            ],
+            [
+              "2",
+              "5"
+            ]
+          ],
+          "cores": {
+            "1": 1,
+            "2": 1,
+            "3": 1,
+            "4": 1,
+            "5": 1,
+            "6": 1
+          },
+          "destaque": [
+            [
+              "6",
+              "1"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "4",
+              "5"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "metodo-hungaro",
+    "titulo": "Método Húngaro e ajuste pelos riscos",
+    "descricao": "Reduza a matriz, escolha zeros independentes e ajuste o quadro quando eles ainda não cobrem todos os operários.",
+    "aula": "12",
+    "paginas": [
+      73,
+      74,
+      76,
+      77,
+      78,
+      79,
+      81,
+      82,
+      83,
+      84
+    ],
+    "topicos": [
+      "alocacao",
+      "ajuste-hungaro"
+    ],
+    "questoes": [],
+    "cenas": [
+      {
+        "titulo": "Modele a alocação como matriz",
+        "fala": [
+          "As linhas são operários. As colunas são máquinas. Cada número é o custo daquela dupla.",
+          "Uma alocação válida escolhe uma célula por linha e uma por coluna, sem repetir máquinas.",
+          "A diagonal inicial custa onze. Vamos procurar uma alocação válida de menor custo."
+        ],
+        "notas": [
+          "Um operário por linha",
+          "Uma máquina por coluna",
+          "Diagonal original · 3 + 4 + 4 = 11"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              3,
+              5,
+              6
+            ],
+            [
+              "O2",
+              5,
+              4,
+              2
+            ],
+            [
+              "O3",
+              2,
+              3,
+              4
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Subtraia o mínimo de cada linha",
+        "fala": [
+          "Na primeira linha, subtraia três. Na segunda e na terceira, subtraia dois de cada célula.",
+          "Toda alocação válida escolhe uma célula de cada linha. Logo, cada custo cai pelo mesmo total.",
+          "As diferenças entre os custos das alocações permanecem iguais depois da redução."
+        ],
+        "notas": [
+          "Mínimos por linha · 3, 2, 2",
+          "Cada alocação perde 3 + 2 + 2 = 7",
+          "Matriz após reduzir linhas"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              0,
+              2,
+              3
+            ],
+            [
+              "O2",
+              3,
+              2,
+              0
+            ],
+            [
+              "O3",
+              0,
+              1,
+              2
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Agora reduza as colunas",
+        "fala": [
+          "Na matriz reduzida por linhas, as colunas têm mínimos zero, um e zero, respectivamente.",
+          "Somente a segunda coluna muda. Seus valores dois, dois e um passam a um, um e zero.",
+          "A redução preserva a comparação porque sempre escolhemos uma entrada de cada coluna."
+        ],
+        "notas": [
+          "Mínimos por coluna · 0, 1, 0",
+          "Coluna M2 · (2, 2, 1) → (1, 1, 0)"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              0,
+              1,
+              3
+            ],
+            [
+              "O2",
+              3,
+              1,
+              0
+            ],
+            [
+              "O3",
+              0,
+              0,
+              2
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Preveja a posição do último zero",
+        "fala": [
+          "A primeira linha só pode usar a máquina um. A segunda só pode usar a máquina três.",
+          "Quais máquinas ainda sobram? Escolha um zero para a terceira linha sem repetir coluna."
+        ],
+        "notas": [
+          "O1 usa M1 · O2 usa M3",
+          "Onde fica o zero disponível de O3?"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              0,
+              1,
+              3
+            ],
+            [
+              "O2",
+              3,
+              1,
+              0
+            ],
+            [
+              "O3",
+              0,
+              0,
+              2
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              3
+            ]
+          ]
+        },
+        "pausa": 4
+      },
+      {
+        "titulo": "Leia o custo na matriz original",
+        "fala": [
+          "A máquina dois é a escolha da terceira linha. Assim temos três zeros em colunas distintas.",
+          "Volte às posições correspondentes na matriz de custos. Elas custam três, dois e três.",
+          "Na matriz reduzida, os custos são não negativos e o total zero prova que essa escolha é ótima."
+        ],
+        "notas": [
+          "Pares · O1–M1, O2–M3, O3–M2",
+          "Custo original · 3 + 2 + 3 = 8",
+          "Zero reduzido certifica o mínimo"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              3,
+              5,
+              6
+            ],
+            [
+              "O2",
+              5,
+              4,
+              2
+            ],
+            [
+              "O3",
+              2,
+              3,
+              4
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Quando os zeros entram em conflito",
+        "fala": [
+          "No segundo exemplo, depois das duas reduções, as duas primeiras linhas só têm zero na primeira coluna.",
+          "Para cobrir todos os zeros, risque a primeira coluna e também toda a terceira linha.",
+          "Dois riscos cobrem todos. São menos que três, então ainda não há uma alocação só de zeros."
+        ],
+        "notas": [
+          "Risque a coluna M1 e a linha O3",
+          "2 riscos < 3 operários",
+          "Procure o menor valor descoberto"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              0,
+              4,
+              3
+            ],
+            [
+              "O2",
+              0,
+              3,
+              5
+            ],
+            [
+              "O3",
+              0,
+              0,
+              0
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Ajuste a matriz com o menor descoberto",
+        "fala": [
+          "Entre as quatro entradas descobertas, o menor valor é três. Subtraia três dessas quatro células.",
+          "Some três na interseção dos dois riscos, na terceira linha com a primeira coluna.",
+          "Mantenha os valores cobertos por um só risco. Depois, procure uma nova escolha de zeros."
+        ],
+        "notas": [
+          "k = mín(4, 3, 3, 5) = 3",
+          "Descobertas −3 · cruzamento +3",
+          "Cobertas uma vez mantêm o valor"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              0,
+              1,
+              0
+            ],
+            [
+              "O2",
+              0,
+              0,
+              2
+            ],
+            [
+              "O3",
+              3,
+              0,
+              0
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Um ótimo pode ter mais de uma alocação",
+        "fala": [
+          "Agora os três zeros diagonais são compatíveis. A soma dos custos originais é doze.",
+          "Outra escolha usa máquina três para O um, máquina um para O dois e máquina dois para O três.",
+          "Ela também custa doze. A prova do mínimo vem do total zero na matriz ajustada."
+        ],
+        "notas": [
+          "Diagonal · 2 + 6 + 4 = 12",
+          "Outra escolha · 7 + 3 + 2 = 12",
+          "Ao dar a resposta, identifique os pares"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Operário",
+            "M1",
+            "M2",
+            "M3"
+          ],
+          "linhas": [
+            [
+              "O1",
+              2,
+              6,
+              7
+            ],
+            [
+              "O2",
+              3,
+              6,
+              10
+            ],
+            [
+              "O3",
+              2,
+              2,
+              4
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,1407 @@
+[
+  {
+    "id": "ford-fulkerson-quatro-aumentos",
+    "titulo": "Ford–Fulkerson: quatro caminhos aumentantes",
+    "descricao": "Use gargalos e arcos reversos para chegar ao fluxo máximo de 23 unidades na rede da aula.",
+    "aula": "08",
+    "paginas": [
+      20,
+      21,
+      25,
+      26,
+      28,
+      29,
+      30,
+      31,
+      32,
+      47
+    ],
+    "topicos": [
+      "residual",
+      "modelagem-fluxo",
+      "mincorte"
+    ],
+    "questoes": [
+      1,
+      3,
+      7,
+      8
+    ],
+    "cenas": [
+      {
+        "titulo": "Comece pela rede de capacidades",
+        "fala": [
+          "A origem envia o fluxo e o destino recebe tudo que atravessa a rede.",
+          "Cada arco orientado tem um limite, indicado pelo número perto da seta.",
+          "Nos vértices intermediários, o fluxo que entra precisa igualar o que sai.",
+          "Para aplicar Ford Fulkerson neste exemplo, começamos com fluxo zero em todos os arcos."
+        ],
+        "notas": [
+          "Rede original: os números são capacidades",
+          "s é a origem · t é o destino",
+          "Fluxo inicial = 0"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v1",
+              "16"
+            ],
+            [
+              "s",
+              "v2",
+              "13"
+            ],
+            [
+              "v1",
+              "v2",
+              "10"
+            ],
+            [
+              "v2",
+              "v1",
+              "4"
+            ],
+            [
+              "v1",
+              "v3",
+              "12"
+            ],
+            [
+              "v3",
+              "v2",
+              "9"
+            ],
+            [
+              "v2",
+              "v4",
+              "14"
+            ],
+            [
+              "v4",
+              "v3",
+              "7"
+            ],
+            [
+              "v3",
+              "t",
+              "20"
+            ],
+            [
+              "v4",
+              "t",
+              "4"
+            ]
+          ],
+          "destaque": [],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Trabalhe na rede residual",
+        "fala": [
+          "A folga direta é a capacidade original menos o fluxo que já passa no arco.",
+          "A contribuição reversa é o fluxo enviado, pois essa quantidade pode ser desfeita.",
+          "Escolha um caminho da origem ao destino usando somente arcos residuais com folga positiva."
+        ],
+        "notas": [
+          "Residual direto = capacidade − fluxo",
+          "Contribuição reversa = fluxo enviado",
+          "O desenho mostra os arcos do primeiro caminho"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v1",
+              "16"
+            ],
+            [
+              "v1",
+              "v3",
+              "12"
+            ],
+            [
+              "v3",
+              "v2",
+              "9"
+            ],
+            [
+              "v2",
+              "v4",
+              "14"
+            ],
+            [
+              "v4",
+              "t",
+              "4"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "v1"
+            ],
+            [
+              "v1",
+              "v3"
+            ],
+            [
+              "v3",
+              "v2"
+            ],
+            [
+              "v2",
+              "v4"
+            ],
+            [
+              "v4",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Antecipe o primeiro gargalo",
+        "fala": [
+          "A mesma quantidade de fluxo adicional precisa caber em todos os arcos do caminho.",
+          "Entre dezesseis, doze, nove, catorze e quatro, qual residual limita o aumento possível?"
+        ],
+        "notas": [
+          "Gargalo = menor residual do caminho",
+          "Todos os valores foram lidos na rede residual"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v1",
+              "16"
+            ],
+            [
+              "v1",
+              "v3",
+              "12"
+            ],
+            [
+              "v3",
+              "v2",
+              "9"
+            ],
+            [
+              "v2",
+              "v4",
+              "14"
+            ],
+            [
+              "v4",
+              "t",
+              "4"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "v1"
+            ],
+            [
+              "v1",
+              "v3"
+            ],
+            [
+              "v3",
+              "v2"
+            ],
+            [
+              "v2",
+              "v4"
+            ],
+            [
+              "v4",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Aumente quatro unidades",
+        "fala": [
+          "O menor residual é quatro, no arco que liga vê quatro ao destino.",
+          "Subtraia quatro dos residuais percorridos e some quatro aos seus respectivos inversos.",
+          "Da origem até vê um restam doze unidades, e a reversa ganha quatro.",
+          "Agora o fluxo vale quatro e a rede residual serve para buscar outro caminho."
+        ],
+        "notas": [
+          "Gargalo: mín(16, 12, 9, 14, 4) = 4",
+          "Atualize os residuais nos dois sentidos",
+          "Novo fluxo = 4"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Arco residual",
+            "Antes",
+            "Depois"
+          ],
+          "linhas": [
+            [
+              "s → v1",
+              "16",
+              "12"
+            ],
+            [
+              "v1 → s",
+              "0",
+              "4"
+            ],
+            [
+              "v4 → t",
+              "4",
+              "0"
+            ],
+            [
+              "t → v4",
+              "0",
+              "4"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      },
+      {
+        "titulo": "Segundo caminho: some sete",
+        "fala": [
+          "No segundo caminho, passamos de vê um para vê dois e depois para vê quatro.",
+          "A menor folga é sete, entre vê quatro e vê três.",
+          "Após atualizar os arcos desse caminho e os inversos, o fluxo sobe para onze."
+        ],
+        "notas": [
+          "Gargalo: mín(12, 10, 10, 7, 20) = 7",
+          "Fluxo acumulado: 4 + 7 = 11",
+          "A atualização aumenta o residual de v2 → v1"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v1",
+              "12"
+            ],
+            [
+              "v1",
+              "v2",
+              "10"
+            ],
+            [
+              "v2",
+              "v4",
+              "10"
+            ],
+            [
+              "v4",
+              "v3",
+              "7"
+            ],
+            [
+              "v3",
+              "t",
+              "20"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "v1"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v2",
+              "v4"
+            ],
+            [
+              "v4",
+              "v3"
+            ],
+            [
+              "v3",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Terceiro caminho: use a reversa",
+        "fala": [
+          "De vê dois para vê um, a capacidade original quatro soma com sete reversos.",
+          "O gargalo é oito, no arco que vai de vê um para vê três.",
+          "Podemos cancelar sete unidades de vê um para vê dois, enviando uma no sentido oposto.",
+          "O aumento de oito leva o valor do fluxo de onze para dezenove."
+        ],
+        "notas": [
+          "Residual de v2 → v1: 4 + 7 = 11",
+          "Gargalo: mín(13, 11, 8, 13) = 8",
+          "Fluxo acumulado: 11 + 8 = 19"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v2",
+              "13"
+            ],
+            [
+              "v2",
+              "v1",
+              "11"
+            ],
+            [
+              "v1",
+              "v3",
+              "8"
+            ],
+            [
+              "v3",
+              "t",
+              "13"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "v2"
+            ],
+            [
+              "v2",
+              "v1"
+            ],
+            [
+              "v1",
+              "v3"
+            ],
+            [
+              "v3",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Quarto caminho: desfaça um envio",
+        "fala": [
+          "De vê dois para vê três, toda a folga vem de um envio anterior.",
+          "As quatro unidades reversas cancelam o fluxo que ia de vê três para vê dois.",
+          "O valor total aumenta de dezenove para vinte e três."
+        ],
+        "notas": [
+          "v2 → v3 é reverso de v3 → v2",
+          "Gargalo: mín(5, 4, 5) = 4",
+          "Fluxo acumulado: 19 + 4 = 23"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v2",
+              "5"
+            ],
+            [
+              "v2",
+              "v3",
+              "4"
+            ],
+            [
+              "v3",
+              "t",
+              "5"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "v2"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Encerre quando o destino ficar inacessível",
+        "fala": [
+          "Da origem, ainda alcançamos vê um, vê dois e vê quatro na rede residual.",
+          "Nenhum arco residual positivo leva desses vértices até vê três ou ao destino.",
+          "Sem outro caminho aumentante, o algoritmo termina com fluxo máximo de vinte e três."
+        ],
+        "notas": [
+          "Ramos mostrados: um caminho para cada alcançável",
+          "t não é alcançável na residual final",
+          "Fluxo máximo = 4 + 7 + 8 + 4 = 23"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.07,
+              0.5
+            ],
+            "v1": [
+              0.31,
+              0.2
+            ],
+            "v2": [
+              0.31,
+              0.8
+            ],
+            "v3": [
+              0.69,
+              0.2
+            ],
+            "v4": [
+              0.69,
+              0.8
+            ],
+            "t": [
+              0.93,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "v1",
+              "5"
+            ],
+            [
+              "s",
+              "v2",
+              "1"
+            ],
+            [
+              "v2",
+              "v4",
+              "3"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "v1"
+            ],
+            [
+              "s",
+              "v2"
+            ],
+            [
+              "v2",
+              "v4"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "v1": 1,
+            "v2": 1,
+            "v4": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "edmonds-karp-fluxo-inicial-e-corte",
+    "titulo": "Edmonds–Karp: fluxo inicial e corte mínimo",
+    "descricao": "Valide um fluxo de dez unidades, use a busca em largura para ampliá-lo e certifique o máximo pelo corte.",
+    "aula": "08",
+    "paginas": [
+      19,
+      21,
+      25,
+      26,
+      36,
+      37,
+      47,
+      49
+    ],
+    "topicos": [
+      "residual",
+      "fluxo-parcial",
+      "mincorte"
+    ],
+    "questoes": [
+      7,
+      8,
+      10,
+      13
+    ],
+    "cenas": [
+      {
+        "titulo": "Confira o fluxo inicial",
+        "fala": [
+          "Cada rótulo mostra primeiro o fluxo atual e depois a capacidade do arco.",
+          "Em A entram sete unidades, das quais cinco seguem ao destino e duas ao vértice B.",
+          "Em B entram três mais duas unidades, e todas as cinco saem para o destino.",
+          "O valor do fluxo é sete mais três, que dá dez unidades."
+        ],
+        "notas": [
+          "Os pares indicam fluxo/capacidade",
+          "A: 7 = 5 + 2 · B: 3 + 2 = 5",
+          "Fluxo inicial = 7 + 3 = 10"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "7/9"
+            ],
+            [
+              "s",
+              "B",
+              "3/6"
+            ],
+            [
+              "A",
+              "B",
+              "2/4"
+            ],
+            [
+              "A",
+              "t",
+              "5/5"
+            ],
+            [
+              "B",
+              "t",
+              "5/8"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "A"
+            ],
+            [
+              "s",
+              "B"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Obtenha a residual do fluxo existente",
+        "fala": [
+          "Da origem até B, a folga direta vale seis menos três, que dá três.",
+          "No sentido de B para a origem, há três unidades que podemos desfazer.",
+          "O arco de A até o destino está saturado, pois carrega toda a sua capacidade.",
+          "O desenho inclui apenas arcos residuais com folga positiva."
+        ],
+        "notas": [
+          "Direto s → B: 6 − 3 = 3",
+          "Reverso B → s: 3",
+          "A → t tem residual zero"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "2"
+            ],
+            [
+              "A",
+              "s",
+              "7"
+            ],
+            [
+              "s",
+              "B",
+              "3"
+            ],
+            [
+              "B",
+              "s",
+              "3"
+            ],
+            [
+              "A",
+              "B",
+              "2"
+            ],
+            [
+              "B",
+              "A",
+              "2"
+            ],
+            [
+              "t",
+              "A",
+              "5"
+            ],
+            [
+              "B",
+              "t",
+              "3"
+            ],
+            [
+              "t",
+              "B",
+              "5"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "B"
+            ],
+            [
+              "B",
+              "s"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Antecipe o caminho da busca em largura",
+        "fala": [
+          "Edmonds Karp usa a busca em largura para visitar vértices por distância em arcos.",
+          "A e B aparecem na primeira camada, ambos a um arco da origem.",
+          "Qual deles leva ao destino na etapa seguinte, usando apenas folgas positivas?"
+        ],
+        "notas": [
+          "Camada inicial: s",
+          "Primeira camada: A e B",
+          "Observe os arcos residuais de saída"
+        ],
+        "pausa": 4,
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "2"
+            ],
+            [
+              "A",
+              "s",
+              "7"
+            ],
+            [
+              "s",
+              "B",
+              "3"
+            ],
+            [
+              "B",
+              "s",
+              "3"
+            ],
+            [
+              "A",
+              "B",
+              "2"
+            ],
+            [
+              "B",
+              "A",
+              "2"
+            ],
+            [
+              "t",
+              "A",
+              "5"
+            ],
+            [
+              "B",
+              "t",
+              "3"
+            ],
+            [
+              "t",
+              "B",
+              "5"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "A"
+            ],
+            [
+              "s",
+              "B"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "A": 2,
+            "B": 2,
+            "t": 3
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Encontre o caminho de dois arcos",
+        "fala": [
+          "A busca chega ao destino por B, que tem três unidades de capacidade residual até lá.",
+          "Os dois arcos têm folga três, então o gargalo também vale três.",
+          "Some três ao fluxo atual nos arcos da origem para B e de B ao destino."
+        ],
+        "notas": [
+          "Caminho mínimo em arcos: s → B → t",
+          "Gargalo: mín(3, 3) = 3"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "2"
+            ],
+            [
+              "A",
+              "s",
+              "7"
+            ],
+            [
+              "s",
+              "B",
+              "3"
+            ],
+            [
+              "B",
+              "s",
+              "3"
+            ],
+            [
+              "A",
+              "B",
+              "2"
+            ],
+            [
+              "B",
+              "A",
+              "2"
+            ],
+            [
+              "t",
+              "A",
+              "5"
+            ],
+            [
+              "B",
+              "t",
+              "3"
+            ],
+            [
+              "t",
+              "B",
+              "5"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "B"
+            ],
+            [
+              "B",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Atualize o fluxo nos arcos originais",
+        "fala": [
+          "Da origem para B, o fluxo passa de três para seis e satura o arco.",
+          "De B para o destino, o fluxo passa de cinco para oito e também satura.",
+          "O novo valor na origem é sete mais seis, que soma treze unidades."
+        ],
+        "notas": [
+          "s → B: 3/6 passa a 6/6",
+          "B → t: 5/8 passa a 8/8",
+          "Fluxo atual = 10 + 3 = 13"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "7/9"
+            ],
+            [
+              "s",
+              "B",
+              "6/6"
+            ],
+            [
+              "A",
+              "B",
+              "2/4"
+            ],
+            [
+              "A",
+              "t",
+              "5/5"
+            ],
+            [
+              "B",
+              "t",
+              "8/8"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "B"
+            ],
+            [
+              "B",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Refaça a busca na residual atualizada",
+        "fala": [
+          "Recomece a busca na origem, usando os residuais depois do aumento.",
+          "A origem ainda alcança A, e a ligação de A para B alcança B.",
+          "O destino fica de fora porque os dois arcos que entravam nele ficaram saturados."
+        ],
+        "notas": [
+          "Alcançáveis na residual: s, A, B",
+          "S = {s, A, B} · T = {t}",
+          "Sem caminho aumentante"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "2"
+            ],
+            [
+              "A",
+              "s",
+              "7"
+            ],
+            [
+              "B",
+              "s",
+              "6"
+            ],
+            [
+              "A",
+              "B",
+              "2"
+            ],
+            [
+              "B",
+              "A",
+              "2"
+            ],
+            [
+              "t",
+              "A",
+              "5"
+            ],
+            [
+              "t",
+              "B",
+              "8"
+            ]
+          ],
+          "destaque": [
+            [
+              "s",
+              "A"
+            ],
+            [
+              "A",
+              "B"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "A": 1,
+            "B": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Some as capacidades originais do corte",
+        "fala": [
+          "O corte separa os vértices alcançáveis na residual dos vértices fora desse conjunto.",
+          "Na rede original, só os arcos de A e de B atravessam na direção do destino.",
+          "Some suas capacidades, cinco mais oito, e obtenha uma capacidade de corte igual a treze."
+        ],
+        "notas": [
+          "Some apenas capacidades originais de S para T",
+          "A → t: 5 · B → t: 8",
+          "Capacidade do corte = 5 + 8 = 13"
+        ],
+        "visual": {
+          "tipo": "grafo",
+          "vertices": {
+            "s": [
+              0.1,
+              0.5
+            ],
+            "A": [
+              0.5,
+              0.19
+            ],
+            "B": [
+              0.5,
+              0.81
+            ],
+            "t": [
+              0.9,
+              0.5
+            ]
+          },
+          "arestas": [
+            [
+              "s",
+              "A",
+              "7/9"
+            ],
+            [
+              "s",
+              "B",
+              "6/6"
+            ],
+            [
+              "A",
+              "B",
+              "2/4"
+            ],
+            [
+              "A",
+              "t",
+              "5/5"
+            ],
+            [
+              "B",
+              "t",
+              "8/8"
+            ]
+          ],
+          "destaque": [
+            [
+              "A",
+              "t"
+            ],
+            [
+              "B",
+              "t"
+            ]
+          ],
+          "cores": {
+            "s": 1,
+            "A": 1,
+            "B": 1,
+            "t": 2
+          },
+          "orientado": true
+        }
+      },
+      {
+        "titulo": "Certifique os dois ótimos",
+        "fala": [
+          "A capacidade de qualquer corte limita por cima o valor de todo fluxo viável.",
+          "Encontramos um fluxo de treze e um corte com capacidade exatamente treze.",
+          "A igualdade prova que o fluxo é máximo e que o corte é mínimo."
+        ],
+        "notas": [
+          "Fluxo viável = 13 · capacidade do corte = 13",
+          "Igualdade certifica o fluxo máximo e o corte mínimo"
+        ],
+        "visual": {
+          "tipo": "tabela",
+          "colunas": [
+            "Quantidade",
+            "Cálculo",
+            "Valor"
+          ],
+          "linhas": [
+            [
+              "Fluxo que chega a t",
+              "5 + 8",
+              "13"
+            ],
+            [
+              "Capacidade de S para T",
+              "5 + 8",
+              "13"
+            ]
+          ],
+          "destaque": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        }
+      }
+    ]
+  }
+]
