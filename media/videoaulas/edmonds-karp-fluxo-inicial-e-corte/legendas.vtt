@@ -1,105 +1,105 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:04.912
+00:00:00.090 --> 00:00:05.590
 Cada rótulo mostra primeiro o fluxo atual e
 depois a capacidade do arco.
 
-00:00:05.042 --> 00:00:10.532
+00:00:05.590 --> 00:00:12.590
 Em A entram sete unidades, das quais cinco
 seguem ao destino e duas ao vértice B.
 
-00:00:10.662 --> 00:00:16.070
+00:00:12.590 --> 00:00:19.090
 Em B entram três mais duas unidades, e todas as
 cinco saem para o destino.
 
-00:00:16.200 --> 00:00:20.459
+00:00:19.090 --> 00:00:24.080
 O valor do fluxo é sete mais três, que dá dez
 unidades.
 
-00:00:21.069 --> 00:00:26.236
+00:00:24.650 --> 00:00:30.490
 Da origem até B, a folga direta vale seis menos
 três, que dá três.
 
-00:00:26.366 --> 00:00:31.298
+00:00:30.490 --> 00:00:36.030
 No sentido de B para a origem, há três unidades
 que podemos desfazer.
 
-00:00:31.428 --> 00:00:37.034
+00:00:36.030 --> 00:00:44.310
 O arco de A até o destino está saturado, pois
 carrega toda a sua capacidade.
 
-00:00:37.164 --> 00:00:41.353
+00:00:44.310 --> 00:00:49.920
 O desenho inclui apenas arcos residuais com
 folga positiva.
 
-00:00:41.963 --> 00:00:47.650
+00:00:50.490 --> 00:00:56.650
 Edmonds Karp usa a busca em largura para visitar
 vértices por distância em arcos.
 
-00:00:47.780 --> 00:00:51.937
+00:00:56.650 --> 00:01:02.890
 A e B aparecem na primeira camada, ambos a um
 arco da origem.
 
-00:00:52.067 --> 00:00:57.600
+00:01:02.890 --> 00:01:09.440
 Qual deles leva ao destino na etapa seguinte,
 usando apenas folgas positivas?
 
-00:01:01.730 --> 00:01:07.791
+00:01:13.520 --> 00:01:20.180
 A busca chega ao destino por B, que tem três
 unidades de capacidade residual até lá.
 
-00:01:07.921 --> 00:01:12.679
+00:01:20.180 --> 00:01:25.280
 Os dois arcos têm folga três, então o gargalo
 também vale três.
 
-00:01:12.809 --> 00:01:17.779
+00:01:25.280 --> 00:01:31.920
 Some três ao fluxo atual nos arcos da origem
 para B e de B ao destino.
 
-00:01:18.389 --> 00:01:23.463
+00:01:32.520 --> 00:01:38.360
 Da origem para B, o fluxo passa de três para
 seis e satura o arco.
 
-00:01:23.593 --> 00:01:28.829
+00:01:38.360 --> 00:01:44.700
 De B para o destino, o fluxo passa de cinco para
 oito e também satura.
 
-00:01:28.959 --> 00:01:33.729
+00:01:44.700 --> 00:01:50.240
 O novo valor na origem é sete mais seis, que
 soma treze unidades.
 
-00:01:34.339 --> 00:01:38.786
+00:01:50.810 --> 00:01:56.410
 Recomece a busca na origem, usando os residuais
 depois do aumento.
 
-00:01:38.916 --> 00:01:43.166
+00:01:56.410 --> 00:02:03.750
 A origem ainda alcança A, e a ligação de A para
 B alcança B.
 
-00:01:43.296 --> 00:01:48.925
+00:02:03.750 --> 00:02:09.760
 O destino fica de fora porque os dois arcos que
 entravam nele ficaram saturados.
 
-00:01:49.535 --> 00:01:55.385
+00:02:10.320 --> 00:02:17.700
 O corte separa os vértices alcançáveis na
 residual dos vértices fora desse conjunto.
 
-00:01:55.515 --> 00:02:00.737
+00:02:17.700 --> 00:02:25.170
 Na rede original, só os arcos de A e de B
 atravessam na direção do destino.
 
-00:02:00.867 --> 00:02:07.590
+00:02:25.170 --> 00:02:33.520
 Some suas capacidades, cinco mais oito, e
 obtenha uma capacidade de corte igual a treze.
 
-00:02:08.200 --> 00:02:13.622
+00:02:34.090 --> 00:02:40.870
 A capacidade de qualquer corte limita por cima o
 valor de todo fluxo viável.
 
-00:02:13.752 --> 00:02:18.908
+00:02:40.870 --> 00:02:49.510
 Encontramos um fluxo de treze e um corte com
 capacidade exatamente treze.
 
-00:02:19.038 --> 00:02:23.102
+00:02:49.510 --> 00:02:55.920
 A igualdade prova que o fluxo é máximo e que o
 corte é mínimo.

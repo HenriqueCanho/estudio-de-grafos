@@ -1,116 +1,116 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.839
+00:00:00.090 --> 00:00:07.330
 Um conjunto é independente quando não existe
 aresta entre nenhum par de vértices escolhidos.
 
-00:00:05.968 --> 00:00:11.344
+00:00:07.330 --> 00:00:14.530
 Aqui, os vértices A e D formam um conjunto
 maximal com apenas dois elementos.
 
-00:00:11.474 --> 00:00:16.685
+00:00:14.530 --> 00:00:20.960
 Para verificar isso, confira que cada vértice de
 fora é vizinho de A ou de D.
 
-00:00:17.295 --> 00:00:21.995
+00:00:21.530 --> 00:00:29.790
 O conjunto A, C e E também é independente e já
 tem três vértices.
 
-00:00:22.125 --> 00:00:28.058
+00:00:29.790 --> 00:00:37.990
 Se você incluir o centro F, todos os outros
 vértices ficam bloqueados de uma vez.
 
-00:00:28.188 --> 00:00:34.086
+00:00:37.990 --> 00:00:46.730
 Se excluir F, pode escolher no máximo uma ponta
 de cada aresta destacada na borda.
 
-00:00:34.216 --> 00:00:39.519
+00:00:46.730 --> 00:00:53.920
 São três arestas que cobrem a borda toda, então
 três é o tamanho máximo.
 
-00:00:40.129 --> 00:00:47.026
+00:00:54.480 --> 00:01:03.160
 A heurística para conjunto independente prefere
 grau baixo para bloquear poucos vértices a cada
 escolha.
 
-00:00:47.156 --> 00:00:52.707
+00:01:03.160 --> 00:01:10.680
 Inclua um candidato e retire do grafo restante
 esse candidato e todos os seus vizinhos.
 
-00:00:52.837 --> 00:00:59.163
+00:01:10.680 --> 00:01:19.840
 No complemento, cada par sem aresta passa a ter
 aresta. Assim, um independente vira clique.
 
-00:00:59.773 --> 00:01:05.157
+00:01:20.400 --> 00:01:26.740
 Numa clique com quatro vértices, cada par
 distinto tem uma aresta dentro do grupo.
 
-00:01:05.287 --> 00:01:11.961
+00:01:26.740 --> 00:01:35.080
 No desenho, dois, três, seis e sete formam um
 subgrafo completo com seis arestas.
 
-00:01:12.091 --> 00:01:17.362
+00:01:35.080 --> 00:01:42.280
 A heurística da aula começa com um vértice de
 grau alto e filtra seus vizinhos.
 
-00:01:17.492 --> 00:01:21.317
+00:01:42.280 --> 00:01:46.960
 Confira todas as duplas antes de chamar o grupo
 de clique.
 
-00:01:21.926 --> 00:01:28.148
+00:01:47.530 --> 00:01:55.530
 Um conjunto dominante cobre cada vértice
 escolhido e também os vizinhos diretos dos
 escolhidos.
 
-00:01:28.278 --> 00:01:33.943
+00:01:55.530 --> 00:02:03.280
 Observe a figura e tente apontar um único
 vértice cuja escolha cubra todos os outros.
 
-00:01:38.073 --> 00:01:44.224
+00:02:07.370 --> 00:02:16.250
 O centro F é adjacente aos seis vértices da
 borda. Com ele, todos estão cobertos.
 
-00:01:44.354 --> 00:01:49.623
+00:02:16.250 --> 00:02:24.530
 O conjunto vazio não cobre nenhum vértice, então
 o número de dominação é um.
 
-00:01:49.753 --> 00:01:55.818
+00:02:24.530 --> 00:02:35.250
 Por outro lado, um independente maximal é
 dominante porque já bloqueia todo vértice de
 fora.
 
-00:01:55.948 --> 00:02:01.774
+00:02:35.250 --> 00:02:43.280
 O exemplo da página sessenta mostra que a
 estratégia de maior grau pode exceder o mínimo.
 
-00:02:02.384 --> 00:02:09.662
+00:02:43.850 --> 00:02:51.010
 No casamento, escolha arestas que ocupam pares
 disjuntos de vértices. Cada ponta fica saturada.
 
-00:02:09.792 --> 00:02:16.619
+00:02:51.010 --> 00:02:58.550
 As duas arestas destacadas ocupam quatro
 vértices. Os vértices três e seis estão livres.
 
-00:02:16.749 --> 00:02:22.894
+00:02:58.550 --> 00:03:05.130
 Como três e seis não têm ligação, você não
 consegue acrescentar uma aresta diretamente.
 
-00:02:23.024 --> 00:02:28.750
+00:03:05.130 --> 00:03:12.000
 Esse casamento é maximal. Para saber se é
 máximo, procure uma cadeia aumentante.
 
-00:02:29.360 --> 00:02:35.862
+00:03:12.560 --> 00:03:20.560
 Siga seis, um, dois, três. A primeira e a última
 aresta estão fora do casamento.
 
-00:02:35.992 --> 00:02:40.892
+00:03:20.560 --> 00:03:26.490
 A aresta entre um e dois está dentro. Faça a
 troca ao longo desse caminho.
 
-00:02:41.022 --> 00:02:47.386
+00:03:26.490 --> 00:03:34.460
 Entram duas arestas e sai uma. Agora há três
 arestas e todos os vértices ficam saturados.
 
-00:02:47.516 --> 00:02:53.635
+00:03:34.460 --> 00:03:41.120
 A inexistência de cadeia aumentante caracteriza
 o casamento máximo pelo teorema de Berge.

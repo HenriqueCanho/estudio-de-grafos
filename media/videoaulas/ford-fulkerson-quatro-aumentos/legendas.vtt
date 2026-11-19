@@ -1,104 +1,104 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:04.761
+00:00:00.090 --> 00:00:06.130
 A origem envia o fluxo e o destino recebe tudo
 que atravessa a rede.
 
-00:00:04.891 --> 00:00:09.710
+00:00:06.130 --> 00:00:11.870
 Cada arco orientado tem um limite, indicado pelo
 número perto da seta.
 
-00:00:09.840 --> 00:00:14.969
+00:00:11.870 --> 00:00:18.170
 Nos vértices intermediários, o fluxo que entra
 precisa igualar o que sai.
 
-00:00:15.099 --> 00:00:21.413
+00:00:18.170 --> 00:00:24.720
 Para aplicar Ford Fulkerson neste exemplo,
 começamos com fluxo zero em todos os arcos.
 
-00:00:22.023 --> 00:00:27.167
+00:00:25.300 --> 00:00:31.380
 A folga direta é a capacidade original menos o
 fluxo que já passa no arco.
 
-00:00:27.297 --> 00:00:33.265
+00:00:31.380 --> 00:00:38.480
 A contribuição reversa é o fluxo enviado, pois
 essa quantidade pode ser desfeita.
 
-00:00:33.395 --> 00:00:39.408
+00:00:38.480 --> 00:00:45.760
 Escolha um caminho da origem ao destino usando
 somente arcos residuais com folga positiva.
 
-00:00:40.018 --> 00:00:45.545
+00:00:46.320 --> 00:00:52.250
 A mesma quantidade de fluxo adicional precisa
 caber em todos os arcos do caminho.
 
-00:00:45.675 --> 00:00:52.351
+00:00:52.250 --> 00:01:00.800
 Entre dezesseis, doze, nove, catorze e quatro,
 qual residual limita o aumento possível?
 
-00:00:56.481 --> 00:01:00.847
+00:01:04.890 --> 00:01:10.240
 O menor residual é quatro, no arco que liga vê
 quatro ao destino.
 
-00:01:00.977 --> 00:01:07.026
+00:01:10.240 --> 00:01:17.040
 Subtraia quatro dos residuais percorridos e some
 quatro aos seus respectivos inversos.
 
-00:01:07.156 --> 00:01:11.893
+00:01:17.040 --> 00:01:23.600
 Da origem até vê um restam doze unidades, e a
 reversa ganha quatro.
 
-00:01:12.023 --> 00:01:17.365
+00:01:23.600 --> 00:01:30.080
 Agora o fluxo vale quatro e a rede residual
 serve para buscar outro caminho.
 
-00:01:17.975 --> 00:01:22.976
+00:01:30.650 --> 00:01:36.610
 No segundo caminho, passamos de vê um para vê
 dois e depois para vê quatro.
 
-00:01:23.106 --> 00:01:26.717
+00:01:36.610 --> 00:01:41.170
 A menor folga é sete, entre vê quatro e vê três.
 
-00:01:26.847 --> 00:01:32.281
+00:01:41.170 --> 00:01:47.760
 Após atualizar os arcos desse caminho e os
 inversos, o fluxo sobe para onze.
 
-00:01:32.891 --> 00:01:38.615
+00:01:48.420 --> 00:01:55.160
 De vê dois para vê um, a capacidade original
 quatro soma com sete reversos.
 
-00:01:38.745 --> 00:01:42.691
+00:01:55.160 --> 00:01:59.810
 O gargalo é oito, no arco que vai de vê um para
 vê três.
 
-00:01:42.821 --> 00:01:48.663
+00:01:59.810 --> 00:02:06.120
 Podemos cancelar sete unidades de vê um para vê
 dois, enviando uma no sentido oposto.
 
-00:01:48.793 --> 00:01:53.133
+00:02:06.120 --> 00:02:10.800
 O aumento de oito leva o valor do fluxo de onze
 para dezenove.
 
-00:01:53.743 --> 00:01:58.120
+00:02:11.370 --> 00:02:17.530
 De vê dois para vê três, toda a folga vem de um
 envio anterior.
 
-00:01:58.250 --> 00:02:03.836
+00:02:17.530 --> 00:02:25.050
 As quatro unidades reversas cancelam o fluxo que
 ia de vê três para vê dois.
 
-00:02:03.966 --> 00:02:07.667
+00:02:25.050 --> 00:02:30.000
 O valor total aumenta de dezenove para vinte e
 três.
 
-00:02:08.277 --> 00:02:13.491
+00:02:30.570 --> 00:02:37.490
 Da origem, ainda alcançamos vê um, vê dois e vê
 quatro na rede residual.
 
-00:02:13.621 --> 00:02:18.959
+00:02:37.490 --> 00:02:45.190
 Nenhum arco residual positivo leva desses
 vértices até vê três ou ao destino.
 
-00:02:19.089 --> 00:02:24.923
+00:02:45.190 --> 00:02:51.920
 Sem outro caminho aumentante, o algoritmo
 termina com fluxo máximo de vinte e três.

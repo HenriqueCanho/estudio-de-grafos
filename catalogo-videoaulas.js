@@ -16,7 +16,19 @@ const videoaulas = [
       2,
       3
     ],
-    "duracao": 157.08,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      21.977,
+      42.816,
+      63.221,
+      78.341,
+      102.163,
+      116.024,
+      135.31,
+      157.08
+    ],
+    "duracao": 187.6,
     "capitulos": [
       {
         "tempo": 0,
@@ -29,7 +41,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 21.977,
+        "tempo": 31.6,
         "titulo": "Fixe o vértice de partida",
         "fala": [
           "No grafo completo, uma sequência de três ou mais vértices distintos sempre fecha.",
@@ -39,7 +51,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 42.816,
+        "tempo": 56.8,
         "titulo": "Os três ciclos de K₄",
         "fala": [
           "No completo de quatro vértices, sobram três posições depois da partida.",
@@ -49,7 +61,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 63.221,
+        "tempo": 80.32,
         "titulo": "A fórmula do total e o caso de K₅",
         "fala": [
           "Para ene vértices, permute os ene menos um vértices depois da partida.",
@@ -58,7 +70,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 78.341,
+        "tempo": 98.64,
         "titulo": "O limite de ciclos disjuntos",
         "fala": [
           "Ciclos disjuntos em arestas passam pelos mesmos vértices usando sempre ligações diferentes.",
@@ -68,7 +80,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 102.163,
+        "tempo": 125.84,
         "titulo": "Qual ciclo sobra em K₅?",
         "fala": [
           "O ciclo destacado usa as cinco arestas do contorno do grafo.",
@@ -76,7 +88,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 116.024,
+        "tempo": 140.32,
         "titulo": "As diagonais fecham um segundo ciclo",
         "fala": [
           "Siga de um para três, cinco, dois, quatro, e volte para um.",
@@ -86,7 +98,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 135.31,
+        "tempo": 164.16,
         "titulo": "Em K₄ só um ciclo por vez",
         "fala": [
           "No completo de quatro vértices, cada vértice tem três arestas incidentes.",
@@ -115,7 +127,20 @@ const videoaulas = [
       4,
       7
     ],
-    "duracao": 152.09,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      16.54,
+      36.703,
+      58.933,
+      72.846,
+      88.062,
+      105.587,
+      121.207,
+      135.417,
+      152.09
+    ],
+    "duracao": 193.04,
     "capitulos": [
       {
         "tempo": 0,
@@ -127,7 +152,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 16.54,
+        "tempo": 24.48,
         "titulo": "O hexágono também tem ciclo",
         "fala": [
           "Retiramos as três diagonais do exemplo, deixando apenas as seis arestas do contorno.",
@@ -137,7 +162,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 36.703,
+        "tempo": 47.04,
         "titulo": "Por que contar componentes",
         "fala": [
           "Retirar um vértice de um ciclo deixa um único trecho, com duas pontas.",
@@ -147,7 +172,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 58.933,
+        "tempo": 72.0,
         "titulo": "O que muda quando retiramos p?",
         "fala": [
           "Imagine que retiramos o vértice pê com todas as suas ligações.",
@@ -155,7 +180,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 72.846,
+        "tempo": 90.64,
         "titulo": "Duas componentes excluem o ciclo",
         "fala": [
           "A remoção deixa dois grupos, e dois é maior que um.",
@@ -164,7 +189,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 88.062,
+        "tempo": 107.28,
         "titulo": "Teste um conjunto de dois vértices",
         "fala": [
           "Neste grafo, retirar apenas a ou apenas b ainda deixa todos conectados.",
@@ -173,7 +198,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 105.587,
+        "tempo": 126.48,
         "titulo": "Grau dois força as duas arestas",
         "fala": [
           "Cada vértice precisa de uma chegada e uma saída num ciclo hamiltoniano.",
@@ -182,7 +207,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 121.207,
+        "tempo": 149.92,
         "titulo": "Descarte as saídas que perderam espaço",
         "fala": [
           "Os vértices c e e já têm duas arestas obrigatórias cada.",
@@ -191,7 +216,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 135.417,
+        "tempo": 171.84,
         "titulo": "Um ciclo obrigatório fecha cedo",
         "fala": [
           "As ligações restantes de dáblio e xis forçam o triângulo destacado.",
@@ -218,7 +243,20 @@ const videoaulas = [
       5,
       8
     ],
-    "duracao": 157.78,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      15.521,
+      36.101,
+      55.208,
+      68.639,
+      83.034,
+      101.327,
+      120.094,
+      136.474,
+      157.78
+    ],
+    "duracao": 199.68,
     "capitulos": [
       {
         "tempo": 0,
@@ -230,7 +268,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 15.521,
+        "tempo": 18.8,
         "titulo": "A regra da menor saída disponível",
         "fala": [
           "Comece em qualquer cidade e marque essa cidade como a primeira visitada.",
@@ -240,7 +278,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 36.101,
+        "tempo": 40.48,
         "titulo": "Primeira escolha no grafo de cinco cidades",
         "fala": [
           "Do vértice esse, as quatro cidades restantes ainda estão disponíveis para visita.",
@@ -249,7 +287,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 55.208,
+        "tempo": 64.88,
         "titulo": "A primeira aresta custa cinco",
         "fala": [
           "A opção de menor custo é vê, porque a aresta vale cinco.",
@@ -258,7 +296,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 68.639,
+        "tempo": 83.92,
         "titulo": "Complete as visitas em ordem",
         "fala": [
           "De vê seguimos a dáblio, com seis, e de dáblio comparamos u e zê.",
@@ -267,7 +305,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 83.034,
+        "tempo": 102.32,
         "titulo": "Some também a última aresta",
         "fala": [
           "A partir de zê, voltamos à cidade inicial pela ligação de custo nove.",
@@ -276,7 +314,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 101.327,
+        "tempo": 125.28,
         "titulo": "Três escolhas baratas e uma volta cara",
         "fala": [
           "Neste novo grafo, parta do vértice esse e use as saídas de menor custo.",
@@ -286,7 +324,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 120.094,
+        "tempo": 148.08,
         "titulo": "Um ciclo mais barato no mesmo grafo",
         "fala": [
           "Agora saímos de casa, passamos por tê, vê, u e voltamos ao vértice inicial.",
@@ -295,7 +333,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 136.474,
+        "tempo": 171.2,
         "titulo": "Compare partidas e ciclos completos",
         "fala": [
           "Fixando a partida e identificando sentidos inversos, existem três ciclos neste grafo.",
@@ -328,7 +366,20 @@ const videoaulas = [
       4,
       10
     ],
-    "duracao": 148.04,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      16.098,
+      31.388,
+      49.09,
+      66.249,
+      85.766,
+      98.41,
+      114.161,
+      130.869,
+      148.04
+    ],
+    "duracao": 176.48,
     "capitulos": [
       {
         "tempo": 0,
@@ -340,7 +391,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 16.098,
+        "tempo": 20.0,
         "titulo": "As três primeiras escolhas",
         "fala": [
           "Comece pelo vértice um, que recebe a primeira cor porque seus vizinhos ainda estão livres.",
@@ -349,7 +400,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 31.388,
+        "tempo": 38.72,
         "titulo": "A quarta cor aparece no nove",
         "fala": [
           "Quando chega a vez do nove, seus vizinhos já usam três cores diferentes.",
@@ -358,7 +409,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 49.09,
+        "tempo": 58.16,
         "titulo": "O grau decide a primeira prioridade",
         "fala": [
           "A regra da página cinquenta e quatro prioriza os vértices sem cor de maior grau.",
@@ -367,7 +418,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 66.249,
+        "tempo": 77.2,
         "titulo": "O começo de Welch–Powell",
         "fala": [
           "Começamos por um, três e nove, os três vértices de grau cinco.",
@@ -377,7 +428,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 85.766,
+        "tempo": 104.8,
         "titulo": "Quem avança entre quatro e seis?",
         "fala": [
           "Quatro e seis têm o mesmo grau, com três vizinhos cada um.",
@@ -385,7 +436,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 98.41,
+        "tempo": 118.08,
         "titulo": "Seis tem duas cores bloqueadas",
         "fala": [
           "O quatro vê apenas a primeira cor, que já pertence ao nove.",
@@ -394,7 +445,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 114.161,
+        "tempo": 138.24,
         "titulo": "A sequência registrada nos slides",
         "fala": [
           "A execução da página cinquenta e seis registra quatro antes de seis.",
@@ -403,7 +454,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 130.869,
+        "tempo": 156.32,
         "titulo": "Por que três cores bastam e são necessárias",
         "fala": [
           "Os vértices um, dois e três formam um triângulo e exigem cores diferentes.",
@@ -439,7 +490,19 @@ const videoaulas = [
       2,
       4
     ],
-    "duracao": 126.96,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      17.086,
+      33.661,
+      46.552,
+      62.714,
+      80.111,
+      94.369,
+      111.821,
+      126.96
+    ],
+    "duracao": 146.0,
     "capitulos": [
       {
         "tempo": 0,
@@ -451,7 +514,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 17.086,
+        "tempo": 19.28,
         "titulo": "Profundidade segue um ramo",
         "fala": [
           "Em profundidade, percorremos o primeiro ramo disponível até precisar voltar ao vértice anterior.",
@@ -460,7 +523,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 33.661,
+        "tempo": 39.44,
         "titulo": "Que cor sobra para C?",
         "fala": [
           "O próximo vizinho disponível de E é C, que ainda está sem cor.",
@@ -468,7 +531,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 46.552,
+        "tempo": 53.6,
         "titulo": "A quarta cor nesta execução",
         "fala": [
           "C encontra as três primeiras cores em D, B e E e escolhe a quarta.",
@@ -477,7 +540,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 62.714,
+        "tempo": 71.28,
         "titulo": "Largura usa uma fila",
         "fala": [
           "Em largura, colocamos primeiro na fila todos os vizinhos que D acaba de descobrir.",
@@ -486,7 +549,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 80.111,
+        "tempo": 91.2,
         "titulo": "Largura termina com três cores",
         "fala": [
           "C recebe a terceira cor, e então E pode reutilizar a segunda.",
@@ -495,7 +558,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 94.369,
+        "tempo": 107.12,
         "titulo": "O triângulo certifica o mínimo",
         "fala": [
           "Os vértices B, C e D formam um triângulo e exigem três cores distintas.",
@@ -504,7 +567,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 111.821,
+        "tempo": 129.44,
         "titulo": "Aplique a prova ao centro e aos cantos",
         "fala": [
           "No item B da questão dois, o vértice cinco é ligado aos quatro cantos.",
@@ -538,7 +601,20 @@ const videoaulas = [
       2,
       7
     ],
-    "duracao": 157.43,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      17.662,
+      36.027,
+      53.438,
+      67.565,
+      79.113,
+      96.51,
+      113.174,
+      138.551,
+      157.43
+    ],
+    "duracao": 190.64,
     "capitulos": [
       {
         "tempo": 0,
@@ -550,7 +626,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 17.662,
+        "tempo": 21.04,
         "titulo": "Uma escala com quatro horários",
         "fala": [
           "No primeiro horário, as duplas A B, C E e D F cobrem seis pessoas diferentes.",
@@ -559,7 +635,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 36.027,
+        "tempo": 44.72,
         "titulo": "Limites pelo grau máximo",
         "fala": [
           "As arestas incidentes num vértice de grau máximo exigem uma cor diferente para cada uma.",
@@ -568,7 +644,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 53.438,
+        "tempo": 66.8,
         "titulo": "Duas cores bastam no triângulo?",
         "fala": [
           "No triângulo, cada vértice tem grau dois e o limite inferior vale dois.",
@@ -576,7 +652,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 67.565,
+        "tempo": 82.72,
         "titulo": "Cada par de arestas se encontra",
         "fala": [
           "Cada aresta toca as outras duas em algum vértice, então nenhuma cor pode se repetir.",
@@ -584,7 +660,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 79.113,
+        "tempo": 96.64,
         "titulo": "O cruzamento do desenho pode desaparecer",
         "fala": [
           "O grafo completo de quatro vértices aparece com duas diagonais cruzadas neste desenho.",
@@ -593,7 +669,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 96.51,
+        "tempo": 115.2,
         "titulo": "Um desenho planar com quatro faces",
         "fala": [
           "Mova D para dentro do triângulo e ligue esse vértice às três pontas.",
@@ -602,7 +678,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 113.174,
+        "tempo": 137.92,
         "titulo": "Dez arestas ultrapassam o limite",
         "fala": [
           "Um grafo simples planar tem até três vezes o número de vértices menos seis arestas.",
@@ -612,7 +688,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 138.551,
+        "tempo": 169.68,
         "titulo": "Quatro cores nos vértices planares",
         "fala": [
           "O teorema das quatro cores garante até quatro cores nos vértices de um grafo planar.",
@@ -648,7 +724,19 @@ const videoaulas = [
       6,
       10
     ],
-    "duracao": 124.07,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      15.11,
+      35.729,
+      50.085,
+      66.328,
+      81.171,
+      93.312,
+      108.599,
+      124.07
+    ],
+    "duracao": 149.84,
     "capitulos": [
       {
         "tempo": 0,
@@ -660,7 +748,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 15.11,
+        "tempo": 15.36,
         "titulo": "Primeira junção",
         "fala": [
           "Retire duas raízes de menor peso e crie um pai cuja frequência seja a soma.",
@@ -670,7 +758,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 35.729,
+        "tempo": 40.24,
         "titulo": "Antecipe a próxima junção",
         "fala": [
           "A fila atual começa pelo espaço e tem três letras de peso três.",
@@ -678,7 +766,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 50.085,
+        "tempo": 57.52,
         "titulo": "Forme os nós cinco e seis",
         "fala": [
           "O espaço pesa dois e a letra B pesa três, então o pai pesa cinco.",
@@ -687,7 +775,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 66.328,
+        "tempo": 82.56,
         "titulo": "Junte as árvores mais leves",
         "fala": [
           "Quatro e cinco são os menores pesos, então suas árvores ganham um pai de peso nove.",
@@ -696,7 +784,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 81.171,
+        "tempo": 101.36,
         "titulo": "Encontre a raiz final",
         "fala": [
           "Junte seis e nove para obter a raiz de peso quinze.",
@@ -705,7 +793,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 93.312,
+        "tempo": 114.96,
         "titulo": "Leia um código da árvore",
         "fala": [
           "Para chegar ao espaço, vá à direita duas vezes e depois à esquerda.",
@@ -714,7 +802,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 108.599,
+        "tempo": 130.72,
         "titulo": "Codifique a palavra bom",
         "fala": [
           "Troque cada letra pelo seu código, obedecendo à ordem da palavra bom.",
@@ -752,7 +840,20 @@ const videoaulas = [
       9,
       11
     ],
-    "duracao": 159.5,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      14.415,
+      28.332,
+      40.797,
+      56.402,
+      77.861,
+      103.411,
+      119.79,
+      136.103,
+      159.5
+    ],
+    "duracao": 225.68,
     "capitulos": [
       {
         "tempo": 0,
@@ -764,7 +865,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 14.415,
+        "tempo": 17.04,
         "titulo": "Leia o primeiro grupo",
         "fala": [
           "Um, zero, um nos leva à folha que guarda a letra S.",
@@ -773,7 +874,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 28.332,
+        "tempo": 49.36,
         "titulo": "Antecipe o próximo símbolo",
         "fala": [
           "Você acabou de emitir a letra M e está novamente na raiz.",
@@ -781,7 +882,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 40.797,
+        "tempo": 65.68,
         "titulo": "O espaço também é uma folha",
         "fala": [
           "Dois ramos à direita e um à esquerda levam à folha do espaço.",
@@ -790,7 +891,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 56.402,
+        "tempo": 89.6,
         "titulo": "Some as contribuições das folhas",
         "fala": [
           "De volta ao texto bom esse bombom, a letra O ocorre três vezes.",
@@ -800,7 +901,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 77.861,
+        "tempo": 120.0,
         "titulo": "Identifique a referência do ganho",
         "fala": [
           "Para seis símbolos distintos, dois bits seriam insuficientes e três bits oferecem oito combinações.",
@@ -810,7 +911,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 103.411,
+        "tempo": 151.44,
         "titulo": "Guarde cada nó em um vetor",
         "fala": [
           "Seis folhas exigem cinco junções, e cada junção cria um nó interno.",
@@ -819,7 +920,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 119.79,
+        "tempo": 170.48,
         "titulo": "Reconstrua o código de baixo para cima",
         "fala": [
           "Subindo da letra S, anote um no ramo direito e depois anteponha zero.",
@@ -828,7 +929,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 136.103,
+        "tempo": 196.48,
         "titulo": "Separe a fila da árvore",
         "fala": [
           "A fila de prioridade guarda raízes disponíveis, enquanto o vetor conserva os nós criados.",
@@ -867,7 +968,19 @@ const videoaulas = [
       7,
       8
     ],
-    "duracao": 145.53,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      22.023,
+      40.018,
+      56.481,
+      77.975,
+      92.891,
+      113.743,
+      128.277,
+      145.53
+    ],
+    "duracao": 172.4,
     "capitulos": [
       {
         "tempo": 0,
@@ -880,7 +993,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 22.023,
+        "tempo": 25.2,
         "titulo": "Trabalhe na rede residual",
         "fala": [
           "A folga direta é a capacidade original menos o fluxo que já passa no arco.",
@@ -889,7 +1002,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 40.018,
+        "tempo": 46.24,
         "titulo": "Antecipe o primeiro gargalo",
         "fala": [
           "A mesma quantidade de fluxo adicional precisa caber em todos os arcos do caminho.",
@@ -897,7 +1010,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 56.481,
+        "tempo": 64.8,
         "titulo": "Aumente quatro unidades",
         "fala": [
           "O menor residual é quatro, no arco que liga vê quatro ao destino.",
@@ -907,7 +1020,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 77.975,
+        "tempo": 90.56,
         "titulo": "Segundo caminho: some sete",
         "fala": [
           "No segundo caminho, passamos de vê um para vê dois e depois para vê quatro.",
@@ -916,7 +1029,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 92.891,
+        "tempo": 108.24,
         "titulo": "Terceiro caminho: use a reversa",
         "fala": [
           "De vê dois para vê um, a capacidade original quatro soma com sete reversos.",
@@ -926,7 +1039,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 113.743,
+        "tempo": 131.28,
         "titulo": "Quarto caminho: desfaça um envio",
         "fala": [
           "De vê dois para vê três, toda a folga vem de um envio anterior.",
@@ -935,7 +1048,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 128.277,
+        "tempo": 150.48,
         "titulo": "Encerre quando o destino ficar inacessível",
         "fala": [
           "Da origem, ainda alcançamos vê um, vê dois e vê quatro na rede residual.",
@@ -971,7 +1084,19 @@ const videoaulas = [
       10,
       13
     ],
-    "duracao": 143.71,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      21.069,
+      41.963,
+      61.73,
+      78.389,
+      94.339,
+      109.535,
+      128.2,
+      143.71
+    ],
+    "duracao": 176.4,
     "capitulos": [
       {
         "tempo": 0,
@@ -984,7 +1109,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 21.069,
+        "tempo": 24.56,
         "titulo": "Obtenha a residual do fluxo existente",
         "fala": [
           "Da origem até B, a folga direta vale seis menos três, que dá três.",
@@ -994,7 +1119,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 41.963,
+        "tempo": 50.4,
         "titulo": "Antecipe o caminho da busca em largura",
         "fala": [
           "Edmonds Karp usa a busca em largura para visitar vértices por distância em arcos.",
@@ -1003,7 +1128,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 61.73,
+        "tempo": 73.44,
         "titulo": "Encontre o caminho de dois arcos",
         "fala": [
           "A busca chega ao destino por B, que tem três unidades de capacidade residual até lá.",
@@ -1012,7 +1137,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 78.389,
+        "tempo": 92.4,
         "titulo": "Atualize o fluxo nos arcos originais",
         "fala": [
           "Da origem para B, o fluxo passa de três para seis e satura o arco.",
@@ -1021,7 +1146,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 94.339,
+        "tempo": 110.72,
         "titulo": "Refaça a busca na residual atualizada",
         "fala": [
           "Recomece a busca na origem, usando os residuais depois do aumento.",
@@ -1030,7 +1155,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 109.535,
+        "tempo": 130.24,
         "titulo": "Some as capacidades originais do corte",
         "fala": [
           "O corte separa os vértices alcançáveis na residual dos vértices fora desse conjunto.",
@@ -1039,7 +1164,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 128.2,
+        "tempo": 154.0,
         "titulo": "Certifique os dois ótimos",
         "fala": [
           "A capacidade de qualquer corte limita por cima o valor de todo fluxo viável.",
@@ -1075,7 +1200,19 @@ const videoaulas = [
       "heuristicas-conjuntos"
     ],
     "questoes": [],
-    "duracao": 174.25,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      17.295,
+      40.129,
+      59.773,
+      81.926,
+      98.073,
+      122.384,
+      149.36,
+      174.25
+    ],
+    "duracao": 221.6,
     "capitulos": [
       {
         "tempo": 0,
@@ -1087,7 +1224,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 17.295,
+        "tempo": 21.44,
         "titulo": "Por que três é o máximo?",
         "fala": [
           "O conjunto A, C e E também é independente e já tem três vértices.",
@@ -1097,7 +1234,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 40.129,
+        "tempo": 54.4,
         "titulo": "Escolha gulosa e complemento",
         "fala": [
           "A heurística para conjunto independente prefere grau baixo para bloquear poucos vértices a cada escolha.",
@@ -1106,7 +1243,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 59.773,
+        "tempo": 80.32,
         "titulo": "Reconheça uma clique",
         "fala": [
           "Numa clique com quatro vértices, cada par distinto tem uma aresta dentro do grupo.",
@@ -1116,7 +1253,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 81.926,
+        "tempo": 107.44,
         "titulo": "Preveja quem domina o grafo",
         "fala": [
           "Um conjunto dominante cobre cada vértice escolhido e também os vizinhos diretos dos escolhidos.",
@@ -1124,7 +1261,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 98.073,
+        "tempo": 127.28,
         "titulo": "Certifique a dominação mínima",
         "fala": [
           "O centro F é adjacente aos seis vértices da borda. Com ele, todos estão cobertos.",
@@ -1134,7 +1271,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 122.384,
+        "tempo": 163.76,
         "titulo": "Um casamento ocupa duas pontas",
         "fala": [
           "No casamento, escolha arestas que ocupam pares disjuntos de vértices. Cada ponta fica saturada.",
@@ -1144,7 +1281,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 149.36,
+        "tempo": 192.48,
         "titulo": "Alterne para aumentar o casamento",
         "fala": [
           "Siga seis, um, dois, três. A primeira e a última aresta estão fora do casamento.",
@@ -1177,7 +1314,19 @@ const videoaulas = [
       "ajuste-hungaro"
     ],
     "questoes": [],
-    "duracao": 154.05,
+    "revisaoMidia": 2,
+    "marcasAnteriores": [
+      0,
+      19.274,
+      39.261,
+      58.381,
+      74.456,
+      94.656,
+      115.085,
+      135.214,
+      154.05
+    ],
+    "duracao": 184.48,
     "capitulos": [
       {
         "tempo": 0,
@@ -1189,7 +1338,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 19.274,
+        "tempo": 22.32,
         "titulo": "Subtraia o mínimo de cada linha",
         "fala": [
           "Na primeira linha, subtraia três. Na segunda e na terceira, subtraia dois de cada célula.",
@@ -1198,7 +1347,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 39.261,
+        "tempo": 45.6,
         "titulo": "Agora reduza as colunas",
         "fala": [
           "Na matriz reduzida por linhas, as colunas têm mínimos zero, um e zero, respectivamente.",
@@ -1207,7 +1356,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 58.381,
+        "tempo": 68.64,
         "titulo": "Preveja a posição do último zero",
         "fala": [
           "A primeira linha só pode usar a máquina um. A segunda só pode usar a máquina três.",
@@ -1215,7 +1364,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 74.456,
+        "tempo": 86.0,
         "titulo": "Leia o custo na matriz original",
         "fala": [
           "A máquina dois é a escolha da terceira linha. Assim temos três zeros em colunas distintas.",
@@ -1224,7 +1373,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 94.656,
+        "tempo": 113.76,
         "titulo": "Quando os zeros entram em conflito",
         "fala": [
           "No segundo exemplo, depois das duas reduções, as duas primeiras linhas só têm zero na primeira coluna.",
@@ -1233,7 +1382,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 115.085,
+        "tempo": 135.52,
         "titulo": "Ajuste a matriz com o menor descoberto",
         "fala": [
           "Entre as quatro entradas descobertas, o menor valor é três. Subtraia três dessas quatro células.",
@@ -1242,7 +1391,7 @@ const videoaulas = [
         ]
       },
       {
-        "tempo": 135.214,
+        "tempo": 158.56,
         "titulo": "Um ótimo pode ter mais de uma alocação",
         "fala": [
           "Agora os três zeros diagonais são compatíveis. A soma dos custos originais é doze.",

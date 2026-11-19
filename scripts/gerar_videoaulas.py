@@ -19,6 +19,7 @@ SAIDA = RAIZ / 'media' / 'videoaulas'
 LARGURA, ALTURA = 1280, 720
 FPS = 12
 TAXA = 22050
+TAXA_NARRACAO = 24000
 TRANSICAO = 6
 TINTA = '#f4f6ff'
 SECUNDARIA = '#b8c8e7'
@@ -246,9 +247,37 @@ def vtt_tempo(segundos):
     return f'{horas:02d}:{minutos:02d}:{segundos:02d}.{milis:03d}'
 
 
-def gerar_aula(aula, voz):
+def ler_narracao(aula, pasta, sincronia):
+    arquivos = list(pasta.glob(f'??-aula-{aula["aula"]}-{aula["id"]}.wav'))
+    if len(arquivos) != 1:
+        raise ValueError(f'Esperava um WAV para {aula["id"]}, encontrei {len(arquivos)}')
+    with wave.open(str(arquivos[0]), 'rb') as faixa:
+        if (faixa.getframerate(), faixa.getsampwidth(), faixa.getnchannels()) != (TAXA_NARRACAO, 2, 1):
+            raise ValueError(f'Narração precisa estar em PCM mono de 16 bits e 24 kHz: {arquivos[0].name}')
+        finais = sincronia['amostrasFinais']
+        marcas = sincronia['legendas']
+        if len(aula['cenas']) != len(finais) or len(finais) != len(marcas) or finais[-1] != faixa.getnframes():
+            raise ValueError(f'A duração e as cenas da narração divergem da sincronia: {arquivos[0].name}')
+        anterior = 0
+        trechos = []
+        for cena, fim, intervalos in zip(aula['cenas'], finais, marcas):
+            total = fim - anterior
+            limites = [marca for intervalo in intervalos for marca in intervalo]
+            if (total <= 0 or len(intervalos) != len(cena['fala']) or limites != sorted(limites)
+                    or any(not 0 <= inicio < termino <= round(total * 1000 / TAXA_NARRACAO)
+                           for inicio, termino in intervalos)):
+                raise ValueError(f'Intervalos de legenda inválidos em {aula["id"]}, cena {len(trechos) + 1}')
+            trechos.append((faixa.readframes(total), [(a / 1000, b / 1000) for a, b in intervalos]))
+            anterior = fim
+    return trechos
+
+
+def gerar_aula(aula, voz, pasta_narracoes=None, sincronias=None):
     pasta = SAIDA / aula['id']
     pasta.mkdir(parents=True, exist_ok=True)
+    sincronia = sincronias[aula['id']] if sincronias is not None else None
+    narracao = ler_narracao(aula, pasta_narracoes, sincronia) if sincronia else None
+    taxa = TAXA_NARRACAO if narracao else TAXA
     tempo = 0
     capitulos = []
     legendas = ['WEBVTT', '']
@@ -256,22 +285,31 @@ def gerar_aula(aula, voz):
     with tempfile.TemporaryDirectory(prefix='grafos-video-') as temporario:
         tmp = Path(temporario)
         with wave.open(str(tmp / 'narracao.wav'), 'wb') as faixa:
-            faixa.setparams((1, 2, TAXA, 0, 'NONE', 'not compressed'))
+            faixa.setparams((1, 2, taxa, 0, 'NONE', 'not compressed'))
             for i, cena in enumerate(aula['cenas']):
                 inicio = tempo
                 capitulos.append({'tempo': round(tempo, 3), 'titulo': cena['titulo'], 'fala': cena['fala']})
-                for j, fala in enumerate(cena['fala']):
-                    dados = sintetizar(fala, tmp / f'fala-{i}-{j}.wav', voz)
-                    fim = tempo + len(dados) / 2 / TAXA
-                    legenda = '\n'.join(textwrap.wrap(fala, width=48, break_long_words=False))
-                    legendas.extend([f'{vtt_tempo(tempo)} --> {vtt_tempo(fim)}', legenda, ''])
+                if narracao:
+                    dados, intervalos = narracao[i]
                     faixa.writeframesraw(dados)
-                    faixa.writeframesraw(b'\0' * (round(0.13 * TAXA) * 2))
-                    tempo = fim + round(0.13 * TAXA) / TAXA
+                    tempo += len(dados) / 2 / taxa
+                    intervalos = [(inicio + a, inicio + b) for a, b in intervalos]
+                else:
+                    intervalos = []
+                    for j, fala in enumerate(cena['fala']):
+                        dados = sintetizar(fala, tmp / f'fala-{i}-{j}.wav', voz)
+                        fim = tempo + len(dados) / 2 / taxa
+                        intervalos.append((tempo, fim))
+                        faixa.writeframesraw(dados)
+                        faixa.writeframesraw(b'\0' * (round(0.13 * taxa) * 2))
+                        tempo = fim + round(0.13 * taxa) / taxa
+                for fala, (comeco, fim) in zip(cena['fala'], intervalos):
+                    legenda = '\n'.join(textwrap.wrap(fala, width=48, break_long_words=False))
+                    legendas.extend([f'{vtt_tempo(comeco)} --> {vtt_tempo(fim)}', legenda, ''])
                 pausa = float(cena.get('pausa') or 0.48)
-                silencio = round(TAXA * pausa)
+                silencio = round(taxa * pausa)
                 faixa.writeframesraw(b'\0' * (silencio * 2))
-                tempo += silencio / TAXA
+                tempo += silencio / taxa
                 final = renderizar_quadro(aula, cena, i)
                 inicial = renderizar_quadro(aula, cena, i, fase=False)
                 if i == 0:
@@ -296,12 +334,15 @@ def gerar_aula(aula, voz):
     (pasta / 'legendas.vtt').write_text('\n'.join(legendas), encoding='utf-8')
     print(f'{aula["id"]} · {tempo:.1f} s · {destino.stat().st_size / 1_048_576:.2f} MB', flush=True)
     resultado = {k: v for k, v in aula.items() if k != 'cenas'}
+    if sincronia:
+        resultado.update(revisaoMidia=2, marcasAnteriores=sincronia['marcasAnteriores'])
     return {**resultado, 'duracao': round(tempo, 2), 'capitulos': capitulos}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--voz', default='Luciana')
+    parser.add_argument('--narracoes', type=Path, help='Pasta com os doze WAVs sincronizados fornecidos para o site')
     parser.add_argument('--jobs', type=int, default=3)
     parser.add_argument('--quadro', help='Gera apenas o primeiro quadro da videoaula indicada')
     args = parser.parse_args()
@@ -312,8 +353,13 @@ def main():
         renderizar_quadro(aula, aula['cenas'][0], 0).save(caminho)
         print(caminho)
         return
+    sincronias = None
+    if args.narracoes:
+        sincronias = json.loads((RAIZ / 'roteiros' / 'sincronia-narracoes.json').read_text(encoding='utf-8'))
+        for aula in aulas:
+            ler_narracao(aula, args.narracoes, sincronias[aula['id']])
     with ThreadPoolExecutor(max_workers=args.jobs) as executor:
-        catalogo = list(executor.map(lambda aula: gerar_aula(aula, args.voz), aulas))
+        catalogo = list(executor.map(lambda aula: gerar_aula(aula, args.voz, args.narracoes, sincronias), aulas))
     (RAIZ / 'catalogo-videoaulas.js').write_text(
         '// Gerado por scripts/gerar_videoaulas.py.\nconst videoaulas = '
         + json.dumps(catalogo, ensure_ascii=False, indent=2) + ';\n', encoding='utf-8')

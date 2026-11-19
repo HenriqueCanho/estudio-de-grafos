@@ -1,121 +1,121 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.272
+00:00:00.090 --> 00:00:06.810
 Cada vértice representa uma cidade, e cada peso
 indica um custo de viagem.
 
-00:00:05.402 --> 00:00:10.265
+00:00:06.810 --> 00:00:13.110
 O caixeiro precisa visitar as cidades uma vez e
 voltar à cidade inicial.
 
-00:00:10.395 --> 00:00:14.912
+00:00:13.110 --> 00:00:18.320
 Entre esses ciclos, procuramos aquele cuja soma
 de custos é a menor.
 
-00:00:15.521 --> 00:00:20.286
+00:00:18.910 --> 00:00:24.420
 Comece em qualquer cidade e marque essa cidade
 como a primeira visitada.
 
-00:00:20.416 --> 00:00:25.978
+00:00:24.420 --> 00:00:29.960
 Da cidade atual, considere somente as arestas
 que levam a cidades inéditas.
 
-00:00:26.108 --> 00:00:30.370
+00:00:29.960 --> 00:00:35.000
 Percorra a de menor peso e repita a comparação
 na nova cidade.
 
-00:00:30.500 --> 00:00:35.491
+00:00:35.000 --> 00:00:40.000
 Em caso de empate, fixe um critério para
 conseguir reproduzir a rota.
 
-00:00:36.101 --> 00:00:41.952
+00:00:40.580 --> 00:00:49.100
 Do vértice esse, as quatro cidades restantes
 ainda estão disponíveis para visita.
 
-00:00:42.082 --> 00:00:46.646
+00:00:49.100 --> 00:00:55.760
 A tabela mostra quanto custa sair do vértice
 esse para cada cidade.
 
-00:00:46.776 --> 00:00:51.078
+00:00:55.760 --> 00:01:00.880
 Qual cidade o vizinho mais próximo escolhe, e
 qual é o custo?
 
-00:00:55.208 --> 00:00:59.191
+00:01:04.960 --> 00:01:10.820
 A opção de menor custo é vê, porque a aresta
 vale cinco.
 
-00:00:59.321 --> 00:01:03.661
+00:01:10.820 --> 00:01:16.920
 Marque vê como visitado e passe a comparar as
 saídas desse vértice.
 
-00:01:03.791 --> 00:01:08.029
+00:01:16.920 --> 00:01:23.440
 Entre dáblio, zê e u, dáblio tem o menor custo,
 seis.
 
-00:01:08.639 --> 00:01:13.353
+00:01:24.010 --> 00:01:29.690
 De vê seguimos a dáblio, com seis, e de dáblio
 comparamos u e zê.
 
-00:01:13.483 --> 00:01:17.942
+00:01:29.690 --> 00:01:35.330
 A ligação até u custa sete, e a ligação até zê
 custa nove.
 
-00:01:18.072 --> 00:01:22.424
+00:01:35.330 --> 00:01:41.840
 Escolhemos u e depois zê, a última cidade ainda
 sem visita.
 
-00:01:23.034 --> 00:01:28.166
+00:01:42.400 --> 00:01:47.770
 A partir de zê, voltamos à cidade inicial pela
 ligação de custo nove.
 
-00:01:28.296 --> 00:01:34.982
+00:01:47.770 --> 00:01:57.860
 O custo é cinco mais seis, mais sete, mais sete,
 mais nove, totalizando trinta e quatro.
 
-00:01:35.112 --> 00:01:40.717
+00:01:57.860 --> 00:02:04.800
 Nesse exemplo, a menor soma entre os doze ciclos
 possíveis também é trinta e quatro.
 
-00:01:41.327 --> 00:01:46.247
+00:02:05.370 --> 00:02:11.590
 Neste novo grafo, parta do vértice esse e use as
 saídas de menor custo.
 
-00:01:46.377 --> 00:01:51.347
+00:02:11.590 --> 00:02:17.790
 Vamos a tê, depois u, depois vê, pagando uma
 unidade por trecho.
 
-00:01:51.477 --> 00:01:55.449
+00:02:17.790 --> 00:02:22.630
 Ao voltar de vê para esse, o último trecho custa
 um milhão.
 
-00:01:55.579 --> 00:01:59.484
+00:02:22.630 --> 00:02:27.600
 Com o fechamento, o custo total chega a um
 milhão e três.
 
-00:02:00.094 --> 00:02:06.097
+00:02:28.190 --> 00:02:36.190
 Agora saímos de casa, passamos por tê, vê, u e
 voltamos ao vértice inicial.
 
-00:02:06.227 --> 00:02:10.892
+00:02:36.190 --> 00:02:44.810
 Os custos são um, dois, um e dois, que juntos
 somam seis.
 
-00:02:11.022 --> 00:02:15.864
+00:02:44.810 --> 00:02:50.720
 Esse ciclo viável de custo seis prova que a rota
 gulosa anterior é pior.
 
-00:02:16.474 --> 00:02:22.705
+00:02:51.440 --> 00:02:59.480
 Fixando a partida e identificando sentidos
 inversos, existem três ciclos neste grafo.
 
-00:02:22.835 --> 00:02:26.946
+00:02:59.480 --> 00:03:05.370
 A comparação dos três custos confirma seis como
 o melhor valor.
 
-00:02:27.076 --> 00:02:32.380
+00:03:05.370 --> 00:03:12.240
 Em exercícios, faça a heurística de várias
 partidas e registre cada volta.
 
-00:02:32.510 --> 00:02:37.166
+00:03:12.240 --> 00:03:19.200
 A menor soma obtida é a melhor entre as
 tentativas que você executou.

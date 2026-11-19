@@ -1,118 +1,118 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.930
+00:00:00.090 --> 00:00:06.690
 Para decodificar uma mensagem, comece na raiz da
 mesma árvore usada para codificar.
 
-00:00:06.060 --> 00:00:09.472
+00:00:06.690 --> 00:00:11.830
 Leia um bit por vez e siga o ramo com esse
 rótulo.
 
-00:00:09.602 --> 00:00:13.805
+00:00:11.830 --> 00:00:16.560
 Ao chegar numa folha, emita o símbolo e volte
 para a raiz.
 
-00:00:14.415 --> 00:00:18.430
+00:00:17.130 --> 00:00:25.280
 Um, zero, um nos leva à folha que guarda a letra
 S.
 
-00:00:18.560 --> 00:00:22.566
+00:00:25.280 --> 00:00:35.700
 A partir da raiz, um, zero, zero forma a letra
 E.
 
-00:00:22.696 --> 00:00:27.722
+00:00:35.700 --> 00:00:48.880
 Em seguida, zero e um formam a letra M e
 completam o trecho sem.
 
-00:00:28.332 --> 00:00:32.536
+00:00:49.450 --> 00:00:54.250
 Você acabou de emitir a letra M e está novamente
 na raiz.
 
-00:00:32.666 --> 00:00:36.667
+00:00:54.250 --> 00:01:01.680
 Que símbolo aparece ao seguir os próximos bits
 um, um e zero?
 
-00:00:40.797 --> 00:00:45.070
+00:01:05.790 --> 00:01:12.120
 Dois ramos à direita e um à esquerda levam à
 folha do espaço.
 
-00:00:45.200 --> 00:00:50.100
+00:01:12.120 --> 00:01:20.370
 Depois do espaço, as próximas folhas são as
 letras S, O e M.
 
-00:00:50.230 --> 00:00:55.792
+00:01:20.370 --> 00:01:29.120
 A mensagem decodificada é sem som, e todos os
 dezoito bits foram consumidos.
 
-00:00:56.402 --> 00:01:00.895
+00:01:29.740 --> 00:01:35.900
 De volta ao texto bom esse bombom, a letra O
 ocorre três vezes.
 
-00:01:01.025 --> 00:01:06.395
+00:01:35.900 --> 00:01:43.300
 Seu código tem dois bits, então ela contribui
 com seis bits para o total.
 
-00:01:06.525 --> 00:01:12.072
+00:01:43.300 --> 00:01:50.980
 Multiplique a frequência pelo comprimento para
 cada símbolo e some todos os produtos.
 
-00:01:12.202 --> 00:01:17.251
+00:01:50.980 --> 00:01:59.520
 O total fica em trinta e nove bits, ou dois
 vírgula seis por caractere.
 
-00:01:17.861 --> 00:01:24.917
+00:02:00.090 --> 00:02:09.280
 Para seis símbolos distintos, dois bits seriam
 insuficientes e três bits oferecem oito
 combinações.
 
-00:01:25.047 --> 00:01:31.208
+00:02:09.280 --> 00:02:17.240
 Quinze caracteres com três bits custam quarenta
 e cinco bits, contra cento e vinte em ASCII.
 
-00:01:31.338 --> 00:01:37.225
+00:02:17.240 --> 00:02:24.090
 Divida a economia de bits pelo total de
 referência para calcular a redução proporcional.
 
-00:01:37.355 --> 00:01:42.801
+00:02:24.090 --> 00:02:30.960
 A redução é cerca de treze vírgula três por
 cento frente ao melhor código fixo.
 
-00:01:43.411 --> 00:01:48.543
+00:02:31.540 --> 00:02:37.430
 Seis folhas exigem cinco junções, e cada junção
 cria um nó interno.
 
-00:01:48.673 --> 00:01:53.569
+00:02:37.430 --> 00:02:43.050
 São onze posições no vetor, incluindo a raiz
 criada na última junção.
 
-00:01:53.699 --> 00:01:59.180
+00:02:43.050 --> 00:02:50.000
 Cada posição guarda peso, símbolo quando houver,
 índice do pai e lado do ramo.
 
-00:01:59.790 --> 00:02:04.713
+00:02:50.570 --> 00:02:59.740
 Subindo da letra S, anote um no ramo direito e
 depois anteponha zero.
 
-00:02:04.843 --> 00:02:10.126
+00:02:59.740 --> 00:03:08.600
 A última subida vem da direita, então anteponha
 mais um e obtenha o código.
 
-00:02:10.256 --> 00:02:15.493
+00:03:08.600 --> 00:03:16.000
 A subida visita os ramos em ordem inversa à
 leitura feita pelo decodificador.
 
-00:02:16.103 --> 00:02:22.477
+00:03:16.570 --> 00:03:23.590
 A fila de prioridade guarda raízes disponíveis,
 enquanto o vetor conserva os nós criados.
 
-00:02:22.607 --> 00:02:28.405
+00:03:23.590 --> 00:03:31.030
 Com um heap, remover ou inserir uma raiz leva
 tempo logarítmico no número de símbolos.
 
-00:02:28.535 --> 00:02:34.016
+00:03:31.030 --> 00:03:38.120
 As junções dão tempo total proporcional ao
 número de símbolos vezes seu logaritmo.
 
-00:02:34.146 --> 00:02:38.889
+00:03:38.120 --> 00:03:45.200
 Quatro mais cinco mais seis mais nove mais
 quinze dão trinta e nove bits.

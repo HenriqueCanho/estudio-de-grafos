@@ -1,108 +1,108 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.062
+00:00:00.090 --> 00:00:06.410
 Uma coloração própria dá cores diferentes aos
 dois extremos de cada aresta.
 
-00:00:05.192 --> 00:00:10.124
+00:00:06.410 --> 00:00:12.970
 No método sequencial, a lista estabelece a ordem
 em que vamos colorir.
 
-00:00:10.254 --> 00:00:15.488
+00:00:12.970 --> 00:00:19.520
 Para cada vértice, use a menor cor ausente entre
 seus vizinhos já coloridos.
 
-00:00:16.098 --> 00:00:22.302
+00:00:20.090 --> 00:00:27.520
 Comece pelo vértice um, que recebe a primeira
 cor porque seus vizinhos ainda estão livres.
 
-00:00:22.432 --> 00:00:25.808
+00:00:27.520 --> 00:00:32.100
 O dois toca o um e precisa usar a segunda cor.
 
-00:00:25.938 --> 00:00:30.778
+00:00:32.100 --> 00:00:38.240
 O três toca os dois anteriores e recebe, então,
 a terceira cor.
 
-00:00:31.388 --> 00:00:36.491
+00:00:38.810 --> 00:00:42.990
 Quando chega a vez do nove, seus vizinhos já
 usam três cores diferentes.
 
-00:00:36.621 --> 00:00:43.284
+00:00:42.990 --> 00:00:51.470
 Os vértices quatro, dois e três bloqueiam,
 respectivamente, as cores um, dois e três.
 
-00:00:43.414 --> 00:00:48.480
+00:00:51.470 --> 00:00:57.680
 Por isso nove recebe a quarta cor, enquanto zero
 pode reutilizar a segunda.
 
-00:00:49.090 --> 00:00:54.338
+00:00:58.250 --> 00:01:03.890
 A regra da página cinquenta e quatro prioriza os
 vértices sem cor de maior grau.
 
-00:00:54.468 --> 00:00:59.761
+00:01:03.890 --> 00:01:09.890
 Em caso de empate, conte as cores distintas
 entre os vizinhos já coloridos.
 
-00:00:59.891 --> 00:01:05.639
+00:01:09.890 --> 00:01:16.720
 Recalcule essa contagem após cada escolha,
 porque as cores disponíveis podem mudar.
 
-00:01:06.249 --> 00:01:10.921
+00:01:17.290 --> 00:01:23.290
 Começamos por um, três e nove, os três vértices
 de grau cinco.
 
-00:01:11.051 --> 00:01:17.063
+00:01:23.290 --> 00:01:31.290
 O nove reutiliza a primeira cor, pois só o três
 já está colorido entre seus vizinhos.
 
-00:01:17.193 --> 00:01:20.500
+00:01:31.290 --> 00:01:37.290
 O dois vê as duas primeiras cores e usa a
 terceira.
 
-00:01:20.630 --> 00:01:25.156
+00:01:37.290 --> 00:01:44.320
 O cinco vê a primeira cor em seus vizinhos
 coloridos e usa a segunda.
 
-00:01:25.766 --> 00:01:29.592
+00:01:44.900 --> 00:01:49.360
 Quatro e seis têm o mesmo grau, com três
 vizinhos cada um.
 
-00:01:29.722 --> 00:01:34.280
+00:01:49.360 --> 00:01:54.080
 Qual dos dois tem mais cores distintas entre os
 vizinhos já coloridos?
 
-00:01:38.410 --> 00:01:42.448
+00:01:58.170 --> 00:02:02.930
 O quatro vê apenas a primeira cor, que já
 pertence ao nove.
 
-00:01:42.578 --> 00:01:47.302
+00:02:02.930 --> 00:02:09.240
 O seis vê duas cores, mesmo tendo três vizinhos
 com cor atribuída.
 
-00:01:47.432 --> 00:01:53.551
+00:02:09.240 --> 00:02:17.760
 Sete e oito também veem duas cores, e o
 laboratório escolhe seis pela ordem original.
 
-00:01:54.161 --> 00:01:59.003
+00:02:18.330 --> 00:02:23.480
 A execução da página cinquenta e seis registra
 quatro antes de seis.
 
-00:01:59.133 --> 00:02:03.650
+00:02:23.480 --> 00:02:29.100
 A lista escrita termina no dez, que aparece como
 zero no desenho.
 
-00:02:03.780 --> 00:02:10.259
+00:02:29.100 --> 00:02:35.840
 A sequência registrada e o desempate da página
 cinquenta e quatro produzem a mesma coloração.
 
-00:02:10.869 --> 00:02:16.126
+00:02:36.410 --> 00:02:43.410
 Os vértices um, dois e três formam um triângulo
 e exigem cores diferentes.
 
-00:02:16.256 --> 00:02:21.702
+00:02:43.410 --> 00:02:50.010
 A coloração de Welch–Powell mostra como usar só
 essas três cores no grafo inteiro.
 
-00:02:21.832 --> 00:02:27.426
+00:02:50.010 --> 00:02:56.000
 Na questão dois, combine a simulação do
 algoritmo com uma justificativa do mínimo.

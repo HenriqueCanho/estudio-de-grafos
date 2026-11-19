@@ -34,8 +34,10 @@ O feedback vem de regras dos slides e dos dados das questões. Na prática guiad
 
 ## Renderizar as videoaulas
 
-Para regenerar as capas, os MP4, as legendas WebVTT e o catálogo, use Python com Pillow, FFmpeg e o sintetizador `say` do macOS com a voz brasileira Luciana.
+Para regenerar as videoaulas publicadas, use Python com Pillow e FFmpeg. Indique a pasta que contém os 12 WAVs originais. O gerador usa os limites de cena e os tempos de legenda de `roteiros/sincronia-narracoes.json`.
 
 ```sh
-python3 scripts/gerar_videoaulas.py
+python3 scripts/gerar_videoaulas.py --narracoes '/caminho/para/os/WAVs'
 ```
+
+No macOS, `python3 scripts/gerar_videoaulas.py` gera uma versão com a voz de teste Luciana do `say`.

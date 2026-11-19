@@ -7,13 +7,30 @@ function tempoVideo(segundos) {
   return Math.floor(total / 60) + ':' + String(total % 60).padStart(2, '0');
 }
 
-function posicaoSalvaVideo(id) {
+function chavePosicaoVideo(video) {
+  const chave = 'estudio-de-grafos.videoaula.' + video.id;
+  return video.revisaoMidia ? chave + '.' + video.revisaoMidia : chave;
+}
+
+function posicaoSalvaVideo(video) {
+  if (posicoesVideoNaSessao.has(video.id)) return posicoesVideoNaSessao.get(video.id);
   try {
-    const salvo = localStorage.getItem('estudio-de-grafos.videoaula.' + id);
-    const segundos = Number(salvo ?? posicoesVideoNaSessao.get(id));
-    return Number.isFinite(segundos) && segundos > 0 ? segundos : 0;
+    const salvo = localStorage.getItem(chavePosicaoVideo(video));
+    if (salvo !== null) {
+      const segundos = Number(salvo);
+      return Number.isFinite(segundos) && segundos > 0 ? segundos : 0;
+    }
+    if (!video.marcasAnteriores) return 0;
+    const segundos = Number(localStorage.getItem('estudio-de-grafos.videoaula.' + video.id));
+    const marcas = video.marcasAnteriores;
+    const indice = marcas.findLastIndex(marca => marca <= segundos);
+    if (indice < 0 || indice >= video.capitulos.length) return 0;
+    const fracao = (segundos - marcas[indice]) / (marcas[indice + 1] - marcas[indice]);
+    const inicio = video.capitulos[indice].tempo;
+    const fim = video.capitulos[indice + 1]?.tempo ?? video.duracao;
+    return inicio + fracao * (fim - inicio);
   } catch {
-    return posicoesVideoNaSessao.get(id) || 0;
+    return 0;
   }
 }
 
@@ -21,10 +38,11 @@ function salvarPosicaoVideo(player) {
   if (!player || player.readyState < 1 || !Number.isFinite(player.duration) || !Number.isFinite(player.currentTime)) return;
   const id = player.dataset.videoaula;
   if (progresso.videoaulas.includes(id)) return;
+  const video = videoaulas.find(item => item.id === id);
   const tempo = Math.round(player.currentTime * 100) / 100;
   posicoesVideoNaSessao.set(id, tempo);
   try {
-    localStorage.setItem('estudio-de-grafos.videoaula.' + id, String(tempo));
+    localStorage.setItem(chavePosicaoVideo(video), String(tempo));
   } catch { /* A posição da sessão continua disponível. */ }
 }
 
@@ -47,7 +65,7 @@ function catalogoDeVideoaulas() {
 
 function cartaoVideoaula(video) {
   const concluida = progresso.videoaulas.includes(video.id);
-  const posicao = concluida ? 0 : posicaoSalvaVideo(video.id);
+  const posicao = concluida ? 0 : posicaoSalvaVideo(video);
   return `<a class="painel cartao-videoaula" href="${linkVideoaula(video.id)}">
     <div class="capa-videoaula">
       <img src="${pastaVideoaula(video.id)}/capa.webp" alt="" loading="lazy" width="1280" height="720">
@@ -67,6 +85,7 @@ function paginaVideoaula(id) {
   if (!video) return catalogoDeVideoaulas();
   const aula = indiceAulas.get(video.aula);
   const pasta = pastaVideoaula(id);
+  const versao = video.revisaoMidia ? '?v=' + video.revisaoMidia : '';
   const capitulos = video.capitulos.map((capitulo, i) => `<li>
     <button class="capitulo-video" type="button" data-capitulo="${i}" ${i === 0 ? 'aria-current="step"' : ''}>
       <span>${tempoVideo(capitulo.tempo)}</span><span>${html(capitulo.titulo)}</span>
@@ -87,9 +106,9 @@ function paginaVideoaula(id) {
       <div>
         <video class="player-videoaula" data-videoaula="${id}" aria-label="${html(video.titulo)}"
           controls playsinline preload="metadata" poster="${pasta}/capa.webp">
-          <source src="${pasta}/aula.mp4" type="video/mp4">
-          <track kind="captions" src="${pasta}/legendas.vtt" srclang="pt-BR" label="Português (Brasil)" default>
-          <a href="${pasta}/aula.mp4">Abrir o vídeo MP4</a>
+          <source src="${pasta}/aula.mp4${versao}" type="video/mp4">
+          <track kind="captions" src="${pasta}/legendas.vtt${versao}" srclang="pt-BR" label="Português (Brasil)" default>
+          <a href="${pasta}/aula.mp4${versao}">Abrir o vídeo MP4</a>
         </video>
         <p class="status-videoaula" role="status">${concluida ? '✓ Videoaula assistida' : ''}</p>
       </div>
@@ -120,7 +139,7 @@ function montarPlayerVideoaula() {
   const id = player.dataset.videoaula;
   const video = videoaulas.find(item => item.id === id);
   const botoes = [...document.querySelectorAll('[data-capitulo]')];
-  let posicao = progresso.videoaulas.includes(id) ? 0 : posicaoSalvaVideo(id);
+  let posicao = progresso.videoaulas.includes(id) ? 0 : posicaoSalvaVideo(video);
   let ultimoSalvamento = posicao;
   let capituloAtual = -1;
 

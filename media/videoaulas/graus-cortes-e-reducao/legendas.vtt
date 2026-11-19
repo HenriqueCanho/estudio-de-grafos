@@ -1,113 +1,113 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.234
+00:00:00.080 --> 00:00:07.500
 O teorema de Dirac se aplica a grafos simples
 com pelo menos três vértices.
 
-00:00:05.364 --> 00:00:10.299
+00:00:07.500 --> 00:00:15.100
 Se todo grau é pelo menos metade da ordem,
 existe um ciclo hamiltoniano.
 
-00:00:10.429 --> 00:00:15.930
+00:00:15.100 --> 00:00:24.000
 Neste exemplo, são seis vértices, cada qual com
 três arestas incidentes.
 
-00:00:16.540 --> 00:00:22.125
+00:00:24.580 --> 00:00:30.800
 Retiramos as três diagonais do exemplo, deixando
 apenas as seis arestas do contorno.
 
-00:00:22.255 --> 00:00:26.622
+00:00:30.800 --> 00:00:35.160
 Cada vértice agora tem grau dois, abaixo do
 limiar de três.
 
-00:00:26.752 --> 00:00:31.231
+00:00:35.160 --> 00:00:41.040
 Mesmo assim, o contorno passa por todos os
 vértices e fecha em A.
 
-00:00:31.361 --> 00:00:36.093
+00:00:41.040 --> 00:00:46.560
 Quando o teste de graus falha, ainda precisamos
 investigar o grafo.
 
-00:00:36.703 --> 00:00:41.557
+00:00:47.140 --> 00:00:52.510
 Retirar um vértice de um ciclo deixa um único
 trecho, com duas pontas.
 
-00:00:41.687 --> 00:00:46.367
+00:00:52.510 --> 00:00:57.540
 Cada retirada seguinte pode partir um trecho em,
 no máximo, dois.
 
-00:00:46.497 --> 00:00:52.326
+00:00:57.540 --> 00:01:04.610
 Ao retirar cá vértices de um caminho aberto,
 podemos obter até cá mais um trechos.
 
-00:00:52.456 --> 00:00:58.323
+00:01:04.610 --> 00:01:11.520
 Como as arestas extras só podem unir trechos,
 obtemos limites para as componentes.
 
-00:00:58.933 --> 00:01:03.239
+00:01:12.100 --> 00:01:18.820
 Imagine que retiramos o vértice pê com todas as
 suas ligações.
 
-00:01:03.369 --> 00:01:08.716
+00:01:18.820 --> 00:01:26.640
 Quantas componentes ficam, e qual dos dois
 percursos esse número permite excluir?
 
-00:01:12.846 --> 00:01:16.434
+00:01:30.730 --> 00:01:35.090
 A remoção deixa dois grupos, e dois é maior que
 um.
 
-00:01:16.564 --> 00:01:20.533
+00:01:35.090 --> 00:01:39.410
 Isso exclui o ciclo e mantém em aberto a questão
 do caminho.
 
-00:01:20.663 --> 00:01:27.452
+00:01:39.410 --> 00:01:46.800
 Neste grafo, existe um caminho aberto que passa
 por a, bê, cê, pê, dê, é, efe.
 
-00:01:28.062 --> 00:01:33.343
+00:01:47.370 --> 00:01:53.950
 Neste grafo, retirar apenas a ou apenas b ainda
 deixa todos conectados.
 
-00:01:33.473 --> 00:01:39.534
+00:01:53.950 --> 00:02:00.730
 Retirando os dois juntos, sobram quatro vértices
 isolados, cada qual uma componente.
 
-00:01:39.664 --> 00:01:44.977
+00:02:00.730 --> 00:02:06.000
 Quatro é maior que dois mais um, portanto até o
 caminho aberto fica excluído.
 
-00:01:45.587 --> 00:01:50.313
+00:02:06.570 --> 00:02:13.370
 Cada vértice precisa de uma chegada e uma saída
 num ciclo hamiltoniano.
 
-00:01:50.443 --> 00:01:55.927
+00:02:13.370 --> 00:02:22.010
 Por isso, em b, d e f, todas as arestas
 disponíveis são obrigatórias.
 
-00:01:56.057 --> 00:02:00.597
+00:02:22.010 --> 00:02:29.440
 As seis arestas destacadas formam um trecho
 obrigatório entre a e h.
 
-00:02:01.207 --> 00:02:05.013
+00:02:30.000 --> 00:02:36.200
 Os vértices c e e já têm duas arestas
 obrigatórias cada.
 
-00:02:05.143 --> 00:02:09.324
+00:02:36.200 --> 00:02:42.540
 Apague as duas ligações extras de cada um e
 atualize os graus.
 
-00:02:09.454 --> 00:02:14.807
+00:02:42.540 --> 00:02:51.360
 Agora gê, dáblio e xis também têm exatamente
 duas arestas disponíveis.
 
-00:02:15.417 --> 00:02:20.189
+00:02:51.920 --> 00:02:58.400
 As ligações restantes de dáblio e xis forçam o
 triângulo destacado.
 
-00:02:20.319 --> 00:02:25.358
+00:02:58.400 --> 00:03:05.540
 Esse triângulo já fecha o percurso e deixa todos
 os outros vértices de fora.
 
-00:02:25.488 --> 00:02:31.483
+00:03:05.540 --> 00:03:12.560
 Como as regras forçaram esse fechamento, o grafo
 original fica sem ciclo hamiltoniano.

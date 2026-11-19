@@ -1,97 +1,97 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:04.309
+00:00:00.080 --> 00:00:04.440
 Vamos construir um código de Huffman para a
 frase bom esse bombom.
 
-00:00:04.439 --> 00:00:09.756
+00:00:04.440 --> 00:00:09.220
 A frase tem quinze caracteres, contando os dois
 espaços entre as palavras.
 
-00:00:09.886 --> 00:00:14.500
+00:00:09.220 --> 00:00:14.880
 Comece com seis folhas e use a frequência de
 cada símbolo como peso.
 
-00:00:15.110 --> 00:00:20.301
+00:00:15.450 --> 00:00:21.810
 Retire duas raízes de menor peso e crie um pai
 cuja frequência seja a soma.
 
-00:00:20.431 --> 00:00:25.444
+00:00:21.810 --> 00:00:28.350
 Nesta execução, juntamos as letras E e S, ambas
 com peso dois.
 
-00:00:25.574 --> 00:00:30.126
+00:00:28.350 --> 00:00:34.250
 A nova raiz pesa quatro e volta para a fila em
 ordem crescente.
 
-00:00:30.256 --> 00:00:35.119
+00:00:34.250 --> 00:00:39.760
 O espaço também pesa dois e poderia participar
 dessa primeira junção.
 
-00:00:35.729 --> 00:00:40.467
+00:00:40.340 --> 00:00:46.720
 A fila atual começa pelo espaço e tem três
 letras de peso três.
 
-00:00:40.597 --> 00:00:45.955
+00:00:46.720 --> 00:00:53.520
 Quais pesos você retiraria agora, depois que o
 nó quatro voltou para a fila?
 
-00:00:50.085 --> 00:00:55.227
+00:00:57.600 --> 00:01:06.100
 O espaço pesa dois e a letra B pesa três, então
 o pai pesa cinco.
 
-00:00:55.357 --> 00:01:00.582
+00:01:06.100 --> 00:01:14.800
 Depois dessa junção, as letras O e M são as duas
 raízes mais leves.
 
-00:01:00.712 --> 00:01:05.718
+00:01:14.800 --> 00:01:22.080
 Juntas, elas formam o nó seis e deixam apenas
 três raízes na fila.
 
-00:01:06.328 --> 00:01:12.105
+00:01:22.650 --> 00:01:29.650
 Quatro e cinco são os menores pesos, então suas
 árvores ganham um pai de peso nove.
 
-00:01:12.235 --> 00:01:16.471
+00:01:29.650 --> 00:01:35.040
 Os descendentes de cada árvore mantêm as
 ligações que já tinham.
 
-00:01:16.601 --> 00:01:20.561
+00:01:35.040 --> 00:01:40.880
 Agora as duas raízes disponíveis têm os pesos
 seis e nove.
 
-00:01:21.171 --> 00:01:24.877
+00:01:41.460 --> 00:01:45.720
 Junte seis e nove para obter a raiz de peso
 quinze.
 
-00:01:25.007 --> 00:01:28.790
+00:01:45.720 --> 00:01:49.730
 O peso da raiz bate com o comprimento do texto
 original.
 
-00:01:28.920 --> 00:01:32.702
+00:01:49.730 --> 00:01:54.480
 Para ler os códigos, marque zero à esquerda e um
 à direita.
 
-00:01:33.312 --> 00:01:37.896
+00:01:55.050 --> 00:01:59.440
 Para chegar ao espaço, vá à direita duas vezes e
 depois à esquerda.
 
-00:01:38.026 --> 00:01:42.076
+00:01:59.440 --> 00:02:04.740
 Os três ramos percorridos dão o código um, um,
 zero.
 
-00:01:42.206 --> 00:01:47.989
+00:02:04.740 --> 00:02:10.240
 Cada código termina numa folha, então nenhum
 deles começa o código de outra folha.
 
-00:01:48.599 --> 00:01:53.152
+00:02:10.820 --> 00:02:16.440
 Troque cada letra pelo seu código, obedecendo à
 ordem da palavra bom.
 
-00:01:53.282 --> 00:01:57.415
+00:02:16.440 --> 00:02:23.340
 A letra B usa três bits, enquanto O e M usam
 dois cada.
 
-00:01:57.545 --> 00:02:03.458
+00:02:23.340 --> 00:02:29.360
 Junte os três trechos em sequência para produzir
 a palavra codificada em sete bits.
